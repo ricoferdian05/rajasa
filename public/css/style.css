@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fira+Sans:wght@300&display=swap');
+
+/* color-pallete:
+    font: #7D7C83;
+    bg-kuning: #FFCE00;
+    bg-gelap: #FFA300;
+    bg-abuterang: #F3F4F8;
+    bg-abugelap : #DFE0DF;
+    bg-coklat : #4C2F00;
+    bg-hijau : #006E62; */
+
+body {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+    color: #7D7C83;
+    font-weight: 600;
+    height: 100%;
+}
+
+input[type] {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+    color: #7D7C83;
+    font-weight: 600;
+}
+
+input[type]:focus {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 16px;
+    color: #7D7C83;
+    font-weight: 600;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: black;
+    font-weight: 700;
+    font-family: 'Comfortaa', cursive;
+}
+
+h1 {
+    
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+.form-label {
+    color: black;
+}
