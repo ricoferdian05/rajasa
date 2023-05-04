@@ -9,12 +9,12 @@ class CustomerModel extends Model
     protected $DBGroup          = 'default';
     protected $table            = 'customer';
     protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
+    protected $useAutoIncrement = false;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['id', 'email', 'password', 'nama', 'username', 'alamat', 'kode_pos', 'no_hp', 'tipe'];
 
     // Dates
     protected $useTimestamps = false;

@@ -62,16 +62,27 @@
     transition: .3s;
 }
 
-input[type="email"], input[type="password"], input[type="text"] {
+input[type="email"],
+input[type="password"],
+input[type="text"] {
     padding: 10px 20px;
 }
 
-input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus {
     border-color: #FFCE00;
     transition: .3s;
 }
 
 .signup {
+    text-decoration: none;
+    font-weight: 700;
+    color: #FFCE00;
+
+}
+
+.signin {
     text-decoration: none;
     font-weight: 700;
     color: #FFCE00;
@@ -86,12 +97,12 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 .logo {
     background-color: #F3F4F8;
-    height:100vh;
+    height: 100vh;
 }
 
 .blur {
     height: 50vh;
-    bottom:0px;
+    bottom: 0px;
     position: absolute;
     background: rgba(255, 255, 255, 0.16);
     backdrop-filter: blur(20px);
@@ -101,11 +112,11 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 .login {
     position: relative;
     box-shadow: 4px 0px 30px rgba(0, 0, 0, 0.1);
-    height:100vh;
+    height: 100vh;
 }
 
 .footer {
-    position:fixed;
-    bottom:0;
-    width:50%;
+    position: fixed;
+    bottom: 0;
+    width: 50%;
 }

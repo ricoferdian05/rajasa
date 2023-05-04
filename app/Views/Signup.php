@@ -16,7 +16,7 @@
 
       <div class="row mt-5 ms-5 me-5">
         <div class="col ">
-          <h2>Login Page</h2>
+          <h2>Sign Up Page</h2>
           <p>Please enter your details!</p>
           <?php if (session()->getFlashdata('error')) : ?>
             <div class="alert alert-danger" role="alert">
@@ -29,19 +29,27 @@
 
       <div class="row ms-5 mb-3 me-5">
         <div class="col">
-          <form action="<?= base_url('login/auth') ?>" method="post" enctype="">
+          <form action="<?= base_url('signup/auth'); ?>" method="post" enctype="">
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control shadow-sm" id="email" name="email" required>
+              <input type="email" class="form-control shadow-sm" id="email" name="email" autofocus required>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>
               <input type="password" class="form-control shadow-sm" id="password" name="password" required>
             </div>
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="username" class="form-control shadow-sm" id="username" name="username" required>
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="name" class="form-control shadow-sm" id="name" name="name" required>
+            </div>
             <div class="mb-3 text-end">
               <a href="" class="forgot_password">Forgot Password</a>
             </div>
-            <button type="submit" class="submit shadow-sm">Sign In</button>
+            <button type="submit" class="submit shadow-sm">Sign Up</button>
             <button href="" type="button" class="google mt-2 shadow-sm"><i class="bi bi-google"></i>&nbsp;&nbsp;Login with Google</button>
           </form>
         </div>
@@ -49,7 +57,7 @@
 
       <div class="row mt-5 ms-5 me-5">
         <div class="col text-center">
-          Don't have an account? <a class="signup" href="<?= base_url('signup'); ?>">Sign Up</a>
+          Already have an account? <a class="signin" href="<?= base_url('login'); ?>">Sign In</a>
         </div>
       </div>
 

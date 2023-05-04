@@ -7,7 +7,11 @@
     bg-abuterang: #F3F4F8;
     bg-abugelap : #DFE0DF;
     bg-coklat : #4C2F00;
-    bg-hijau : #006E62; */
+    bg-hijau : #73a9ad;  
+    bg-ungu : #9ea1d4;
+
+    font-merah : #e97777;
+    bg-merah ; #ffc1c1*/
 
 body {
     font-family: 'Fira Sans', sans-serif;
@@ -31,14 +35,19 @@ input[type]:focus {
     font-weight: 600;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: black;
     font-weight: 700;
     font-family: 'Comfortaa', cursive;
 }
 
 h1 {
-    
+
     font-size: 48px;
 }
 
@@ -64,4 +73,9 @@ h6 {
 
 .form-label {
     color: black;
+}
+
+.alert-danger {
+    background-color: #e97777;
+    color: #ffffff;
 }
