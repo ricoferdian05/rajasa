@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fira+Sans:wght@300&display=swap');
 
 /* color-pallete:
-    font: #7D7C83;
+    font: #707070;
     bg-kuning: #FFCE00;
     bg-gelap: #FFA300;
     bg-abuterang: #F3F4F8;
@@ -16,7 +16,7 @@
 body {
     font-family: 'Fira Sans', sans-serif;
     font-size: 16px;
-    color: #7D7C83;
+    color: #707070;
     font-weight: 600;
     height: 100%;
 }
@@ -78,4 +78,20 @@ h6 {
 .alert-danger {
     background-color: #e97777;
     color: #ffffff;
+}
+
+::placeholder {
+    color: #F3F4F8;
+}
+
+.dropdown-item {
+    font-family: 'Comfortaa', cursive;
+    font-size: 12px;
+    color: #707070;
+}
+
+.dropdown-item:hover {
+    background-color: #4C2F00;
+    color: #ffffff;
+    transition: .3s;
 }

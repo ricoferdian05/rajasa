@@ -1,0 +1,60 @@
+body {
+    background-color: #DFE0DF;
+}
+
+.navbar-home {
+    background-color: #FFCE00;
+}
+
+.nav-link {
+    margin-left: .1rem;
+    margin-right: .1rem;
+    font-family: 'Comfortaa', cursive;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.nav-link:hover {
+    background-color: #4C2F00;
+    color: #ffffff;
+    transition: .3s;
+}
+
+.nav-link:visited {
+    color: #ffffff;
+}
+
+.nav-link:active {
+    color: #ffffff;
+}
+
+.search::placeholder {
+    color: #DFE0DF;
+}
+
+
+.bi-search {
+    color: #707070;
+}
+
+.btn-masuk {
+    background-color: #4C2F00;
+    color: #ffffff;
+    width: 7em;
+}
+
+.btn-masuk:hover {
+    border: 1px solid #4C2F00;
+    color: #4C2F00;
+    transition: .3s;
+    font-weight: bold;
+}
+
+.name-account {
+    color: #ffffff;
+}
+
+.avatar {
+    width: 1.5em;
+    border-radius: 50%;
+}
