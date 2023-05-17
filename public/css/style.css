@@ -89,9 +89,3 @@ h6 {
     font-size: 12px;
     color: #707070;
 }
-
-.dropdown-item:hover {
-    background-color: #4C2F00;
-    color: #ffffff;
-    transition: .3s;
-}

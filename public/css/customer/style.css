@@ -58,3 +58,52 @@ body {
     width: 1.5em;
     border-radius: 50%;
 }
+
+.dropdown-item:hover {
+    background-color: #4C2F00;
+    color: #ffffff;
+    transition: .3s;
+}
+
+.footer {
+    font-family: 'Comfortaa', cursive;
+    background-color: #4C2F00;
+    color: #ffffff;
+    font-weight: lighter;
+}
+
+.card-text-footer {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 10px;
+}
+
+.list-card-text {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.list-footer {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.list-item-footer {
+    margin-top: 12px;
+    font-size: 12px;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+.list-item-footer:hover,
+.list-card-text:hover {
+    color: #FFCE00;
+    transition: .3s;
+}
+
+.heading {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+}
