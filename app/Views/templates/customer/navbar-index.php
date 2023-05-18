@@ -1,4 +1,4 @@
-<div class="container-fluid navbar-home shadow">
+<div class="container-fluid navbar-home border-0 shadow-lg">
     <div class="container">
         <div class="row">
             <div class="col">

@@ -3,7 +3,7 @@
         <div class="col-md-4 col-sm-4 col-xs-4 me-5">
             <div class="footer-text pull-left">
                 <div class="d-flex">
-                    <img src="<?= base_url('logo-navbar.png'); ?>" alt="Logo" width="60%">
+                    <img src="<?= base_url('logo-navbar.png'); ?>" alt="Logo" width="40%">
                 </div>
                 <p class="card-text card-text-footer mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi non pariatur numquam animi nam at impedit odit nisi.</p>
                 <ul class="list-group border-0">

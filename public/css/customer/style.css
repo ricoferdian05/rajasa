@@ -12,12 +12,12 @@ body {
     font-family: 'Comfortaa', cursive;
     color: #ffffff;
     font-size: 14px;
+    transition: all .3s;
 }
 
 .nav-link:hover {
     background-color: #4C2F00;
     color: #ffffff;
-    transition: .3s;
 }
 
 .nav-link:visited {
@@ -81,6 +81,7 @@ body {
     color: #ffffff;
     text-decoration: none;
     font-size: 12px;
+    transition: all .3s;
 }
 
 .list-footer {
@@ -94,16 +95,44 @@ body {
     font-size: 12px;
     font-weight: lighter;
     cursor: pointer;
+    transition: all .3s;
 }
 
 .list-item-footer:hover,
 .list-card-text:hover {
     color: #FFCE00;
-    transition: .3s;
 }
 
 .heading {
     font-size: 18px;
     font-weight: bold;
     color: #ffffff;
+}
+
+.jumbotron {
+    background-color: #ffffff;
+    background: linear-gradient(45deg,
+            #F3F4F8 45%,
+            #FFCE00 100%);
+}
+
+.text-jumbotron {
+    color: #4C2F00;
+}
+
+.btn-print {
+    font-family: 'Comfortaa', cursive;
+    color: #ffffff;
+    background-color: #4C2F00;
+    width: 50%;
+    transition: all .3s;
+}
+
+.btn-print:hover {
+    font-family: 'Comfortaa', cursive;
+    color: #ffffff;
+    background-color: #4C2F00;
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+
 }
