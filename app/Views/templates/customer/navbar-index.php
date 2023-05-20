@@ -12,7 +12,7 @@
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link rounded-3 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Catalog
+                                        Katalog
                                     </a>
                                     <ul class="dropdown-menu border-0 shadow">
                                         <li><a class="dropdown-item" href="#">Action</a></li>
@@ -20,15 +20,15 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link rounded-3" href="#">Cart</a>
+                                    <a class="nav-link rounded-3" href="#">Keranjang</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link rounded-3" href="#">Payment</a>
+                                    <a class="nav-link rounded-3" href="#">Pembayaran</a>
                                 </li>
                                 <li class="nav-item ms-2">
                                     <form class="d-flex" role="search">
                                         <div class="input-group">
-                                            <input type="text" class="form-control search border-0" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                            <input type="text" class="form-control search border-0" placeholder="Cari" aria-label="Recipient's username" aria-describedby="basic-addon2">
                                             <button class="input-group-text bg-white border-0" id="basic-addon2"><i class="bi bi-search"></i></button>
                                         </div>
                                     </form>
@@ -36,7 +36,7 @@
                             </ul>
                             <div class="d-flex">
                                 <?php if (!session()->get('isLogin')) { ?>
-                                    <a href="<?= base_url('login'); ?>" class="btn btn-masuk">Login</a>
+                                    <a href="<?= base_url('login'); ?>" class="btn btn-masuk">Masuk</a>
                                 <?php } else { ?>
                                     <span class="name-account me-3">Rico Ferdian</span>
                                     <div class="dropstart">
@@ -44,11 +44,11 @@
                                             <img src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=Trouble" alt="avatar" class="avatar" />
                                         </a>
                                         <ul class="dropdown-menu border-0 shadow me-2">
-                                            <li><a class="dropdown-item" href="#">Account</a></li>
+                                            <li><a class="dropdown-item" href="#">Akun</a></li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="<?= base_url('logout') ?>">Logout</a></li>
+                                            <li><a class="dropdown-item" href="<?= base_url('logout') ?>">Keluar</a></li>
                                         </ul>
                                     </div>
                                 <?php } ?>

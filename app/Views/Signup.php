@@ -16,8 +16,8 @@
 
       <div class="row mt-5 ms-5 me-5">
         <div class="col ">
-          <h2>Sign Up Page</h2>
-          <p>Please enter your details!</p>
+          <h2>Halaman Daftar</h2>
+          <p>Silahkan masukkan detail Anda!</p>
           <?php if (session()->getFlashdata('error')) : ?>
             <div class="alert alert-danger" role="alert">
               <?= session()->getFlashdata('error'); ?>
@@ -43,21 +43,21 @@
               <input type="username" class="form-control shadow-sm" id="username" name="username" required>
             </div>
             <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
+              <label for="name" class="form-label">Nama Lengkap</label>
               <input type="name" class="form-control shadow-sm" id="name" name="name" required>
             </div>
             <div class="mb-3 text-end">
-              <a href="" class="forgot_password">Forgot Password</a>
+              <a href="" class="forgot_password">Lupa Password</a>
             </div>
-            <button type="submit" class="submit shadow-sm">Sign Up</button>
-            <button href="" type="button" class="google mt-2 shadow-sm"><i class="bi bi-google"></i>&nbsp;&nbsp;Login with Google</button>
+            <button type="submit" class="submit shadow-sm">Daftar</button>
+            <button href="" type="button" class="google mt-2 shadow-sm"><i class="bi bi-google"></i>&nbsp;&nbsp;Masuk dengan Google</button>
           </form>
         </div>
       </div>
 
       <div class="row mt-5 ms-5 me-5">
         <div class="col text-center">
-          Already have an account? <a class="signin" href="<?= base_url('login'); ?>">Sign In</a>
+          Sudah memiliki akun? <a class="signin" href="<?= base_url('login'); ?>">Masuk</a>
         </div>
       </div>
 

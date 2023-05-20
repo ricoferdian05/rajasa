@@ -7,7 +7,7 @@ class Signup extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Sign Up Page',
+            'title' => 'Daftar',
         ];
 
         return view('signup', $data);
@@ -32,11 +32,11 @@ class Signup extends BaseController
         // Check email
         $dataCustomer   = $customer->where('email', $email)->first();
         if ($dataCustomer) {
-            $session->setFlashdata('error', 'Email already taken!');
+            $session->setFlashdata('error', 'Email sudah digunakan!');
             return redirect()->to(base_url('signup'));
         } else {
             if ($arrPassword[0] === '' || $arrUsername[0] === '' || $arrName[0] === '') {
-                $session->setFlashdata('error', 'Please input all fields!');
+                $session->setFlashdata('error', 'Isi data dengan benar!');
                 return redirect()->to(base_url('signup'));
             } else {
                 // Generate Id

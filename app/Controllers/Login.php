@@ -7,7 +7,7 @@ class Login extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Login Page',
+            'title' => 'Masuk',
         ];
 
         return view('login', $data);
@@ -41,7 +41,7 @@ class Login extends BaseController
                 $session->set($ses_data);
                 return redirect()->to(base_url('admin'));
             } else {
-                $session->setFlashdata('error', 'wrong email and password!');
+                $session->setFlashdata('error', 'Email dan Password Salah!');
                 return redirect()->to(base_url('login'));
             }
         } elseif ($dataDesigner) {
@@ -58,7 +58,7 @@ class Login extends BaseController
                 $session->set($ses_data);
                 return redirect()->to(base_url('designer'));
             } else {
-                $session->setFlashdata('error', 'wrong email and password!');
+                $session->setFlashdata('error', 'Email dan Password Salah!');
                 return redirect()->to(base_url('login'));
             }
         } elseif ($dataCustomer) {
@@ -75,11 +75,11 @@ class Login extends BaseController
                 $session->set($ses_data);
                 return redirect()->to(base_url('customer'));
             } else {
-                $session->setFlashdata('error', 'wrong email and password!');
+                $session->setFlashdata('error', 'Email dan Password Salah!');
                 return redirect()->to(base_url('login'));
             }
         } else {
-            $session->setFlashdata('error', 'Enter the correct data!');
+            $session->setFlashdata('error', 'Masukkan data yang benar!');
             return redirect()->to(base_url('login'));
         }
     }

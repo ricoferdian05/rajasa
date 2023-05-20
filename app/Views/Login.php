@@ -16,8 +16,8 @@
 
       <div class="row mt-5 ms-5 me-5">
         <div class="col ">
-          <h2>Login Page</h2>
-          <p>Please enter your details!</p>
+          <h2>Halaman Masuk</h2>
+          <p>Silahkan masukkan detail Anda!</p>
           <?php if (session()->getFlashdata('error')) : ?>
             <div class="alert alert-danger" role="alert">
               <?= session()->getFlashdata('error'); ?>
@@ -39,17 +39,17 @@
               <input type="password" class="form-control shadow-sm" id="password" name="password" required>
             </div>
             <div class="mb-3 text-end">
-              <a href="" class="forgot_password">Forgot Password</a>
+              <a href="" class="forgot_password">Lupa Password</a>
             </div>
-            <button type="submit" class="submit shadow-sm">Sign In</button>
-            <button href="" type="button" class="google mt-2 shadow-sm"><i class="bi bi-google"></i>&nbsp;&nbsp;Login with Google</button>
+            <button type="submit" class="submit shadow-sm">Masuk</button>
+            <button href="" type="button" class="google mt-2 shadow-sm"><i class="bi bi-google"></i>&nbsp;&nbsp;Masuk dengan Google</button>
           </form>
         </div>
       </div>
-
-      <div class="row mt-5 ms-5 me-5">
+      <div class="row ms-5 me-5">
+        <hr>
         <div class="col text-center">
-          Don't have an account? <a class="signup" href="<?= base_url('signup'); ?>">Sign Up</a>
+          Belum memiliki akun? <a class="signup" href="<?= base_url('signup'); ?>">Daftar</a>
         </div>
       </div>
 

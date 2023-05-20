@@ -14,15 +14,15 @@
             </div>
         </div>
         <div class="col-md-2 col-sm-2 col-xs-2 mt-3">
-            <h5 class="heading">Products</h5>
+            <h5 class="heading">Produk</h5>
             <ul class="list-footer">
-                <li class="list-item-footer">Brochure</li>
-                <li class="list-item-footer">Calendar</li>
-                <li class="list-item-footer">Invitation</li>
+                <li class="list-item-footer">Brosur</li>
+                <li class="list-item-footer">Kalender</li>
+                <li class="list-item-footer">Undangan</li>
             </ul>
         </div>
         <div class="col-md-2 col-sm-2 col-xs-2 mt-3">
-            <h5 class="heading">Delivery</h5>
+            <h5 class="heading">Jasa Pengiriman</h5>
             <ul class="list-footer">
                 <li class="list-item-footer">JNE</li>
                 <li class="list-item-footer">Pos Indonesia</li>
@@ -31,10 +31,10 @@
             </ul>
         </div>
         <div class="col-md-2 col-sm-2 col-xs-2 mt-3">
-            <h5 class="heading">Company</h5>
+            <h5 class="heading">Perusahaan</h5>
             <ul class="list-footer">
                 <a href="" style="text-decoration: none; color: #fff">
-                    <li class="list-item-footer">About Us</li>
+                    <li class="list-item-footer">Tentang Kami</li>
                 </a>
             </ul>
         </div>

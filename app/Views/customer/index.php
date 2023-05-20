@@ -11,8 +11,8 @@
                         <img src="<?= base_url('asset/website/photocopy.svg') ?>" alt="" width="">
                     </div>
                     <div class="col my-auto">
-                        <h2 class="text-jumbotron">PRINT CALENDAR, WEDDING INVITATION, BROCHURE OR OTHERWISE?</h2>
-                        <a href="" class="btn btn-print mt-2">PRINT NOW</a>
+                        <h2 class="text-jumbotron">CETAK KALENDER, UNDANGAN PERNIKAHAN, BROSUR ATAU LAIN-LAIN?</h2>
+                        <a href="" class="btn btn-print mt-2">CETAK SEKARANG</a>
                     </div>
                 </div>
             </div>
