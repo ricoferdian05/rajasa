@@ -31,6 +31,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 // Customer
 $routes->group('customer', ['filter' => 'auth'], function ($routes) {
+    $routes->get('/', 'Customer::index');
 });
 
 $routes->get('/', 'Customer::index');
