@@ -19,6 +19,7 @@
                 <li class="list-item-footer">Brosur</li>
                 <li class="list-item-footer">Kalender</li>
                 <li class="list-item-footer">Undangan</li>
+                <li class="list-item-footer">Buku</li>
             </ul>
         </div>
         <div class="col-md-2 col-sm-2 col-xs-2 mt-3">

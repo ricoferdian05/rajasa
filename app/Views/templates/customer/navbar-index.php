@@ -14,9 +14,15 @@
                                     <a class="nav-link rounded-3 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Katalog
                                     </a>
-                                    <ul class="dropdown-menu border-0 shadow">
-                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <ul class="dropdown-menu border-0 shadow-lg">
+                                        <li><a class="dropdown-item" href="#">Kalender</a></li>
+                                        <li><a class="dropdown-item" href="#">Buku</a></li>
+                                        <li><a class="dropdown-item" href="#">Undangan</a></li>
+                                        <li><a class="dropdown-item" href="#">Brosur</a></li>
+                                        <li><a class="dropdown-item" href="#">Apron</a></li>
+                                        <li><a class="dropdown-item" href="#">Kaos</a></li>
+                                        <li><a class="dropdown-item" href="#">Totebag</a></li>
+                                        <li><a class="dropdown-item" href="#">Pouchbag</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
