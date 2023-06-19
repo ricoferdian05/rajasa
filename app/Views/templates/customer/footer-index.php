@@ -1,4 +1,4 @@
-<div class="container-fluid footer p-3 mt-4">
+<div class="container-fluid footer ps-3 pe-3 pt-3 mt-4">
     <div class="row mb-4">
         <div class="col-md-4 col-sm-4 col-xs-4 me-5">
             <div class="footer-text pull-left">
@@ -34,7 +34,7 @@
         <div class="col-md-2 col-sm-2 col-xs-2 mt-3">
             <h5 class="heading">Perusahaan</h5>
             <ul class="list-footer">
-                <a href="" style="text-decoration: none; color: #fff">
+                <a href="<?= base_url('tentang') ?>" style="text-decoration: none; color: #fff">
                     <li class="list-item-footer">Tentang Kami</li>
                 </a>
             </ul>

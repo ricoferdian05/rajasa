@@ -22,7 +22,7 @@
 
     <div class="row">
         <div class="col">
-            <div class="container shadow-lg rounded-3 mt-3 py-5 pe-5 ps-5 content-index">
+            <div class="container shadow-lg rounded-3 mt-3 py-5 pe-5 ps-5 content">
                 <div class="row">
                     <div class="col">
                         <h3 class="title-content text-center">MEDIA CETAK KAMI</h3>

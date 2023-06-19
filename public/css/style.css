@@ -15,7 +15,7 @@
 
 body {
     font-family: 'Fira Sans', sans-serif;
-    font-size: 16px;
+    font-size: 12px;
     color: #707070;
     font-weight: 600;
     height: 100%;
@@ -26,6 +26,7 @@ input[type] {
     font-size: 16px;
     color: #7D7C83;
     font-weight: 600;
+    transition: all .3s;
 }
 
 input[type]:focus {
@@ -41,7 +42,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: black;
+    color: #4D4D4D;
     font-weight: 700;
     font-family: 'Comfortaa', cursive;
 }
@@ -71,8 +72,14 @@ h6 {
     font-size: 14px;
 }
 
+a {
+    text-decoration: none;
+    color: #707070;
+    cursor: pointer;
+}
+
 .form-label {
-    color: black;
+    color: #4D4D4D;
 }
 
 .alert-danger {

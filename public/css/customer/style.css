@@ -1,7 +1,3 @@
-body {
-    background-color: #DFE0DF;
-}
-
 .navbar-home {
     background-color: #FFCE00;
 }
@@ -21,10 +17,12 @@ body {
 }
 
 .nav-link:visited {
+    background-color: #4C2F00;
     color: #ffffff;
 }
 
 .nav-link:active {
+    background-color: #4C2F00;
     color: #ffffff;
 }
 
@@ -38,17 +36,30 @@ body {
 }
 
 .btn-masuk {
+    font-weight: lighter;
+    font-size: 16px;
+    text-decoration: none;
     background-color: #4C2F00;
     color: #ffffff;
     width: 7em;
+    padding: 5px 10px;
+    transition: all .3s;
 }
 
 .btn-masuk:hover {
+    background: transparent;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     border: 1px solid #4C2F00;
     color: #4C2F00;
-    transition: .3s;
     font-weight: bold;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+.btn-masuk:active {
+    transform: scale(.9);
+    box-shadow: none;
 }
 
 .name-account {
@@ -56,8 +67,9 @@ body {
 }
 
 .avatar {
-    width: 1.5em;
-    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    border-radius: 100%;
 }
 
 .dropdown-item:hover {
@@ -65,6 +77,8 @@ body {
     color: #ffffff;
     transition: .3s;
 }
+
+/* ANCHOR FOOTER */
 
 .footer {
     font-family: 'Comfortaa', cursive;
@@ -140,7 +154,7 @@ body {
 
 /* ANCHOR 👉 CONTENT INDEX */
 
-.content-index {
+.content {
     background-color: #ffffff;
 }
 
@@ -171,4 +185,99 @@ body {
     box-shadow: none;
     transform: scale(0.99);
     border: 1px solid #DFE0DF;
+}
+
+.label-jumlah-produk {
+    font-size: 12px;
+}
+
+.label-angka-produk {
+    color: black;
+}
+
+.label-urutkan {
+    font-size: 16px;
+}
+
+
+.btn-urutkan {
+    width: fit-content;
+    font-weight: bold;
+    color: #707070;
+    font-size: 12px;
+    padding: 6px 10px;
+    background-color: #fff;
+    border: 1px solid #DFE0DF;
+    transition: all .3s;
+}
+
+.btn-urutkan:focus {
+    border: 1px solid #73a9ad;
+}
+
+.option-urutkan {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 10px;
+    font-weight: lighter;
+    color: #707070;
+}
+
+.option-urutkan:hover {
+    color: #fff;
+    background-color: #73a9ad;
+}
+
+/* ANCHOR CONTENT */
+
+.card-produk {
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.3);
+    background-color: #F3F4F8;
+    border: 1px solid #DFE0DF;
+    height: 13rem;
+    transition: all .3s;
+}
+
+.card-produk:hover {
+    box-shadow: none;
+}
+
+.gambar-produk {
+    margin-left: auto;
+    margin-right: auto;
+    width: 6rem;
+    height: 6rem;
+}
+
+.card-title-harga {
+    color: #4D4D4D;
+}
+
+.card-body-produk {
+    background-color: #fff;
+}
+
+.card-text-produk {
+    font-size: 12px;
+}
+
+.footer-produk {
+    position: absolute;
+    bottom: 5px;
+    font-size: 10px;
+}
+
+.icon-rating {
+    color: #ffd700;
+}
+
+/* ANCHOR ABOUT US */
+
+.tagline-about {
+    font-size: 32px;
+    color: #ffd700;
+}
+
+.avatar-tim {
+    height: 100px;
+    background-color: #ffd700;
 }

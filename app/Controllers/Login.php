@@ -36,6 +36,7 @@ class Login extends BaseController
                     'email'     => $dataAdmin['email'],
                     'nama'      => $dataAdmin['nama'],
                     'tipe'      => $dataAdmin['tipe'],
+                    'avatar'    => $dataAdmin['avatar'],
                     'isLogin'   => true,
                 ];
                 $session->set($ses_data);
@@ -53,6 +54,7 @@ class Login extends BaseController
                     'email'     => $dataDesigner['email'],
                     'nama'      => $dataDesigner['nama'],
                     'tipe'      => $dataDesigner['tipe'],
+                    'avatar'    => $dataDesigner['avatar'],
                     'isLogin'   => true,
                 ];
                 $session->set($ses_data);
@@ -70,6 +72,7 @@ class Login extends BaseController
                     'email'     => $dataCustomer['email'],
                     'nama'      => $dataCustomer['nama'],
                     'tipe'      => $dataCustomer['tipe'],
+                    'avatar'    => $dataCustomer['avatar'],
                     'isLogin'   => true,
                 ];
                 $session->set($ses_data);

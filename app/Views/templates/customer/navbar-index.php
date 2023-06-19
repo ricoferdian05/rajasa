@@ -42,12 +42,12 @@
                             </ul>
                             <div class="d-flex">
                                 <?php if (!session()->get('isLogin')) { ?>
-                                    <a href="<?= base_url('login'); ?>" class="btn btn-masuk">Masuk</a>
+                                    <a href="<?= base_url('login'); ?>" class="btn-masuk text-center rounded-1">Masuk</a>
                                 <?php } else { ?>
-                                    <span class="name-account me-3">Rico Ferdian</span>
+                                    <span class="name-account me-2"><?= session()->get('nama'); ?></span>
                                     <div class="dropstart">
                                         <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="https://api.dicebear.com/6.x/adventurer-neutral/svg?seed=Trouble" alt="avatar" class="avatar" />
+                                            <img src="<?= base_url(session()->get('avatar')) ?>" alt="avatar" class="avatar" />
                                         </a>
                                         <ul class="dropdown-menu border-0 shadow me-2">
                                             <li><a class="dropdown-item" href="#">Akun</a></li>

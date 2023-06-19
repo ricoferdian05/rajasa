@@ -1,0 +1,107 @@
+.sidebar {
+    height: 100%;
+    background-color: #ffffff;
+}
+
+/* ANCHOR FILTER */
+
+/* ANCHOR KATEGORI */
+
+.list-filter-kategori {
+    list-style-type: none;
+    padding: 0;
+}
+
+.check-filter-kategori {
+    height: .9em;
+    width: .9em;
+    box-shadow: none;
+    border-color: #DFE0DF;
+    transition: all .3s;
+
+}
+
+.check-filter-kategori:active {
+    box-shadow: none;
+}
+
+.check-filter-kategori:hover {
+    cursor: pointer;
+    background-color: #DFE0DF;
+}
+
+.check-filter-kategori:checked {
+    box-shadow: none;
+    background-color: #73a9ad;
+    border: none;
+}
+
+.check-filter-kategori:not(:checked) {
+    box-shadow: none;
+    border-color: #DFE0DF;
+}
+
+
+.label-filter-kategori {
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+
+/* ANCHOR HARGA */
+
+#input-harga-terendah,
+#input-harga-tertinggi {
+    font-size: 12px;
+    color: #707070;
+    box-shadow: none;
+}
+
+#input-harga-terendah:focus,
+#input-harga-tertinggi:focus {
+    border-color: #73a9ad;
+
+}
+
+#input-harga-terendah:hover,
+#input-harga-tertinggi:hover {
+    background-color: #F3F4F8;
+}
+
+#label-harga {
+    color: #707070;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.btn-filter-harga {
+    border: 1px solid #73a9ad;
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    width: 100%;
+    padding: 4px 8px;
+    background-color: #73a9ad;
+    transition: all .3s;
+}
+
+.btn-filter-harga:hover {
+    background-color: #fff;
+    color: #73a9ad;
+    border: 1px solid #73a9ad;
+}
+
+.btn-filter-harga:active {
+    transform: scale(.95);
+}
+
+.pagination-link {
+    font-size: 12px;
+    color: #707070;
+    transition: all .3s;
+}
+
+.pagination-link:hover {
+    color: #FFCE00;
+    background-color: #F3F4F8;
+}
