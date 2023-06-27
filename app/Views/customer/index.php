@@ -12,7 +12,7 @@
                     </div>
                     <div class="col my-auto">
                         <h2 class="text-jumbotron">CETAK KALENDER, UNDANGAN PERNIKAHAN, BROSUR ATAU LAIN-LAIN?</h2>
-                        <a href="" class="btn btn-print mt-2">CETAK SEKARANG</a>
+                        <a href="<?= base_url('produk') ?>" class="btn btn-print mt-2">CETAK SEKARANG</a>
                     </div>
                 </div>
             </div>
