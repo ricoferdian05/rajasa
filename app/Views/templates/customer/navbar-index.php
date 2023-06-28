@@ -15,27 +15,27 @@
                                         Katalog
                                     </a>
                                     <ul class="dropdown-menu border-0 shadow-lg">
-                                        <li><a class="dropdown-item" href="#">Kalender</a></li>
-                                        <li><a class="dropdown-item" href="#">Buku</a></li>
-                                        <li><a class="dropdown-item" href="#">Undangan</a></li>
-                                        <li><a class="dropdown-item" href="#">Brosur</a></li>
-                                        <li><a class="dropdown-item" href="#">Apron</a></li>
-                                        <li><a class="dropdown-item" href="#">Kaos</a></li>
-                                        <li><a class="dropdown-item" href="#">Totebag</a></li>
-                                        <li><a class="dropdown-item" href="#">Pouchbag</a></li>
+                                        <li><a class="dropdown-item" href="<?= base_url('produk/Kalender/terbaru') ?>">Kalender</a></li>
+                                        <li><a class="dropdown-item" href="<?= base_url('produk/Buku/terbaru') ?>">Buku</a></li>
+                                        <li><a class="dropdown-item" href="<?= base_url('produk/Undangan/terbaru') ?>">Undangan</a></li>
+                                        <li><a class="dropdown-item" href="<?= base_url('produk/Brosur/terbaru') ?>">Brosur</a></li>
+                                        <li><a class="dropdown-item" href="<?= base_url('produk/Apron/terbaru') ?>">Apron</a></li>
+                                        <li><a class="dropdown-item" href="<?= base_url('produk/Kaos/terbaru') ?>">Kaos</a></li>
+                                        <li><a class="dropdown-item" href="<?= base_url('produk/Totebag/terbaru') ?>">Totebag</a></li>
+                                        <li><a class="dropdown-item" href="<?= base_url('produk/Pouchbag/terbaru') ?>">Pouchbag</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link rounded-3" href="#">Keranjang</a>
+                                    <a class="nav-link rounded-3" href="<?= base_url('/produk/all/terbaru') ?>">Produk</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link rounded-3" href="#">Pembayaran</a>
                                 </li>
                                 <li class="nav-item ms-2">
-                                    <form class="d-flex" role="search">
+                                    <form class="d-flex" role="search" action="<?= base_url('produk/all/terbaru') ?>" method="get">
                                         <div class="input-group">
-                                            <input type="text" class="form-control search border-0" placeholder="Cari" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                            <button class="input-group-text bg-white border-0" id="basic-addon2"><i class="bi bi-search"></i></button>
+                                            <input type="text" name="keyword" class="form-control search border-0" placeholder="Cari" value="<?= $keyword; ?>">
+                                            <button type="submit" class="input-group-text bg-white border-0" id="basic-addon2"><i class="bi bi-search"></i></button>
                                         </div>
                                     </form>
                                 </li>

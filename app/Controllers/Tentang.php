@@ -8,6 +8,7 @@ class Tentang extends BaseController
     {
         $data = [
             'title' => 'Tentang Kami',
+            'keyword'  => null,
         ];
 
         return view('customer/tentang', $data);

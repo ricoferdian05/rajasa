@@ -12,35 +12,22 @@
     padding: 0;
 }
 
-.check-filter-kategori {
-    height: .9em;
-    width: .9em;
-    box-shadow: none;
-    border-color: #DFE0DF;
+.filter-kategori {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
     transition: all .3s;
-
 }
 
-.check-filter-kategori:active {
-    box-shadow: none;
+.filter-kategori:hover {
+    background-color: #F3F4F8;
+    color: #73a9ad;
 }
 
-.check-filter-kategori:hover {
-    cursor: pointer;
-    background-color: #DFE0DF;
+.selected-filter-kategori {
+    background-color: #F3F4F8;
+    color: #73a9ad;
 }
-
-.check-filter-kategori:checked {
-    box-shadow: none;
-    background-color: #73a9ad;
-    border: none;
-}
-
-.check-filter-kategori:not(:checked) {
-    box-shadow: none;
-    border-color: #DFE0DF;
-}
-
 
 .label-filter-kategori {
     font-size: 12px;
@@ -104,4 +91,9 @@
 .pagination-link:hover {
     color: #FFCE00;
     background-color: #F3F4F8;
+}
+
+.active-page {
+    color: #FFCE00;
+    background-color: #4C2F00;
 }

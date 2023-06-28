@@ -270,6 +270,12 @@
     color: #ffd700;
 }
 
+.alert-produk-kosong {
+    color: #e97777;
+    background-color: #ffc1c1;
+    text-align: center;
+}
+
 /* ANCHOR ABOUT US */
 
 .tagline-about {
@@ -280,6 +286,5 @@
 .avatar-tim {
     height: 100px;
     background-color: #ffd700;
-}
 
-.check-filter-kategori {}
+}
