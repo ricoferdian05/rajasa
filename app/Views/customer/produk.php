@@ -86,7 +86,7 @@
                     <?php } ?>
                     <?php foreach ($produk as $produk) { ?>
                         <div class="col-2 mb-3">
-                            <a href="" class="produk">
+                            <a href="<?= base_url('detail/' . $produk['id']) ?>" class="produk">
                                 <div class="card card-produk rounded-2">
                                     <img src="<?= base_url($produk['gambar1']) ?>" class="card-img-top gambar-produk" alt="image">
                                     <div class="card-body card-body-produk rounded-bottom p-2">
@@ -116,7 +116,6 @@
 <!-- ANCHOR FILTER PRODUK -->
 <script>
     // ANCHOR FILTER PRODUK
-
     function filterUrutan() {
         var segment1 = <?= json_encode($segment1) ?>;
         var segment2 = <?= json_encode($segment2) ?>;

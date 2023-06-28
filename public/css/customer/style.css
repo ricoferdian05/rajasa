@@ -288,3 +288,19 @@
     background-color: #ffd700;
 
 }
+
+/* ANCHOR DETAIL PRODUK */
+.btn-pesan {
+    border: 0px;
+    width: 100%;
+    background-color: #73a9ad;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    transition: all .3s;
+}
+
+.btn-pesan:hover {
+    background-color: #598285;
+}

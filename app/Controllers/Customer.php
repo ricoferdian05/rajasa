@@ -71,7 +71,6 @@ class Customer extends BaseController
             'segment1' => $this->uri->getSegment(1),
             'segment2' => $this->uri->getSegment(2),
             'segment3' => $this->uri->getSegment(3),
-            'segment4' => $this->uri->getSegment(4),
             'keyword'  => $keywords,
             'kategori' => $kategori,
             'produk' => $produk,
@@ -80,5 +79,25 @@ class Customer extends BaseController
         ];
 
         return view('customer/produk', $data);
+    }
+
+    public function detailProduk($id)
+    {
+        // KATEGORI
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->get()->getResult();
+
+        // DETAIL PRODUK
+        $queryProduk = $this->builderProduk;
+        $produk = $queryProduk->find($id);
+
+        $data = [
+            'title' => 'Rajasa Finishing | Kalender',
+            'keyword'  => null,
+            'kategori' => $kategori,
+            'produk' => $produk,
+        ];
+
+        return view('customer/detail-produk', $data);
     }
 }

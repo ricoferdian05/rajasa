@@ -35,8 +35,8 @@ $routes->group('customer', ['filter' => 'auth'], function ($routes) {
 });
 
 $routes->get('/', 'Customer::index');
-// (/produk/kategori/filter)
 $routes->get('/produk/(:any)/(:any)', 'Customer::produk/$1/$2');
+$routes->get('/detail/(:any)', 'Customer::detailProduk/$1');
 
 // Signup
 $routes->add('/signup', 'Signup::index');
