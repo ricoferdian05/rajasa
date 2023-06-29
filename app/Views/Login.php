@@ -8,13 +8,13 @@
 
       <div class="row">
         <div class="col">
-          <div class="judul ms-3 mt-3 mb-5 me-5">
+          <div class="judul ms-3 mt-3 mb-3 me-5">
             <h5><i class="bi bi-dot"></i>Rajasa Finishing</h5>
           </div>
         </div>
       </div>
 
-      <div class="row mt-5 ms-5 me-5">
+      <div class="row mt-1 ms-5 me-5">
         <div class="col ">
           <h2>Halaman Masuk</h2>
           <p>Silahkan masukkan detail Anda!</p>
@@ -42,7 +42,6 @@
               <a href="" class="forgot_password">Lupa Password</a>
             </div>
             <button type="submit" class="submit shadow-sm">Masuk</button>
-            <button href="" type="button" class="google mt-2 shadow-sm"><i class="bi bi-google"></i>&nbsp;&nbsp;Masuk dengan Google</button>
           </form>
         </div>
       </div>
@@ -54,8 +53,8 @@
       </div>
 
       <div class="row d-sm-none d-md-block">
-        <div class="col footer ms-3">
-          <h6>© Rajasa Finishing 2023</h6>
+        <div class="col footer ms-3 mb-1">
+          <span>© Rajasa Finishing 2023</span>
         </div>
       </div>
 

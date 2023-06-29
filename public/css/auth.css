@@ -110,9 +110,9 @@ input[type="text"]:focus {
 }
 
 .login {
-    position: relative;
+    /* position: relative; */
     box-shadow: 4px 0px 30px rgba(0, 0, 0, 0.1);
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .footer {
