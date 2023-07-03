@@ -32,6 +32,8 @@ $routes->set404Override();
 // Customer
 $routes->group('customer', ['filter' => 'auth'], function ($routes) {
     $routes->get('', 'Customer::index');
+    $routes->get('akun', 'Customer::akun');
+    $routes->post('akun/save', 'Customer::saveAkun');
 });
 
 $routes->get('/', 'Customer::index');

@@ -63,7 +63,7 @@
 
     <!-- kanan -->
     <div class="col-6 logo position-relative d-sm-none d-md-block">
-      <img src="Logo.png" alt="" srcset="" class="position-absolute top-50 start-50 translate-middle" style="width: 35%;">
+      <img src="<?= base_url('Logo.png') ?>" alt="" srcset="" class="position-absolute top-50 start-50 translate-middle" style="width: 35%;">
       <div class="row">
         <div class="col z-1 blur">
         </div>

@@ -263,7 +263,7 @@
 .footer-produk {
     position: absolute;
     bottom: 5px;
-    font-size: 10px;
+    font-size: 10pxavatar;
 }
 
 .icon-rating {
@@ -302,5 +302,67 @@
 }
 
 .btn-pesan:hover {
+    background-color: #598285;
+}
+
+/* ANCHOR AKUN */
+.foto-avatar {
+    width: 8em;
+    height: 8em;
+    border-radius: 100%;
+}
+
+.list-pengaturan-akun {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list-akun {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    transition: all .3s;
+}
+
+.list-akun:hover {
+    background-color: #F3F4F8;
+    color: #73a9ad;
+}
+
+.selected-pengaturan-akun {
+    background-color: #F3F4F8;
+    color: #73a9ad;
+}
+
+.list-akun-keluar {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    transition: all .3s;
+}
+
+.list-akun-keluar:hover {
+    background-color: #e97777;
+    color: #fff;
+}
+
+.foto {
+    width: 10em;
+    height: 10em;
+    border-radius: 100%;
+}
+
+.btn-save-akun {
+    border: 0px;
+    width: 100%;
+    background-color: #73a9ad;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 7px;
+    transition: .3s all;
+}
+
+.btn-save-akun:hover {
     background-color: #598285;
 }

@@ -7,19 +7,23 @@ class Customer extends BaseController
     private $builderProduk;
     private $builderKategori;
     private $uri;
+    private $builderAkun;
 
     public function __construct()
     {
         $this->builderProduk = new \App\Models\ProdukModel();
         $this->builderKategori = new \App\Models\KategoriModel();
         $this->uri = service('uri');
+        $this->builderAkun = new \App\Models\CustomerModel();
     }
 
     public function index()
     {
+        $akun = $this->builderAkun->find(session()->get('id'));
         $data = [
             'title' => 'Rajasa Finishing',
             'keyword'  => null,
+            'akun' => $akun,
         ];
 
         return view('customer/index', $data);
@@ -27,6 +31,9 @@ class Customer extends BaseController
 
     public function produk($kat, $filter)
     {
+        // AKUN
+        $akun = $this->builderAkun->find(session()->get('id'));
+
         // KATEGORI
         $queryKategori = $this->builderKategori;
         $kategori = $queryKategori->get()->getResult();
@@ -76,6 +83,7 @@ class Customer extends BaseController
             'produk' => $produk,
             'jumlahProduk' => $countProduk,
             'pager' => $pager,
+            'akun' => $akun,
         ];
 
         return view('customer/produk', $data);
@@ -83,6 +91,9 @@ class Customer extends BaseController
 
     public function detailProduk($id)
     {
+        // AKUN
+        $akun = $this->builderAkun->find(session()->get('id'));
+
         // KATEGORI
         $queryKategori = $this->builderKategori;
         $kategori = $queryKategori->get()->getResult();
@@ -96,8 +107,89 @@ class Customer extends BaseController
             'keyword'  => null,
             'kategori' => $kategori,
             'produk' => $produk,
+            'akun' => $akun,
         ];
 
         return view('customer/detail-produk', $data);
+    }
+
+    public function akun()
+    {
+        // KATEGORI
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->get()->getResult();
+
+        // AKUN
+        $queryAkun = $this->builderAkun;
+        $akun = $queryAkun->find(session()->get('id'));
+        $data = [
+            'title' => 'Rajasa Finishing',
+            'keyword'  => null,
+            'segment2' => $this->uri->getSegment(2),
+            'kategori' => $kategori,
+            'akun' => $akun,
+        ];
+
+        return view('customer/akun', $data);
+    }
+
+    public function saveAkun()
+    {
+        // ANCHOR UPDATE AKUN
+        $queryAkun = $this->builderAkun;
+        $akun = $queryAkun->find(session()->get('id'));
+
+        // ANCHOR FILE UPLOAD
+        $avatar = $this->request->getFile('avatar');
+        $pathUpload = 'asset/customer/akun';
+        // CHECK ADA FILE YANG DI UPLOAD ATAU TIDAK
+        if ($avatar->getError() == 4) {
+            $namaFileAvatar = $akun['avatar'];
+        } else {
+            // RENAME FILE UPLOAD
+            $namaFile = $avatar->getRandomName();
+            // MOVE FILE UPLOAD
+            $avatar->move($pathUpload, $namaFile);
+
+            $namaFileAvatar = $pathUpload . '/' . $namaFile;
+
+            // DELETE FILE LAMA
+            $oldAvatar = $akun['avatar'];
+            if ($oldAvatar !== 'avatar-customer.png') {
+                unlink($oldAvatar);
+            }
+        }
+
+        // ANCHOR CEK EMAIL
+        $newEmail = $this->request->getVar('email');
+        $oldEmail = $akun['email'];
+
+        if ($newEmail !== $oldEmail) {
+            session()->destroy();
+        }
+
+        // ANCHOR CEK PASSWORD
+        $newPassword = $this->request->getVar('password');
+        $oldPassword = $akun['password'];
+
+        if ($newPassword !== $oldPassword) {
+            $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+            session()->destroy();
+        }
+
+        $data = [
+            'id' => session()->get('id'),
+            'email' => $newEmail,
+            'password' => $newPassword,
+            'nama' => $this->request->getVar('nama'),
+            'username' => $this->request->getVar('username'),
+            'alamat' => $this->request->getVar('alamat'),
+            'kode_pos' => $this->request->getVar('kodepos'),
+            'no_hp' => $this->request->getVar('nohp'),
+            'avatar' => $namaFileAvatar,
+        ];
+        $queryAkun->save($data);
+
+        return redirect()->to('/customer/akun');
     }
 }

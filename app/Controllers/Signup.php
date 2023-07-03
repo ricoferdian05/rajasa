@@ -54,6 +54,7 @@ class Signup extends BaseController
                     'password' => $generatePassword,
                     'username' => $username,
                     'nama' => $name,
+                    'avatar' => 'asset/customer/akun/avatar-customer.png',
                     'tipe' => 3,
                 ]);
                 return redirect()->to(base_url('login'));
