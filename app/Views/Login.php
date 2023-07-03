@@ -39,7 +39,7 @@
               <input type="password" class="form-control shadow-sm" id="password" name="password" required>
             </div>
             <div class="mb-3 text-end">
-              <a href="" class="forgot_password">Lupa Password</a>
+              <a href="<?= base_url('lupa-password') ?>" class="forgot_password">Lupa Password</a>
             </div>
             <button type="submit" class="submit shadow-sm">Masuk</button>
           </form>

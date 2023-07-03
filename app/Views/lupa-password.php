@@ -16,44 +16,46 @@
 
       <div class="row mt-1 ms-5 me-5">
         <div class="col ">
-          <h2>Halaman Daftar</h2>
+          <h2>Lupa Password</h2>
           <p>Silahkan masukkan detail Anda!</p>
-          <?php if (session()->getFlashdata('error')) : ?>
+          <?php if (session()->getFlashdata('error')) { ?>
             <div class="alert alert-danger" role="alert">
               <?= session()->getFlashdata('error'); ?>
             </div>
-          <?php endif; ?>
+          <?php } elseif (session()->getFlashdata('error-password')) { ?>
+            <div class="alert alert-danger" role="alert">
+              <?= session()->getFlashdata('error-password'); ?>
+            </div>
+          <?php } elseif (session()->getFlashdata('success')) { ?>
+            <div class="alert alert-success" role="alert">
+              <?= session()->getFlashdata('success'); ?>
+            </div>
+          <?php } ?>
           <hr>
         </div>
       </div>
 
       <div class="row ms-5 mb-3 me-5">
         <div class="col">
-          <form action="<?= base_url('signup/auth'); ?>" method="post" enctype="">
+          <form action="<?= base_url('lupa-password/auth') ?>" method="post">
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control shadow-sm" id="email" name="email" autofocus required>
+              <input type="email" class="form-control shadow-sm" id="email" name="email" required>
             </div>
             <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control shadow-sm" id="password" name="password" required>
+              <label for="password-baru" class="form-label">Password Baru</label>
+              <input type="password" class="form-control shadow-sm" id="password-baru" name="passwordBaru" minlength="8" required>
             </div>
-            <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <input type="username" class="form-control shadow-sm" id="username" name="username" required>
-            </div>
-            <div class="mb-3">
-              <label for="name" class="form-label">Nama Lengkap</label>
-              <input type="name" class="form-control shadow-sm" id="name" name="name" required>
-            </div>
-            <div class="mb-3 text-end">
-              <a href="<?= base_url('lupa-password') ?>" class="forgot_password">Lupa Password</a>
-            </div>
-            <button type="submit" class="submit shadow-sm">Daftar</button>
+            <button type="submit" class="submit shadow-sm">Perbarui Password</button>
           </form>
         </div>
       </div>
-
+      <div class="row ms-5 me-5">
+        <hr>
+        <div class="col text-center">
+          Belum memiliki akun? <a class="signup" href="<?= base_url('signup'); ?>">Daftar</a>
+        </div>
+      </div>
       <div class="row mt-2 ms-5 me-5">
         <div class="col text-center">
           Sudah memiliki akun? <a class="signin" href="<?= base_url('login'); ?>">Masuk</a>

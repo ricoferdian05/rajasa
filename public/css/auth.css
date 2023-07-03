@@ -6,7 +6,7 @@
 
 .forgot_password:hover {
     color: #FFA300;
-    transition: .3s;
+    transition: .3s all;
 }
 
 .submit {
@@ -24,7 +24,7 @@
 
 .submit:hover {
     background-color: #FFA300;
-    transition: .3s;
+    transition: .3s all;
     color: white;
     border-color: #FFA300;
 }
@@ -52,7 +52,7 @@
     background-color: #7D7C83;
     border-color: #7D7C83;
     color: white;
-    transition: .3s;
+    transition: .3s all;
 }
 
 .google:active {
@@ -72,7 +72,7 @@ input[type="email"]:focus,
 input[type="password"]:focus,
 input[type="text"]:focus {
     border-color: #FFCE00;
-    transition: .3s;
+    transition: .3s all;
 }
 
 .signup {
@@ -91,7 +91,7 @@ input[type="text"]:focus {
 
 .signup:hover {
     color: #FFA300;
-    transition: .3s;
+    transition: .3s all;
     cursor: pointer;
 }
 

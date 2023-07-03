@@ -48,6 +48,10 @@ $routes->post('/signup/auth', 'Signup::auth');
 $routes->add('/login', 'Login::index');
 $routes->post('/login/auth', 'Login::auth');
 
+// Lupa Password
+$routes->add('/lupa-password', 'Login::lupaPassword');
+$routes->post('/lupa-password/auth', 'Login::lupaPasswordAuth');
+
 // Logout
 $routes->get('/logout', 'Login::logout');
 

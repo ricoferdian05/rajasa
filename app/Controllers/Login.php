@@ -84,4 +84,40 @@ class Login extends BaseController
         $session->destroy();
         return redirect()->to(base_url('login'));
     }
+
+    // ANCHOR LUPA PASSWORD
+    public function lupaPassword()
+    {
+        $data = [
+            'title' => 'Lupa Password',
+        ];
+
+        return view('lupa-password', $data);
+    }
+
+    public function lupaPasswordAuth()
+    {
+        $customer   = new \App\Models\CustomerModel();
+
+        $email      = $this->request->getVar('email');
+        $passwordBaru   = $this->request->getVar('passwordBaru');
+
+        $dataCustomer   = $customer->where('email', $email)->first();
+
+        if ($dataCustomer) {
+            // Generate Password
+            $generatePassword = password_hash($passwordBaru, PASSWORD_DEFAULT);
+            $customer->save([
+                'id' => $dataCustomer['id'],
+                'email' => $email,
+                'password' => $generatePassword,
+            ]);
+
+            session()->setFlashdata('success', 'Password sudah diperbarui!');
+            return redirect()->to(base_url('lupa-password'));
+        } else {
+            session()->setFlashdata('error', 'Email tidak terdaftar!');
+            return redirect()->to(base_url('lupa-password'));
+        }
+    }
 }
