@@ -46,14 +46,12 @@
               <label for="name" class="form-label">Nama Lengkap</label>
               <input type="name" class="form-control shadow-sm" id="name" name="name" required>
             </div>
-            <div class="mb-3 text-end">
-              <a href="<?= base_url('lupa-password') ?>" class="forgot_password">Lupa Password</a>
-            </div>
+
             <button type="submit" class="submit shadow-sm">Daftar</button>
           </form>
         </div>
       </div>
-
+      <hr class="mt-0">
       <div class="row mt-2 ms-5 me-5">
         <div class="col text-center">
           Sudah memiliki akun? <a class="signin" href="<?= base_url('login'); ?>">Masuk</a>
