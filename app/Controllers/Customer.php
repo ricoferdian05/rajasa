@@ -19,11 +19,16 @@ class Customer extends BaseController
 
     public function index()
     {
+        // KATEGORI
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->get()->getResult();
+
         $akun = $this->builderAkun->find(session()->get('id'));
         $data = [
             'title' => 'Rajasa Finishing',
             'keyword'  => null,
             'akun' => $akun,
+            'kategori' => $kategori,
         ];
 
         return view('customer/index', $data);

@@ -15,14 +15,9 @@
                                         Katalog
                                     </a>
                                     <ul class="dropdown-menu border-0 shadow-lg">
-                                        <li><a class="dropdown-item" href="<?= base_url('produk/Kalender/terbaru') ?>">Kalender</a></li>
-                                        <li><a class="dropdown-item" href="<?= base_url('produk/Buku/terbaru') ?>">Buku</a></li>
-                                        <li><a class="dropdown-item" href="<?= base_url('produk/Undangan/terbaru') ?>">Undangan</a></li>
-                                        <li><a class="dropdown-item" href="<?= base_url('produk/Brosur/terbaru') ?>">Brosur</a></li>
-                                        <li><a class="dropdown-item" href="<?= base_url('produk/Apron/terbaru') ?>">Apron</a></li>
-                                        <li><a class="dropdown-item" href="<?= base_url('produk/Kaos/terbaru') ?>">Kaos</a></li>
-                                        <li><a class="dropdown-item" href="<?= base_url('produk/Totebag/terbaru') ?>">Totebag</a></li>
-                                        <li><a class="dropdown-item" href="<?= base_url('produk/Pouchbag/terbaru') ?>">Pouchbag</a></li>
+                                        <?php foreach ($kategori as $k) : ?>
+                                            <li><a class="dropdown-item" href="<?= base_url('/produk/' . $k->kategori . '/terbaru') ?>"><?= $k->kategori; ?></a></li>
+                                        <?php endforeach; ?>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
