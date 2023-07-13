@@ -139,6 +139,8 @@ class Admin extends BaseController
 
         $transaksiTerbaru = $queryKelompokDesigner->findAll();
 
+        // dd($transaksiTerbaru);
+
         $akun = $this->builderAkun->find(session()->get('id'));
         $data = [
             'title' => 'Admin | Rajasa Finishing',
