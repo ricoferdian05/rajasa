@@ -366,9 +366,11 @@
     const tahunProfit = <?= json_encode($tahunProfit) ?>;
     const tahunTransaksi = <?= json_encode($tahunTransaksi) ?>;
     var labelProfit = [];
-    if (tahunProfit === null) {
+    if (tahunProfit === null || tahunProfit === 'all') {
         tahunTransaksi.forEach(element => {
-            labelProfit.push(element['tahun']);
+            if (element['tahun'] !== '0') {
+                labelProfit.push(element['tahun']);
+            }
         });
 
         for (let x = 0; x < labelProfit.length; x++) {
