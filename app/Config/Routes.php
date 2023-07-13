@@ -59,7 +59,14 @@ $routes->get('/logout', 'Login::logout');
 $routes->get('/tentang', 'Tentang::index');
 
 // Admin
-$routes->get('/admin', 'Home::index');
+$routes->group('admin', ['filter' => 'auth'], function ($routes) {
+    $routes->get('dashboard', 'Admin::index');
+    $routes->get('dashboard/(:any)', 'Admin::index/$1');
+    $routes->get('dashboard/(:any)/(:any)', 'Admin::index/$1/$2');
+    $routes->get('dashboard/(:any)/(:any)/(:any)', 'Admin::index/$1/$2/$3');
+    // $routes->get('akun', 'Customer::akun');
+    // $routes->post('akun/save', 'Customer::saveAkun');
+});
 
 
 /*

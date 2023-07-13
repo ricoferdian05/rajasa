@@ -36,6 +36,7 @@ class Customer extends BaseController
 
     public function produk($kat, $filter)
     {
+
         // AKUN
         $akun = $this->builderAkun->find(session()->get('id'));
 
@@ -195,6 +196,6 @@ class Customer extends BaseController
         ];
         $queryAkun->save($data);
 
-        return redirect()->to('/customer/akun');
+        return redirect()->to(base_url('/customer/akun'));
     }
 }

@@ -13,7 +13,6 @@
           </div>
         </div>
       </div>
-
       <div class="row mt-1 ms-5 me-5">
         <div class="col ">
           <h2>Halaman Masuk</h2>

@@ -38,21 +38,25 @@
                             <div class="d-flex">
                                 <?php if (!session()->get('isLogin')) { ?>
                                     <a href="<?= base_url('login'); ?>" class="btn-masuk text-center rounded-1">Masuk</a>
-                                <?php } else { ?>
-                                    <span class="name-account me-2"><?= $akun['nama']; ?></span>
-                                    <div class="dropstart">
-                                        <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="<?= base_url($akun['avatar']) ?>" alt="avatar" class="avatar" />
-                                        </a>
-                                        <ul class="dropdown-menu border-0 shadow me-2">
-                                            <li><a class="dropdown-item" href="<?= base_url('customer/akun') ?>">Akun</a></li>
-                                            <li>
-                                                <hr class="dropdown-divider">
-                                            </li>
-                                            <li><a class="dropdown-item" href="<?= base_url('logout') ?>">Keluar</a></li>
-                                        </ul>
-                                    </div>
-                                <?php } ?>
+                                    <?php } else {
+                                    if (session()->get('tipe') !== '3') { ?>
+                                        <a href="<?= base_url('login'); ?>" class="btn-masuk text-center rounded-1">Masuk</a>
+                                    <?php } else { ?>
+                                        <span class="name-account me-2"><?= $akun['nama']; ?></span>
+                                        <div class="dropstart">
+                                            <a class="" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <img src="<?= base_url($akun['avatar']) ?>" alt="avatar" class="avatar" />
+                                            </a>
+                                            <ul class="dropdown-menu border-0 shadow me-2">
+                                                <li><a class="dropdown-item" href="<?= base_url('customer/akun') ?>">Akun</a></li>
+                                                <li>
+                                                    <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="<?= base_url('logout') ?>">Keluar</a></li>
+                                            </ul>
+                                        </div>
+                                <?php }
+                                } ?>
                             </div>
                         </div>
                     </div>

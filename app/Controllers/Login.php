@@ -37,7 +37,7 @@ class Login extends BaseController
                     'isLogin'   => true,
                 ];
                 $session->set($ses_data);
-                return redirect()->to(base_url('admin'));
+                return redirect()->to(base_url('admin/dashboard'));
             } else {
                 $session->setFlashdata('error', 'Email dan Password Salah!');
                 return redirect()->to(base_url('login'));
@@ -82,7 +82,7 @@ class Login extends BaseController
     {
         $session = session();
         $session->destroy();
-        return redirect()->to(base_url('login'));
+        return redirect()->to(base_url('/'));
     }
 
     // ANCHOR LUPA PASSWORD
