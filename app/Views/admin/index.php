@@ -195,7 +195,6 @@
                         </div>
                     </div>
                     <table class="table table-performansi-designer caption-top">
-                        <caption class="caption-table">Total Data : <?= count($performansiDesigner) ?></caption>
                         <thead class="border-bottom">
                             <tr>
                                 <th scope="col">No</th>
@@ -208,8 +207,8 @@
                         </thead>
                         <tbody>
                             <?php
+                            $nomor = 0;
                             if (count($performansiDesigner) > 0) {
-                                $nomor = 0;
                                 for ($i = 0; $i < count($designer); $i++) {
                                     for ($l = 0; $l < count($kelompokDesigner); $l++) {
                                         if ($designer[$i]['id'] === $kelompokDesigner[$l]['id']) {
@@ -239,6 +238,7 @@
                                     }
                                 }
                             } ?>
+                            <caption class="caption-table">Total Data : <?= $nomor; ?></caption>
                         </tbody>
                     </table>
                     <?php

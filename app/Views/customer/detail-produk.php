@@ -61,7 +61,7 @@
                                 <form action="" method="post">
                                     <div class="mb-3">
                                         <label for="exampleInput" class="form-label">Jumlah Produk</label>
-                                        <input name="jumlah" type="number" class="form-control form-control-sm" id="jumlah" onkeyup="checkHarga()" value="0">
+                                        <input name="jumlah" type="number" class="form-control form-control-sm" id="jumlah" onkeypress="cekHarga()" onchange="checkHarga()" value="0">
                                     </div>
                                     <div class="mb-3">
                                         <div class="row">

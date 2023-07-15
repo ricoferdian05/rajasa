@@ -16,7 +16,7 @@
                     Dashboard
                 </li>
             </a>
-            <a href="">
+            <a href="<?= base_url('admin/transaksi/all') ?>">
                 <li class="list-sidebar-menu 
                 <?php if ($segment2 === 'transaksi') {
                     echo 'list-sidebar-menu-active';
@@ -25,16 +25,16 @@
                     Transaksi
                 </li>
             </a>
-            <a href="">
+            <a href="<?= base_url('admin/data-produk') ?>">
                 <li class="list-sidebar-menu 
-                <?php if ($segment2 === 'produk') {
+                <?php if ($segment2 === 'data-produk') {
                     echo 'list-sidebar-menu-active';
                 } ?> p-2 mb-2 rounded-5">
                     <i class="bi bi-bag pe-2"></i>
                     Data Produk
                 </li>
             </a>
-            <a href="">
+            <a href="<?= base_url('admin/database') ?>">
                 <li class="list-sidebar-menu 
                 <?php if ($segment2 === 'database') {
                     echo 'list-sidebar-menu-active';
@@ -43,7 +43,7 @@
                     Database
                 </li>
             </a>
-            <a href="">
+            <a href="<?= base_url('admin/akun') ?>">
                 <li class="list-sidebar-menu
                 <?php if ($segment2 === 'akun') {
                     echo 'list-sidebar-menu-active';

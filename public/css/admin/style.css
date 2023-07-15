@@ -167,3 +167,101 @@ body {
     transition: all .3s;
     border-radius: 4px;
 }
+
+/* ANCHOR TRANSAKSI */
+.navbar-transaksi {
+    border: transparent;
+    transition: all .3s;
+    color: #707070;
+}
+
+.navbar-transaksi:hover {
+    color: #73a9ad;
+    border-bottom: #73a9ad solid 1px;
+}
+
+.navbar-transaksi-active {
+    color: #73a9ad;
+    border-bottom: #73a9ad solid 1px;
+}
+
+.search-transaksi:hover {
+    border: #73a9ad solid 1px;
+}
+
+.search-transaksi::placeholder {
+    color: rgba(112, 112, 112, .6);
+}
+
+.search-transaksi:focus {
+    box-shadow: none;
+    border-color: #73a9ad;
+}
+
+.table-transaksi {
+    font-size: 10px;
+}
+
+.table-transaksi>thead {
+    background-color: #eff6f6;
+    color: #4D4D4D;
+}
+
+.table-transaksi>thead>tr>th:hover {
+    background-color: #73a9ad;
+    color: #fff;
+    transition: .3s all;
+}
+
+.table-transaksi>tbody>tr {
+    color: #707070;
+    transition: all .3s;
+}
+
+.table-transaksi>tbody>tr:hover {
+    background-color: #73a9ad;
+    color: #fff;
+}
+
+.btn-detail-transaksi {
+    text-decoration: none;
+    color: #73a9ad;
+    font-size: 8px;
+    border: #73a9ad solid 1px;
+    background-color: #fff;
+    padding: 5px 10px;
+    transition: all .3s;
+    border-radius: 4px;
+}
+
+.baris-belum-transfer {
+    background-color: #ffc1c1;
+}
+
+.baris-sedang-dikerjakan {
+    background-color: #dfe2ec;
+}
+
+.pagination-link {
+    font-size: 10px;
+    color: #707070;
+    transition: all .3s;
+}
+
+.pagination-link:hover {
+    border: #73a9ad solid 1px;
+    color: #ffffff;
+    background-color: #73a9ad;
+}
+
+.pagination-link:focus {
+    border: #73a9ad solid 1px;
+    box-shadow: none;
+    color: #fff;
+}
+
+.active-page {
+    border: #73a9ad solid 1px;
+    color: #ffffff;
+    background-color: #73a9ad;
+}

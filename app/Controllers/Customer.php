@@ -77,7 +77,6 @@ class Customer extends BaseController
 
         // MENGHITUNG SEMUA PRODUK
         $countProduk = count($produk);
-        // dd($produk);
 
         $data = [
             'title' => 'Rajasa Finishing | Kalender',

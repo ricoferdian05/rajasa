@@ -50,6 +50,7 @@ class Admin extends BaseController
             $queryTransaksiKategori->where('EXTRACT(year FROM tanggal_pengiriman)', $tahunKategori);
         }
         $transaksiKategori = $queryTransaksiKategori->findAll();
+
         // TAHUN TRANSAKSI
         $queryTahunTransaksi = $this->builderTransaksi;
         $queryTahunTransaksi->select('EXTRACT(year FROM tanggal_pengiriman) AS tahun');
@@ -139,11 +140,9 @@ class Admin extends BaseController
 
         $transaksiTerbaru = $queryKelompokDesigner->findAll();
 
-        // dd($transaksiTerbaru);
-
         $akun = $this->builderAkun->find(session()->get('id'));
         $data = [
-            'title' => 'Admin | Rajasa Finishing',
+            'title' => 'Dashboard | Rajasa Finishing',
             'keyword'  => null,
             'akun' => $akun,
             'segment2' => $this->uri->getSegment(2),
@@ -164,5 +163,81 @@ class Admin extends BaseController
         ];
 
         return view('admin/index', $data);
+    }
+
+    public function transaksi($kategori = 'all', $pilihanTahun = null)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // KEYWORD
+        $keyword = $this->request->getVar('keyword');
+
+        // TAHUN TRANSAKSI
+        $queryTahunTransaksi = $this->builderTransaksi;
+        $queryTahunTransaksi->select('EXTRACT(year FROM tanggal_pengiriman) AS tahun');
+        $queryTahunTransaksi->groupBy('EXTRACT(year FROM tanggal_pengiriman)');
+        $tahunTransaksi = $queryTahunTransaksi->findAll();
+
+        // TRANSAKSI
+        $queryTransaksi = $this->builderTransaksi;
+        $queryTransaksi->select('
+            transaksi.id AS id,
+            transaksi.tanggal_transaksi AS tanggal_transaksi,
+            transaksi.tanggal_pengiriman AS tanggal_pengiriman,
+            customer.nama AS nama_customer,
+            produk.judul AS produk,
+            kategori.kategori AS kategori,
+            transaksi.jumlah AS jumlah,
+            transaksi.total_harga AS total,
+            transaksi.status AS status,
+            transaksi.status_transfer AS status_transfer,
+            designer.nama AS nama_designer
+        ');
+        $queryTransaksi->join('customer', 'customer.id = transaksi.idCustomer');
+        $queryTransaksi->join('produk', 'produk.id = transaksi.idProduk');
+        $queryTransaksi->join('kategori', 'kategori.id = transaksi.idKategori');
+        $queryTransaksi->join('designer', 'designer.id = transaksi.idDesigner');
+        if ($keyword !== null) {
+            $queryTransaksi->like('customer.nama', $keyword);
+        }
+        if ($kategori === 'selesai') {
+            $queryTransaksi->where('transaksi.status', 'selesai');
+        } elseif ($kategori === 'sedang-dikerjakan') {
+            $queryTransaksi->where('transaksi.status', 'On Going');
+            $queryTransaksi->where('transaksi.status_transfer', 'Selesai');
+        } elseif ($kategori === 'belum-dibayar') {
+            $queryTransaksi->where('transaksi.status_transfer', 'Belum');
+        }
+        if ($pilihanTahun !== null) {
+            $queryTransaksi->where('EXTRACT(year FROM transaksi.tanggal_transaksi)', $pilihanTahun);
+        }
+        $queryTransaksi->orderBy('transaksi.status', 'ASC');
+
+        // PAGINATION
+        $transaksi = $queryTransaksi->paginate(10, 'transaksi');
+        $pager = $queryTransaksi->pager;
+
+        $urutan = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') : 1;
+
+
+        $akun = $this->builderAkun->find(session()->get('id'));
+        $data = [
+            'title' => 'Transaksi | Rajasa Finishing',
+            'akun' => $akun,
+            'segment2' => $this->uri->getSegment(2),
+            'segment3' => $this->uri->getSegment(3),
+            'tahunTransaksi' => $tahunTransaksi,
+            'pilihanTahun' => $pilihanTahun,
+            'kategori' => $kategori,
+            'keyword' => $keyword,
+            'transaksi' => $transaksi,
+            'pager' => $pager,
+            'urutan' => $urutan,
+        ];
+
+        return view('admin/transaksi', $data);
     }
 }
