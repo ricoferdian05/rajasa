@@ -103,7 +103,7 @@
                             <label for="inputStatusTransfer" class="col-sm-2 col-form-label">Status Transfer</label>
                             <div class="col-sm-10">
                                 <select class="form-select select-transaksi" aria-label="Default select example" name="status_transfer">
-                                    <option value="On Going" <?= $transaksi[0]->status_transfer === 'Belum' ? 'selected' : '' ?>>Belum</option>
+                                    <option value="Belum" <?= $transaksi[0]->status_transfer === 'Belum' ? 'selected' : '' ?>>Belum</option>
                                     <option value="Selesai" <?= $transaksi[0]->status_transfer === 'Selesai' ? 'selected' : '' ?>>Selesai</option>
                                 </select>
                             </div>
@@ -131,5 +131,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    if (<?= json_encode(session()->getFlashdata('update_success')) ?>) {
+        Swal.fire({
+            title: 'Sukses',
+            text: <?= json_encode(session()->getFlashdata('update_success')) ?>,
+            icon: 'success',
+        });
+    } else if (<?= json_encode(session()->getFlashdata('update_success')) ?>) {
+        Swal.fire({
+            title: 'Gagal',
+            text: <?= json_encode(session()->getFlashdata('update_success')) ?>,
+            icon: 'error',
+        });
+    }
+</script>
 
 <?= $this->endSection(); ?>

@@ -11,8 +11,6 @@
                         <!-- ANCHOR CONTENT KIRI -->
                         <div class="row">
                             <div class="col">
-                                <?php //dd($produk)
-                                ?>
                                 <div id="carouselExample" class="carousel carousel-dark slide rounded-3 shadow" style="width:28em">
                                     <div class="carousel-inner">
                                         <?php for ($i = 1; $i < 4; $i++) {

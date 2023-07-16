@@ -248,6 +248,22 @@ class Admin extends BaseController
             return redirect()->to(base_url('/logout'));
         }
 
+        // UPDATE DATA TRANSAKSI
+        if ($this->request->getVar('update')) {
+            $queryUpdateData = $this->builderTransaksi;
+            $data_update = [
+                'id' => $id,
+                'tanggal_pengiriman' => $this->request->getVar('tanggal_pengiriman'),
+                'status' => $this->request->getVar('status'),
+                'status_transfer' => $this->request->getVar('status_transfer'),
+            ];
+            if ($queryUpdateData->save($data_update)) {
+                session()->setFlashdata('update_success', 'Transaksi Berhasil Diupdate');
+            } else {
+                session()->setFlashdata('update_error', 'Transaksi Gagal Diupdate');
+            }
+        }
+
         // TRANSAKSI
         $queryTransaksi = $this->builderTransaksi;
         $queryTransaksi->select('
