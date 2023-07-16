@@ -240,4 +240,49 @@ class Admin extends BaseController
 
         return view('admin/transaksi', $data);
     }
+
+    public function details($id)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // TRANSAKSI
+        $queryTransaksi = $this->builderTransaksi;
+        $queryTransaksi->select('
+             transaksi.id AS id,
+             transaksi.tanggal_transaksi AS tanggal_transaksi,
+             transaksi.tanggal_pengiriman AS tanggal_pengiriman,
+             customer.nama AS nama_customer,
+             customer.no_hp AS no_hp_customer,
+             customer.alamat AS alamat_customer,
+             customer.kode_pos AS kode_pos_customer,
+             produk.id AS id_produk,
+             produk.judul AS produk,
+             kategori.kategori AS kategori,
+             transaksi.jumlah AS jumlah,
+             transaksi.total_harga AS total,
+             transaksi.status AS status,
+             transaksi.status_transfer AS status_transfer,
+             designer.nama AS nama_designer
+         ');
+        $queryTransaksi->join('customer', 'customer.id = transaksi.idCustomer');
+        $queryTransaksi->join('produk', 'produk.id = transaksi.idProduk');
+        $queryTransaksi->join('kategori', 'kategori.id = transaksi.idKategori');
+        $queryTransaksi->join('designer', 'designer.id = transaksi.idDesigner');
+        $queryTransaksi->where('transaksi.id', $id);
+        $transaksi = $queryTransaksi->get()->getResult();
+
+        $akun = $this->builderAkun->find(session()->get('id'));
+        $data = [
+            'title' => 'Detail Transaksi | Rajasa Finishing',
+            'akun' => $akun,
+            'transaksi' => $transaksi,
+            'segment2' => $this->uri->getSegment(2),
+
+        ];
+
+        return view('admin/detail-transaksi', $data);
+    }
 }

@@ -265,3 +265,50 @@ body {
     color: #ffffff;
     background-color: #73a9ad;
 }
+
+/* ANCHOR DETAIL TRANSAKSI */
+
+input[type] {
+    font-size: 12px;
+}
+
+input[type]:focus {
+    box-shadow: none;
+    font-size: 12px;
+    border: #73a9ad solid 1px;
+}
+
+.select-transaksi {
+    color: #707070;
+    font-weight: bolder;
+    font-size: 12px;
+    transition: all .3s;
+}
+
+.select-transaksi:hover {
+    cursor: pointer;
+    border: #73a9ad solid 1px;
+}
+
+.select-transaksi:focus {
+    box-shadow: none;
+    border: #73a9ad solid 1px;
+}
+
+.btn-submit {
+    border: #73a9ad solid 1px;
+    background-color: #73a9ad;
+    color: #fff;
+    font-weight: bolder;
+    width: 100%;
+    padding: 5px;
+    transition: all .3s;
+}
+
+.btn-submit:hover {
+    background-color: #395e60;
+}
+
+.btn-submit:active {
+    transform: scale(.98);
+}

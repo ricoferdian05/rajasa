@@ -146,7 +146,7 @@
                                                 <td><?= $transaksi[$i]['status']; ?></td>
                                                 <td><?= $transaksi[$i]['status_transfer']; ?></td>
                                                 <td><?= $transaksi[$i]['nama_designer']; ?></td>
-                                                <td><a href="" class="btn-detail-transaksi">Detail</a></td>
+                                                <td><a href="<?= base_url('admin/transaksi/details/' . $transaksi[$i]['id']); ?>" class="btn-detail-transaksi">Detail</a></td>
                                             </tr>
                                     <?php }
                                     }
