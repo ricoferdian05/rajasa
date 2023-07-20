@@ -25,7 +25,7 @@
                     Transaksi
                 </li>
             </a>
-            <a href="<?= base_url('admin/data-produk') ?>">
+            <a href="<?= base_url('admin/data-produk/all') ?>">
                 <li class="list-sidebar-menu 
                 <?php if ($segment2 === 'data-produk') {
                     echo 'list-sidebar-menu-active';

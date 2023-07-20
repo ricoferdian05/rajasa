@@ -17,9 +17,18 @@
     <link rel="stylesheet" href="<?= base_url('css/admin/sidebar.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('css/admin/navbar.css'); ?>">
 
+    <!-- ANCHOR GOOGLE FONT -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- ANCHOR CHART JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- ANCHOR SWEETALERT -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- ANCHOR TINY MCE -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
 
 
 </head>

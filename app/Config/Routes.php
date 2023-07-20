@@ -71,6 +71,11 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('transaksi/(:any)', 'Admin::transaksi/$1');
     $routes->get('transaksi/(:any)/(:any)', 'Admin::transaksi/$1/$2');
 
+
+    $routes->post('data-produk/details/(:any)', 'Admin::produkDetails/$1');
+    $routes->post('data-produk/tambah', 'Admin::tambahProduk');
+    $routes->get('data-produk/(:any)', 'Admin::produk/$1');
+
     // $routes->get('akun', 'Customer::akun');
     // $routes->post('akun/save', 'Customer::saveAkun');
 });

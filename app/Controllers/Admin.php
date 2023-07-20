@@ -9,7 +9,7 @@ class Admin extends BaseController
     private $builderKategori;
     private $builderTransaksi;
     private $builderDesigner;
-
+    private $builderProduk;
 
     public function __construct()
     {
@@ -18,6 +18,7 @@ class Admin extends BaseController
         $this->builderKategori = new \App\Models\KategoriModel();
         $this->builderTransaksi = new \App\Models\TransaksiModel();
         $this->builderDesigner = new \App\Models\DesignerModel();
+        $this->builderProduk = new \App\Models\ProdukModel();
     }
 
     public function index($tahunKategori = 'all', $tahunProfit = 'all', $tahunPerformansi = null)
@@ -300,5 +301,64 @@ class Admin extends BaseController
         ];
 
         return view('admin/detail-transaksi', $data);
+    }
+
+    public function produk($jenisKategori = 'all')
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // KATEGORI
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->findAll();
+
+        // SEARCH
+        $keyword = $this->request->getVar('keyword');
+
+        $queryProduk = $this->builderProduk;
+        $queryProduk->select('
+        produk.id AS id,
+        produk.judul AS judul,
+        produk.harga AS harga,
+        produk.gambar1 AS gambar1,
+        produk.gambar2 AS gambar2,
+        produk.gambar3 AS gambar3,
+        produk.status AS status,
+        produk.rating AS rating,
+        produk.terjual AS terjual,
+        produk.created AS created,
+        kategori.kategori AS kategori,
+        designer.nama AS designer,
+        ');
+        $queryProduk->join('kategori', 'kategori.id = produk.idKategori');
+        $queryProduk->join('designer', 'designer.id = produk.idDesigner');
+        if ($jenisKategori != 'all') {
+            $queryProduk->where('kategori.kategori', $jenisKategori);
+        }
+
+        // PAGINATION
+        $produk = $queryProduk->paginate(10, 'produkAdmin');
+        $pager = $queryProduk->pager;
+
+        $urutan = $this->request->getVar('page_produkAdmin') ? $this->request->getVar('page_produkAdmin') : 1;
+
+        // dd($produk[1]['gambar2']);
+
+        $akun = $this->builderAkun->find(session()->get('id'));
+        $data = [
+            'title' => 'Data Produk | Rajasa Finishing',
+            'akun' => $akun,
+            'segment2' => $this->uri->getSegment(2),
+            'segment3' => $this->uri->getSegment(3),
+            'kategori' => $kategori,
+            'keyword' => $keyword,
+            'produk' => $produk,
+            'pager' => $pager,
+            'urutan' => $urutan,
+        ];
+
+        return view('admin/data-produk', $data);
     }
 }
