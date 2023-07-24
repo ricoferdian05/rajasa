@@ -11,7 +11,7 @@
         <div class="col-10">
             <div class="row">
                 <div class="col navbar ms-2 ps-3 pt-3 pb-3 rounded-3 shadow-sm">
-                    <!-- ANCHOR NAVBARL -->
+                    <!-- ANCHOR NAVBAR -->
                     <?= $this->include('templates/admin/navbar') ?>
                 </div>
             </div>
@@ -112,6 +112,12 @@
                                 echo "<div class='alert alert-danger alert-data-kosong text-center' role='alert'>Data Tidak Ditemukan !!!</div>";
                             }
                             ?>
+                            <!-- ANCHOR PAGINATION -->
+                            <div class="row">
+                                <div class="col mt-2">
+                                    <?= $pager->links('produkAdmin', 'custom_pagination'); ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

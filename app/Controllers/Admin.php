@@ -344,8 +344,6 @@ class Admin extends BaseController
 
         $urutan = $this->request->getVar('page_produkAdmin') ? $this->request->getVar('page_produkAdmin') : 1;
 
-        // dd($produk[1]['gambar2']);
-
         $akun = $this->builderAkun->find(session()->get('id'));
         $data = [
             'title' => 'Data Produk | Rajasa Finishing',
@@ -360,5 +358,112 @@ class Admin extends BaseController
         ];
 
         return view('admin/data-produk', $data);
+    }
+
+    public function tambahProduk()
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        if ($this->request->getVar('tambah')) {
+
+            $judul = $this->request->getVar('judul');
+            $kategori = $this->request->getVar('kategori');
+            $harga = $this->request->getVar('harga');
+            $deskripsi = $this->request->getVar('deskripsi');
+            $gambar1 = $this->request->getFile('gambar1');
+            $gambar2 = $this->request->getFile('gambar2');
+            $gambar3 = $this->request->getFile('gambar3');
+            $status = $this->request->getVar('status');
+            $designerProduk = $this->request->getVar('designer');
+
+            // MENCARI KATEGORI PRODUK
+            $queryKategoriProduk = $this->builderKategori;
+            $queryKategoriProduk = $queryKategoriProduk->find($kategori);
+            $kategoriProduk = $queryKategoriProduk['kategori'];
+
+            $id = uniqid('prod-' . $kategoriProduk . '-', true);
+
+            // GAMBAR PRODUK
+            $pathUpload = 'asset/produk/' . $kategoriProduk;
+
+            // GAMBAR 1
+            if ($gambar1->getError() == 4) {
+                $gambar1Name = "asset/website/image-default.png";
+            } else {
+                // RENAME FILE
+                $gambar1Name = $gambar1->getRandomName();
+                // MOVE FILE
+                $gambar1->move($pathUpload, $gambar1Name);
+                $gambar1Name = $pathUpload . '/' . $gambar1Name;
+            }
+            // GAMBAR 2
+            if ($gambar2->getError() == 4) {
+                $gambar2Name = "";
+            } else {
+                // RENAME FILE
+                $gambar2Name = $gambar2->getRandomName();
+                // MOVE FILE
+                $gambar2->move($pathUpload, $gambar2Name);
+                $gambar2Name = $pathUpload . '/' . $gambar2Name;
+            }
+            // GAMBAR 3
+            if ($gambar3->getError() == 4) {
+                $gambar3Name = "";
+            } else {
+                // RENAME FILE
+                $gambar3Name = $gambar3->getRandomName();
+                // MOVE FILE
+                $gambar3->move($pathUpload, $gambar3Name);
+                $gambar3Name = $pathUpload . '/' . $gambar3Name;
+            }
+
+            // dd($designerProduk);
+
+            $dataProduk = [
+                'id' => $id,
+                'judul' => $judul,
+                'harga' => $harga,
+                'deskripsi' => $deskripsi,
+                'gambar1' => $gambar1Name,
+                'gambar2' => $gambar2Name,
+                'gambar3' => $gambar3Name,
+                'status' => $status,
+                'rating' => 0,
+                'terjual' => 0,
+                'created' => date("Y-m-d H:i:s"),
+                'idKategori' => $kategori,
+                'idDesigner' => $designerProduk,
+            ];
+
+            $queryProduk = $this->builderProduk;
+            if ($queryProduk->insert($dataProduk)) {
+                session()->setFlashdata('add_success', 'Produk Berhasil Ditambahkan!!!');
+            } else {
+                session()->setFlashdata('add_error', 'Produk Gagal Ditambahkan!!!');
+            }
+        }
+
+        // KATEGORI
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->findAll();
+
+        // DESIGNER
+        $queryDesigner = $this->builderDesigner;
+        $designer = $queryDesigner->findAll();
+
+
+        $akun = $this->builderAkun->find(session()->get('id'));
+        $data = [
+            'title' => 'Tambah Produk | Rajasa Finishing',
+            'akun' => $akun,
+            'segment2' => $this->uri->getSegment(2),
+            'kategori' => $kategori,
+            'designer' => $designer,
+        ];
+
+        return view('admin/data-produk/tambah', $data);
     }
 }

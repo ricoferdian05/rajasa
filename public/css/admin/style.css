@@ -346,3 +346,10 @@ input[type]:focus {
     background-color: #4b7d81;
     border: none;
 }
+
+/* ANCHOR TAMBAH PRODUK */
+
+label.required::after {
+    content: '*';
+    color: red;
+}

@@ -139,10 +139,10 @@
             text: <?= json_encode(session()->getFlashdata('update_success')) ?>,
             icon: 'success',
         });
-    } else if (<?= json_encode(session()->getFlashdata('update_success')) ?>) {
+    } else if (<?= json_encode(session()->getFlashdata('update_error')) ?>) {
         Swal.fire({
             title: 'Gagal',
-            text: <?= json_encode(session()->getFlashdata('update_success')) ?>,
+            text: <?= json_encode(session()->getFlashdata('update_error')) ?>,
             icon: 'error',
         });
     }

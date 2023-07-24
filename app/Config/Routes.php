@@ -73,7 +73,9 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
 
     $routes->post('data-produk/details/(:any)', 'Admin::produkDetails/$1');
+    $routes->get('data-produk/tambah', 'Admin::tambahProduk');
     $routes->post('data-produk/tambah', 'Admin::tambahProduk');
+
     $routes->get('data-produk/(:any)', 'Admin::produk/$1');
 
     // $routes->get('akun', 'Customer::akun');
