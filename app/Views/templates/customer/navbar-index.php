@@ -16,7 +16,8 @@
                                     </a>
                                     <ul class="dropdown-menu border-0 shadow-lg">
                                         <?php foreach ($kategori as $k) : ?>
-                                            <li><a class="dropdown-item" href="<?= base_url('/produk/' . $k->kategori . '/terbaru') ?>"><?= $k->kategori; ?></a></li>
+                                            <li><a class="dropdown-item" href="<?= base_url('/produk/' . $k->kategori . '/terbaru') ?>"><?= $k->kategori; ?></a>
+                                            </li>
                                         <?php endforeach; ?>
                                     </ul>
                                 </li>
@@ -25,6 +26,9 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link rounded-3" href="#">Pembayaran</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link rounded-3" href="<?= base_url('chat') ?>" target="_blank">Chat</a>
                                 </li>
                                 <li class="nav-item ms-2">
                                     <form class="d-flex" role="search" action="<?= base_url('produk/all/terbaru') ?>" method="get">
@@ -48,7 +52,8 @@
                                                 <img src="<?= base_url($akun['avatar']) ?>" alt="avatar" class="avatar" />
                                             </a>
                                             <ul class="dropdown-menu border-0 shadow me-2">
-                                                <li><a class="dropdown-item" href="<?= base_url('customer/akun') ?>">Akun</a></li>
+                                                <li><a class="dropdown-item" href="<?= base_url('customer/akun') ?>">Akun</a>
+                                                </li>
                                                 <li>
                                                     <hr class="dropdown-divider">
                                                 </li>

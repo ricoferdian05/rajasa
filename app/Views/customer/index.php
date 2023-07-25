@@ -37,25 +37,29 @@
                 <div class="row mt-3">
                     <div class="col-3">
                         <div class="card card-content position-relative text-center rounded-3">
-                            <img src="<?= base_url('asset/website/kalender.jpg') ?>" class="card-img-top rounded-3" alt="kalender">
+                            <img src="<?= base_url('asset/website/kalender.jpg') ?>" class="card-img-top rounded-3"
+                                alt="kalender">
                             <h6 class="card-text-sub-content position-absolute rounded-bottom-3 py-2 m-0 ">KALENDER</h6>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card card-content position-relative text-center rounded-3">
-                            <img src="<?= base_url('asset/website/buku.jpg') ?>" class="card-img-top rounded-3" alt="buku">
+                            <img src="<?= base_url('asset/website/buku.jpg') ?>" class="card-img-top rounded-3"
+                                alt="buku">
                             <h6 class="card-text-sub-content position-absolute rounded-bottom-3 py-2 m-0 ">BUKU</h6>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card card-content position-relative text-center rounded-3">
-                            <img src="<?= base_url('asset/website/undangan.jpg') ?>" class="card-img-top rounded-3" alt="undangan">
+                            <img src="<?= base_url('asset/website/undangan.jpg') ?>" class="card-img-top rounded-3"
+                                alt="undangan">
                             <h6 class="card-text-sub-content position-absolute rounded-bottom-3 py-2 m-0 ">UNDANGAN</h6>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card card-content position-relative text-center rounded-3">
-                            <img src="<?= base_url('asset/website/brosur.jpg') ?>" class="card-img-top rounded-3" alt="brosur">
+                            <img src="<?= base_url('asset/website/brosur.jpg') ?>" class="card-img-top rounded-3"
+                                alt="brosur">
                             <h6 class="card-text-sub-content position-absolute rounded-bottom-3 py-2 m-0 ">BROSUR</h6>
                         </div>
                     </div>
@@ -70,26 +74,31 @@
                 <div class="row mt-3">
                     <div class="col-3">
                         <div class="card card-content position-relative text-center rounded-3">
-                            <img src="<?= base_url('asset/website/apron.jpg') ?>" class="card-img-top rounded-3" alt="apron">
+                            <img src="<?= base_url('asset/website/apron.jpg') ?>" class="card-img-top rounded-3"
+                                alt="apron">
                             <h6 class="card-text-sub-content position-absolute rounded-bottom-3 py-2 m-0 ">APRON</h6>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card card-content position-relative text-center rounded-3">
-                            <img src="<?= base_url('asset/website/kaos.jpg') ?>" class="card-img-top rounded-3" alt="kaos">
+                            <img src="<?= base_url('asset/website/kaos.jpg') ?>" class="card-img-top rounded-3"
+                                alt="kaos">
                             <h6 class="card-text-sub-content position-absolute rounded-bottom-3 py-2 m-0 ">KAOS</h6>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card card-content position-relative text-center rounded-3">
-                            <img src="<?= base_url('asset/website/totebag.jpg') ?>" class="card-img-top rounded-3" alt="totebag">
+                            <img src="<?= base_url('asset/website/totebag.jpg') ?>" class="card-img-top rounded-3"
+                                alt="totebag">
                             <h6 class="card-text-sub-content position-absolute rounded-bottom-3 py-2 m-0 ">TOTEBAG</h6>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card card-content position-relative text-center rounded-3">
-                            <img src="<?= base_url('asset/website/pouchbag.jpg') ?>" class="card-img-top rounded-3" alt="pouchbag">
-                            <h6 class="card-text-sub-content position-absolute rounded-bottom-3 py-2 m-0 ">POUCH BAG</h6>
+                            <img src="<?= base_url('asset/website/pouchbag.jpg') ?>" class="card-img-top rounded-3"
+                                alt="pouchbag">
+                            <h6 class="card-text-sub-content position-absolute rounded-bottom-3 py-2 m-0 ">POUCH BAG
+                            </h6>
                         </div>
                     </div>
                 </div>
