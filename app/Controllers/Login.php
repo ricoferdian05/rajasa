@@ -15,17 +15,30 @@ class Login extends BaseController
 
     public function auth()
     {
+
+
         $admin      = new \App\Models\AdminModel();
         $designer   = new \App\Models\DesignerModel();
         $customer   = new \App\Models\CustomerModel();
+
+
 
         $session = session();
         $email      = $this->request->getVar('email');
         $password   = $this->request->getVar('password');
 
+        // var_dump($admin->where('email', $email)->first());
+        // die();
+
+
         $dataAdmin      = $admin->where('email', $email)->first();
         $dataDesigner   = $designer->where('email', $email)->first();
         $dataCustomer   = $customer->where('email', $email)->first();
+
+
+
+
+
 
         if ($dataAdmin) {
             $pass = $dataAdmin['password'];
