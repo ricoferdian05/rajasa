@@ -21,6 +21,26 @@ $(document).ready(function () {
   const MAIN_PLAY = gsap.timeline({ paused: true });
   MAIN_PLAY.from("#main", { duration: 0.5, opacity: 0 });
 
+  // var date = new Date();
+  // date = new Date(date);
+  // alert(date);
+
+  // var date = new Date();
+  // date = new Date(date);
+  // date = date.toLocaleString();
+
+  // alert(date);
+  document
+    .getElementById("messageText")
+    .addEventListener("keypress", function (event) {
+      // Check if the pressed key is "Enter" (key code 13)
+      if (event.keyCode === 13) {
+        event.preventDefault(); // Prevent the form submission
+        // Add your code here to handle the "Enter" key press, e.g., trigger the send_message button click
+        document.getElementById("send_message").click(); // Simulate click on the send_message button
+      }
+    });
+
   //Main funtion which will run at the time of page load
   //UserSidebarIn
   function barIn() {

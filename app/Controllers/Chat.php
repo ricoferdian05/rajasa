@@ -36,6 +36,8 @@ class Chat extends BaseController
             'kategori' => $kategori,
         ];
 
+
+
         return view('customer/message', $data);
     }
 
@@ -51,19 +53,8 @@ class Chat extends BaseController
 
         $data['data'] = $all_designer;
 
-        // $unique_id = $data['data'][0]->id;
-        // var_dump($unique_id);
-        // die();
-
-        // $unique_id = session()->get('id');
-
-        // $msg = $queryChat->getLastMessage($unique_id);
-
-        // var_dump($msg);
-        // die();
-
         $data['last_msg'] = array();
-        // $this->load->helper('url');
+        helper('url');
         if (!is_array($data['data'])) {
             echo "<p class='text-center'>No user available.</p>";
         } else {
@@ -71,13 +62,13 @@ class Chat extends BaseController
             // var_dump($count);
             // die();
             for ($i = 0; $i < $count; $i++) {
-                $unique_id = $data['data'][0]['id'];
+                $unique_id = $data['data'][$i]['id'];
                 // var_dump($unique_id);
                 // die();
                 $msg = $queryChat->getLastMessage($unique_id);
 
-                // var_dump($msg[0]->time);
-                // die();
+
+
 
                 for ($j = 0; $j < count($msg); $j++) {
 
@@ -94,6 +85,7 @@ class Chat extends BaseController
 
                     // var_dump($time);
                     // die();
+                    // var_dump($msg[0]['receiver_message_id']);
 
                     array_push($data['last_msg'], array(
                         'message' => $msg[0]['message'],
@@ -106,6 +98,11 @@ class Chat extends BaseController
                     // die();
                 }
             }
+            // die();
+
+            // var_dump($data['last_msg']);
+            // die();
+
             return view('customer/sampleDataShow', $data);
         }
     }

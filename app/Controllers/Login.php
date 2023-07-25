@@ -4,6 +4,18 @@ namespace App\Controllers;
 
 class Login extends BaseController
 {
+
+
+    private $uri;
+    private $builderAkun;
+
+    public function __construct()
+    {
+
+        $this->uri = service('uri');
+        $this->builderAkun = new \App\Models\CustomerModel();
+    }
+
     public function index()
     {
         $data = [
@@ -80,6 +92,10 @@ class Login extends BaseController
                     'isLogin'   => true,
                 ];
                 $session->set($ses_data);
+
+                $queryAkun = $this->builderAkun;
+                $queryAkun->update_status('active');
+
                 return redirect()->to(base_url('customer'));
             } else {
                 $session->setFlashdata('error', 'Email dan Password Salah!');
@@ -93,6 +109,20 @@ class Login extends BaseController
 
     public function logout()
     {
+
+        date_default_timezone_set('Asia/Jakarta');
+        $currentTimestamp = time(); // Get the current timestamp
+        $formattedDate = date('n/j/Y, g:i:s A', $currentTimestamp);
+        // var_dump($formattedDate);
+        // die();
+
+        if (session()->get('tipe') == 3) {
+
+            $queryAkun = $this->builderAkun;
+            $queryAkun->logoutUser('deactive', $formattedDate);
+        }
+
+
         $session = session();
         $session->destroy();
         return redirect()->to(base_url('/'));
