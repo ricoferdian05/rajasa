@@ -87,6 +87,7 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
 
 // Designer
 $routes->group('designer', ['filter' => 'auth'], function ($routes) {
+    $routes->get('dashboard', 'Designer::index');
     $routes->get('chat', 'Designer::chat');
 });
 
