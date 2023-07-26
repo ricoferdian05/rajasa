@@ -78,7 +78,7 @@
                                         <th scope="col">Dibuat</th>
                                         <th scope="col">Kategori</th>
                                         <th scope="col">Designer</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -100,7 +100,10 @@
                                                 <td><?= date_format(date_create($produk[$i]['created']), 'd-m-Y'); ?></td>
                                                 <td><?= $produk[$i]['kategori']; ?></td>
                                                 <td><?= $produk[$i]['designer']; ?></td>
-                                                <td><a href="<?= base_url('admin/data-produk/details/' . $produk[$i]['id']); ?>" class="btn-detail-transaksi">Detail</a></td>
+                                                <td>
+                                                    <a href="<?= base_url('admin/data-produk/details/' . $produk[$i]['id']); ?>" class="btn-detail-transaksi">Detail</a>
+                                                    <button class="btn-hapus" onclick="hapus('<?= base_url('admin/data-produk/hapus/' . $produk[$i]['id']); ?>')">Hapus</button>
+                                                </td>
                                             </tr>
                                     <?php }
                                     }
@@ -125,5 +128,19 @@
         </div>
     </div>
 </div>
-
+<script>
+    function hapus(link) {
+        Swal.fire({
+            title: 'Hapus',
+            text: 'Ingin menghapus data ini?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Hapus',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link;
+            }
+        })
+    }
+</script>
 <?= $this->endSection(); ?>

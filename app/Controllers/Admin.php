@@ -337,6 +337,9 @@ class Admin extends BaseController
         if ($jenisKategori != 'all') {
             $queryProduk->where('kategori.kategori', $jenisKategori);
         }
+        if ($keyword !== null) {
+            $queryProduk->like('produk.judul', $keyword);
+        }
 
         // PAGINATION
         $produk = $queryProduk->paginate(10, 'produkAdmin');
@@ -420,8 +423,6 @@ class Admin extends BaseController
                 $gambar3Name = $pathUpload . '/' . $gambar3Name;
             }
 
-            // dd($designerProduk);
-
             $dataProduk = [
                 'id' => $id,
                 'judul' => $judul,
@@ -439,7 +440,7 @@ class Admin extends BaseController
             ];
 
             $queryProduk = $this->builderProduk;
-            if ($queryProduk->insert($dataProduk)) {
+            if ($queryProduk->insert($dataProduk) === 0) {
                 session()->setFlashdata('add_success', 'Produk Berhasil Ditambahkan!!!');
             } else {
                 session()->setFlashdata('add_error', 'Produk Gagal Ditambahkan!!!');
@@ -465,5 +466,153 @@ class Admin extends BaseController
         ];
 
         return view('admin/data-produk/tambah', $data);
+    }
+
+    function produkDetails($id)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        if ($this->request->getVar('update')) {
+            // PRODUK
+            $queryProduk = $this->builderProduk;
+            $produk = $queryProduk->find($id);
+
+            $judul = $this->request->getVar('judul');
+            $kategori = $this->request->getVar('kategori');
+            $harga = $this->request->getVar('harga');
+            $deskripsi = $this->request->getVar('deskripsi');
+            $gambar1 = $this->request->getFile('gambar1');
+            $gambar2 = $this->request->getFile('gambar2');
+            $gambar3 = $this->request->getFile('gambar3');
+            $status = $this->request->getVar('status');
+            $designerProduk = $this->request->getVar('designer');
+
+            // MENCARI KATEGORI PRODUK
+            $queryKategoriProduk = $this->builderKategori;
+            $queryKategoriProduk = $queryKategoriProduk->find($kategori);
+            $kategoriProduk = $queryKategoriProduk['kategori'];
+
+            // GAMBAR PRODUK
+            $pathUpload = 'asset/produk/' . $kategoriProduk;
+
+            // GAMBAR 1
+            if ($gambar1->getError() == 4) {
+                $gambar1Name = $produk['gambar1'];
+            } else {
+                // RENAME FILE
+                $gambar1Name = $gambar1->getRandomName();
+                // MOVE FILE
+                $gambar1->move($pathUpload, $gambar1Name);
+                $gambar1Name = $pathUpload . '/' . $gambar1Name;
+
+                // DELETE FILE LAMA
+                unlink($produk['gambar1']);
+            }
+            // GAMBAR 2
+            if ($gambar2->getError() == 4) {
+                $gambar2Name = $produk['gambar2'];
+            } else {
+                // RENAME FILE
+                $gambar2Name = $gambar2->getRandomName();
+                // MOVE FILE
+                $gambar2->move($pathUpload, $gambar2Name);
+                $gambar2Name = $pathUpload . '/' . $gambar2Name;
+
+                // DELETE FILE LAMA
+                unlink($produk['gambar2']);
+            }
+            // GAMBAR 3
+            if ($gambar3->getError() == 4) {
+                $gambar3Name = $produk['gambar3'];
+            } else {
+                // RENAME FILE
+                $gambar3Name = $gambar3->getRandomName();
+                // MOVE FILE
+                $gambar3->move($pathUpload, $gambar3Name);
+                $gambar3Name = $pathUpload . '/' . $gambar3Name;
+
+                // DELETE FILE LAMA
+                unlink($produk['gambar3']);
+            }
+
+            $queryUpdateProduk = $this->builderProduk;
+
+            $dataUpdate = [
+                'id' => $id,
+                'judul' => $judul,
+                'harga' => $harga,
+                'deskripsi' => $deskripsi,
+                'gambar1' => $gambar1Name,
+                'gambar2' => $gambar2Name,
+                'gambar3' => $gambar3Name,
+                'status' => $status,
+                'rating' => $produk['rating'],
+                'terjual' => $produk['terjual'],
+                'idKategori' => $kategori,
+                'idDesigner' => $designerProduk,
+            ];
+
+            if ($queryUpdateProduk->save($dataUpdate)) {
+                session()->setFlashdata('update_success', 'Produk Berhasil Diubah!!!');
+            } else {
+                session()->setFlashdata('update_error', 'Produk Gagal Diubah!!!');
+            }
+        }
+
+        // KATEGORI
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->findAll();
+
+        // PRODUK
+        $queryProduk = $this->builderProduk;
+        $produk = $queryProduk->find($id);
+
+        // DESIGNER
+        $queryDesigner = $this->builderDesigner;
+        $designer = $queryDesigner->findAll();
+
+        $akun = $this->builderAkun->find(session()->get('id'));
+        $data = [
+            'title' => 'Detail Produk | Rajasa Finising',
+            'akun' => $akun,
+            'segment2' => $this->uri->getSegment(2),
+            'kategori' => $kategori,
+            'designer' => $designer,
+            'produk' => $produk,
+        ];
+
+        return view('admin/data-produk/detail', $data);
+    }
+
+    function produkDelete($id)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // CARI DATA PRODUK
+        $queryProduk = $this->builderProduk;
+        $produk = $queryProduk->find($id);
+
+        // MENGHAPUS GAMBAR
+        if ($produk['gambar1'] !== null) {
+            unlink($produk['gambar1']);
+        } else if ($produk['gambar2'] !== null) {
+            unlink($produk['gambar2']);
+        } else if ($produk['gambar3'] !== null) {
+            unlink($produk['gambar3']);
+        }
+
+        // DELETE DATA PRODUK
+        if ($queryProduk->delete(['id' => $id])) {
+            session()->setFlashdata('delete_success', 'Produk Berhasil Dihapus!!!');
+        } else {
+            session()->setFlashdata('delete_error', 'Produk Gagal Dihapus!!!');
+        }
+        return redirect()->back();
     }
 }

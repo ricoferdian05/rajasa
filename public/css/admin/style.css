@@ -247,6 +247,17 @@ body {
     border-radius: 4px;
 }
 
+.btn-detail-transaksi:hover {
+    color: #fff;
+    background-color: #598285;
+    border: transparent solid 1px;
+    box-shadow: 0px 2px 2px 0px #4D4D4D;
+}
+
+.btn-detail-transaksi:active {
+    box-shadow: none;
+}
+
 .baris-belum-transfer {
     background-color: #ffc1c1;
 }
@@ -345,6 +356,29 @@ input[type]:focus {
 .btn-tambah-produk:active {
     background-color: #4b7d81;
     border: none;
+}
+
+.btn-hapus {
+    text-decoration: none;
+    color: #E97777;
+    font-size: 8px;
+    font-weight: bold;
+    border: #E97777 solid 1px;
+    background-color: #fff;
+    padding: 4px 10px;
+    transition: all .3s;
+    border-radius: 4px;
+}
+
+.btn-hapus:hover {
+    color: #fff;
+    border: transparent solid 1px;
+    background-color: #E97777;
+    box-shadow: 0px 2px 2px 0px #4D4D4D;
+}
+
+.btn-hapus:active {
+    box-shadow: none;
 }
 
 /* ANCHOR TAMBAH PRODUK */

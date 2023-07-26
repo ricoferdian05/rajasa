@@ -30,6 +30,8 @@
     <script src="https://cdn.tiny.cloud/1/pke2gj61lhwk9889p5d4bw8h80ypjbe4qz93fi1ru0rzbdml/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
     <!-- <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> -->
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
 
 </head>
@@ -39,6 +41,21 @@
     <?= $this->renderSection('content'); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script>
+        if (<?= json_encode(session()->getFlashdata('delete_success')) ?>) {
+            Swal.fire({
+                title: 'Sukses',
+                text: <?= json_encode(session()->getFlashdata('delete_success')) ?>,
+                icon: 'success',
+            });
+        } else if (<?= json_encode(session()->getFlashdata('delete_error')) ?>) {
+            Swal.fire({
+                title: 'Gagal',
+                text: <?= json_encode(session()->getFlashdata('delete_error')) ?>,
+                icon: 'error',
+            });
+        }
+    </script>
 </body>
 
 </html>
