@@ -85,6 +85,11 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     // $routes->post('akun/save', 'Customer::saveAkun');
 });
 
+// Designer
+$routes->group('designer', ['filter' => 'auth'], function ($routes) {
+    $routes->get('chat', 'Designer::chat');
+});
+
 
 /*
  * --------------------------------------------------------------------

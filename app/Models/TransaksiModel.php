@@ -14,7 +14,19 @@ class TransaksiModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'tanggal_transaksi', 'tanggal_pengiriman', 'total_harga', 'jumlah', 'status', 'status_transfer', 'idProduk', 'idKategori', 'idCustomer', 'idDesigner'];
+    protected $allowedFields    = [
+        'id',
+        'tanggal_transaksi',
+        'tanggal_pengiriman',
+        'total_harga',
+        'jumlah',
+        'status',
+        'status_transfer',
+        'idProduk',
+        'idKategori',
+        'idCustomer',
+        'idDesigner',
+    ];
 
     // Dates
     protected $useTimestamps = false;
