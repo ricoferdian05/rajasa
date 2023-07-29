@@ -36,6 +36,15 @@ $routes->group('customer', ['filter' => 'auth'], function ($routes) {
     $routes->post('akun/save', 'Customer::saveAkun');
 });
 
+
+// Designer
+$routes->group('designer', ['filter' => 'auth'], function ($routes) {
+    $routes->get('', 'Designer::index');
+    // $routes->get('akun', 'Customer::akun');
+    // $routes->post('akun/save', 'Customer::saveAkun');
+});
+
+
 $routes->get('/', 'Customer::index');
 $routes->get('/produk/(:any)/(:any)', 'Customer::produk/$1/$2');
 $routes->get('/detail/(:any)', 'Customer::detailProduk/$1');
