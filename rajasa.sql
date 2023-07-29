@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 13, 2023 at 04:21 PM
+-- Generation Time: Jul 29, 2023 at 09:30 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -88,6 +88,7 @@ CREATE TABLE `designer` (
   `username` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `no_hp` varchar(255) NOT NULL,
+  `avatar` varchar(255) NOT NULL,
   `tipe` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -95,9 +96,9 @@ CREATE TABLE `designer` (
 -- Dumping data for table `designer`
 --
 
-INSERT INTO `designer` (`id`, `email`, `password`, `nama`, `username`, `alamat`, `no_hp`, `tipe`) VALUES
-('dsg-Designer-6445bc9c696ed4.41377364', 'designer@gmail.com', '$2y$10$95Olme0Y/DfHSIgrpKGMF.lzg4XcudWFwUNpPUbbzwVgYt5G0SQaW', 'Designer', 'designer', 'Designer Address', '081234567890', 2),
-('dsg-Designer2-64ab6aa0010b85.62524177', 'designer2@gmail.com', '$2y$10$PikLHZv.1VXVs71UPKQLTOuLABgYc/x6E.eMcJQYDgzpESizbqhxW', 'Designer2', 'designer2', 'Designer 2 Address', '081234567890', 2);
+INSERT INTO `designer` (`id`, `email`, `password`, `nama`, `username`, `alamat`, `no_hp`, `avatar`, `tipe`) VALUES
+('dsg-Designer-6445bc9c696ed4.41377364', 'designer@gmail.com', '$2y$10$95Olme0Y/DfHSIgrpKGMF.lzg4XcudWFwUNpPUbbzwVgYt5G0SQaW', 'Designer', 'designer', 'Designer Address', '081234567890', 'asset/designer/akun/avatar-designer.png', 2),
+('dsg-Designer2-64ab6aa0010b85.62524177', 'designer2@gmail.com', '$2y$10$PikLHZv.1VXVs71UPKQLTOuLABgYc/x6E.eMcJQYDgzpESizbqhxW', 'Designer2', 'designer2', 'Designer 2 Address', '081234567890', '', 2);
 
 -- --------------------------------------------------------
 
@@ -120,6 +121,7 @@ INSERT INTO `kategori` (`id`, `kategori`) VALUES
 ('kat-Buku-64908df7ead8d9.94071979', 'Buku'),
 ('kat-Kalender-64908dd5d877b8.48393563', 'Kalender'),
 ('kat-Kaos-64908e92092b32.23026208', 'Kaos'),
+('kat-Lainnya-64c3aa1aa7eb00.63936259', 'Lainnya'),
 ('kat-Pouchbag-64908ea34f21b9.88730624', 'Pouchbag'),
 ('kat-Totebag-64908e98d5dee2.83869174', 'Totebag'),
 ('kat-Undangan-64908e74618fc5.80039426', 'Undangan');
@@ -151,9 +153,10 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `judul`, `harga`, `deskripsi`, `gambar1`, `gambar2`, `gambar3`, `status`, `rating`, `terjual`, `created`, `idKategori`, `idDesigner`) VALUES
-('prod-Apron-64999eae251fc5.13765249', 'Apron Dapur', 120000.00, 'Apron Dapur', 'asset/produk/apron/prod-Apron-64999eae251fc5.13765249-1.png', '', '', 'Ready Stock', 3.8, 15, '2023-06-23 00:00:00', 'kat-Apron-64908e8a213b54.28616235', 'dsg-Designer-6445bc9c696ed4.41377364'),
+('prod-Apron-64999eae251fc5.13765249', 'Apron Dapur', 120000.00, '<p>Apron Dapur</p>\r\n<p>2023</p>', 'asset/produk/apron/prod-Apron-64999eae251fc5.13765249-1.png', 'asset/produk/Apron/1690300268_d2e2f4e5f1d50864ded1.jpeg', 'asset/produk/Apron/1690308498_5e8edeef5038fa5f0ad6.jpeg', 'Ready Stock', 3.8, 15, '2023-07-25 15:49:10', 'kat-Apron-64908e8a213b54.28616235', 'dsg-Designer-6445bc9c696ed4.41377364'),
 ('prod-Buku-649984547eb7a9.91873158', 'Buku Learn & Play', 80000.00, 'Buku Learn & Play', 'asset/produk/buku/prod-Buku-649984547eb7a9.91873158-1.png', '', '', 'Ready Stock', 4.0, 20, '2023-06-21 00:00:00', 'kat-Buku-64908df7ead8d9.94071979', 'dsg-Designer-6445bc9c696ed4.41377364'),
-('prod-Kalender-64908ea34f20f5.08789580', 'Kalender 2023', 75000.00, 'Dicetak di Kertas Art Carton 210 Gram<br>\r\nUkuran 15 x 21cm<br>\r\nPilih Isi Halaman<br>\r\nFinishing Spiral Kawat Putih<br>\r\nHardcover Hitam<br>\r\nCetak Mesin Laser Dua Sisi', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-1.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-2.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-3.png', 'Ready Stock', 4.2, 100, '2023-06-26 00:00:00', 'kat-Kalender-64908dd5d877b8.48393563', 'dsg-Designer-6445bc9c696ed4.41377364');
+('prod-Kalender-64908ea34f20f5.08789580', 'Kalender 2023', 75000.00, 'Dicetak di Kertas Art Carton 210 Gram<br>\r\nUkuran 15 x 21cm<br>\r\nPilih Isi Halaman<br>\r\nFinishing Spiral Kawat Putih<br>\r\nHardcover Hitam<br>\r\nCetak Mesin Laser Dua Sisi', 'asset/produk/Kalender/prod-Kalender-64908ea34f20f5.08789580-1.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-2.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-3.png', 'Ready Stock', 4.2, 100, '2023-06-26 00:00:00', 'kat-Kalender-64908dd5d877b8.48393563', 'dsg-Designer-6445bc9c696ed4.41377364'),
+('prod-xxx-64908ea34f20f5.08789580', 'Kalender 2023', 75000.00, 'Dicetak di Kertas Art Carton 210 Gram<br>\r\nUkuran 15 x 21cm<br>\r\nPilih Isi Halaman<br>\r\nFinishing Spiral Kawat Putih<br>\r\nHardcover Hitam<br>\r\nCetak Mesin Laser Dua Sisi', 'asset/produk/Kalender/prod-Kalender-64908ea34f20f5.08789580-1.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-2.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-3.png', 'Ready Stock', 4.2, 100, '2023-06-26 00:00:00', 'kat-Lainnya-64c3aa1aa7eb00.63936259', 'dsg-Designer-6445bc9c696ed4.41377364');
 
 -- --------------------------------------------------------
 
@@ -216,13 +219,15 @@ INSERT INTO `transaksi` (`id`, `tanggal_transaksi`, `tanggal_pengiriman`, `total
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `admin_ibfk_1` (`tipe`);
 
 --
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tipe` (`tipe`);
 
 --
 -- Indexes for table `designer`
@@ -242,8 +247,8 @@ ALTER TABLE `kategori`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fkDesigner` (`idDesigner`),
-  ADD KEY `fkKategori` (`idKategori`);
+  ADD KEY `produk_ibfk_2` (`idDesigner`),
+  ADD KEY `produk_ibfk_1` (`idKategori`);
 
 --
 -- Indexes for table `tipe_akun`
@@ -276,6 +281,18 @@ ALTER TABLE `tipe_akun`
 --
 
 --
+-- Constraints for table `admin`
+--
+ALTER TABLE `admin`
+  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`tipe`) REFERENCES `tipe_akun` (`id_tipe`) ON DELETE NO ACTION;
+
+--
+-- Constraints for table `customer`
+--
+ALTER TABLE `customer`
+  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`tipe`) REFERENCES `tipe_akun` (`id_tipe`);
+
+--
 -- Constraints for table `designer`
 --
 ALTER TABLE `designer`
@@ -285,8 +302,8 @@ ALTER TABLE `designer`
 -- Constraints for table `produk`
 --
 ALTER TABLE `produk`
-  ADD CONSTRAINT `fkDesigner` FOREIGN KEY (`idDesigner`) REFERENCES `designer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fkKategori` FOREIGN KEY (`idKategori`) REFERENCES `kategori` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`idKategori`) REFERENCES `kategori` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `produk_ibfk_2` FOREIGN KEY (`idDesigner`) REFERENCES `designer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `transaksi`

@@ -77,8 +77,7 @@ class Login extends BaseController
                     'isLogin'   => true,
                 ];
                 $session->set($ses_data);
-
-                return redirect()->to(base_url('designer'));
+                return redirect()->to(base_url('designer/dashboard'));
             } else {
                 $session->setFlashdata('error', 'Email dan Password Salah!');
                 return redirect()->to(base_url('login'));

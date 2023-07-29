@@ -10,7 +10,7 @@
         </div>
         <div class="col-10">
             <div class="row">
-                <div class="col navbar ms-2 ps-3 pt-3 pb-3 rounded-3 shadow-sm">
+                <div class="col navbar ms-2 ps-3 pt-3 pb-3 rounded-3 shadow">
                     <!-- ANCHOR NAVBAR -->
                     <?= $this->include('templates/admin/navbar'); ?>
                 </div>
@@ -376,7 +376,6 @@
         for (let x = 0; x < labelProfit.length; x++) {
             for (let y = 0; y < profitPertahun.length; y++) {
                 if (labelProfit[x] === profitPertahun[y]['tahun']) {
-                    console.log('bangsat');
                     dataProfitPertahun.push(parseFloat(profitPertahun[y]['total']));
                     break;
                 } else {
@@ -423,10 +422,6 @@
 
     // ANCHOR GRAFIK PROFIT PERTAHUN
     const grafikProfit = document.getElementById('chartProfitPertahun');
-
-    console.log('label = ', labelProfit);
-    console.log('data = ', dataProfitPertahun);
-
 
     // ANCHOR DATA GRAFIK PROFIT PERTAHUN
     const dataProfit = {
