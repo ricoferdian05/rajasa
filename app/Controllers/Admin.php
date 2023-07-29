@@ -468,7 +468,7 @@ class Admin extends BaseController
         return view('admin/data-produk/tambah', $data);
     }
 
-    function produkDetails($id)
+    public function produkDetails($id)
     {
         // CHECK TIPE AKUN
         if (session()->get('tipe') !== '1') {
@@ -587,7 +587,7 @@ class Admin extends BaseController
         return view('admin/data-produk/detail', $data);
     }
 
-    function produkDelete($id)
+    public function produkDelete($id)
     {
         // CHECK TIPE AKUN
         if (session()->get('tipe') !== '1') {
@@ -614,5 +614,89 @@ class Admin extends BaseController
             session()->setFlashdata('delete_error', 'Produk Gagal Dihapus!!!');
         }
         return redirect()->back();
+    }
+
+    public function database()
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // KATEGORI
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->findAll();
+
+
+        $akun = $this->builderAkun->find(session()->get('id'));
+        $data = [
+            'title' => 'Detail Produk | Rajasa Finising',
+            'akun' => $akun,
+            'segment2' => $this->uri->getSegment(2),
+            'segment3' => $this->uri->getSegment(3),
+            'kategori' => $kategori,
+        ];
+
+        return view('admin/database', $data);
+    }
+
+    public function deleteKategori($id)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // KATEGORI lAINNYA
+        $queryKategoriLainnya = $this->builderKategori;
+        $kategoriLainnya = $queryKategoriLainnya->where('kategori', 'Lainnya')->first();
+
+        // MENGUBAH CHILD KATEGORI KE KATEGORI LAINNYA
+        // PRODUK
+        $queryProduk = $this->builderProduk;
+        $queryProduk->set('idKategori', $kategoriLainnya['id']);
+        $queryProduk->where('idKategori', $id);
+        $queryProduk->update();
+
+        // TRANSAKSI
+        $queryTransaksi = $this->builderTransaksi;
+        $queryTransaksi->set('idKategori', $kategoriLainnya['id']);
+        $queryTransaksi->where('idKategori', $id);
+        $queryTransaksi->update();
+
+        // MENGHAPUS SEMUA DATA KATEGORI
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->find($id);
+
+        $path = 'asset/produk/' . $kategori['kategori'];
+        if (is_dir($path)) {
+            $files = glob($path . '/*');
+            foreach ($files as $file) {
+                if (is_file($file)) {
+                    unlink($file);
+                }
+            }
+            rmdir($path);
+        }
+
+        // DELETE KATEGORI
+        $queryDeleteKategori = $this->builderKategori;
+        if ($queryDeleteKategori->delete(['id' => $id])) {
+            session()->setFlashdata('delete_success', 'Kategori Berhasil Dihapus!!!');
+        } else {
+            session()->setFlashdata('delete_error', 'Kategori Gagal Dihapus!!!');
+        }
+        return redirect()->back();
+
+        // if (!is_dir('anjing')) {
+        //     mkdir('anjing', 0777, true);
+        //     $url = 'https://www.php.net';
+        //     $html = file_get_contents($url);
+        //     file_put_contents('anjing/home.html', $html);
+        // }
+    }
+
+    public function tambahKategori()
+    {
     }
 }

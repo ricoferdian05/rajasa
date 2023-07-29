@@ -60,17 +60,20 @@ $routes->get('/tentang', 'Tentang::index');
 
 // Admin
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
+    // Dashboard
     $routes->get('dashboard', 'Admin::index');
     $routes->get('dashboard/(:any)', 'Admin::index/$1');
     $routes->get('dashboard/(:any)/(:any)', 'Admin::index/$1/$2');
     $routes->get('dashboard/(:any)/(:any)/(:any)', 'Admin::index/$1/$2/$3');
 
+    // Transaksi
     $routes->get('transaksi/details/(:any)', 'Admin::details/$1');
     $routes->post('transaksi/details/(:any)', 'Admin::details/$1');
 
     $routes->get('transaksi/(:any)', 'Admin::transaksi/$1');
     $routes->get('transaksi/(:any)/(:any)', 'Admin::transaksi/$1/$2');
 
+    // Data Produk
     $routes->get('data-produk/details/(:any)', 'Admin::produkDetails/$1');
     $routes->post('data-produk/details/(:any)', 'Admin::produkDetails/$1');
 
@@ -80,6 +83,16 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('data-produk/tambah', 'Admin::tambahProduk');
 
     $routes->get('data-produk/(:any)', 'Admin::produk/$1');
+
+    // Database
+    $routes->get('database', 'Admin::database');
+
+    $routes->get('database/kategori/hapus/(:any)', 'Admin::deleteKategori/$1');
+    $routes->post('database/kategori/tambah', 'Admin::tambahKategori');
+
+    $routes->get('database/(:any)', 'Admin::database/$1');
+    $routes->get('database/(:any)/(:any)', 'Admin::database/$1/$2');
+    $routes->get('database/(:any)/(:any)/(:any)', 'Admin::database/$1/$2/$3');
 
     // $routes->get('akun', 'Customer::akun');
     // $routes->post('akun/save', 'Customer::saveAkun');

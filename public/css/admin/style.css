@@ -387,3 +387,50 @@ label.required::after {
     content: '*';
     color: red;
 }
+
+/* ANCHOR DATABASE */
+
+#icon-database {
+    font-size: 500%;
+}
+
+.judul-database {
+    font-size: bold;
+}
+
+.menu-database {
+    background-color: #fff;
+    color: #73a9ad;
+    transition: .3s all;
+}
+
+.menu-database:hover {
+    background-color: #73a9ad;
+    color: #fff;
+    transform: scale(1.03);
+}
+
+.menu-database:active {
+    transform: scale(1);
+    box-shadow: none;
+}
+
+.btn-tambah {
+    font-size: 12px;
+    font-weight: bolder;
+    background-color: #73a9ad;
+    color: #fff;
+    padding: 7px 10px;
+
+    transition: all .3s;
+}
+
+.btn-tambah:hover {
+    color: #fff;
+    background-color: #395e60;
+}
+
+.btn-tambah:active {
+    background-color: #4b7d81;
+    border: none;
+}
