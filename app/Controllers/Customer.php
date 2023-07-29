@@ -31,6 +31,14 @@ class Customer extends BaseController
             'kategori' => $kategori,
         ];
 
+        // $sessionData = session()->get();
+
+        // Print or process the session data as needed
+        // print_r($sessionData);
+
+        // var_dump($sessionData);
+        // die();
+
         return view('customer/index', $data);
     }
 

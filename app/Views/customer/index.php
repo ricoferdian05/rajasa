@@ -89,7 +89,8 @@
                     <div class="col-3">
                         <div class="card card-content position-relative text-center rounded-3">
                             <img src="<?= base_url('asset/website/pouchbag.jpg') ?>" class="card-img-top rounded-3" alt="pouchbag">
-                            <h6 class="card-text-sub-content position-absolute rounded-bottom-3 py-2 m-0 ">POUCH BAG</h6>
+                            <h6 class="card-text-sub-content position-absolute rounded-bottom-3 py-2 m-0 ">POUCH BAG
+                            </h6>
                         </div>
                     </div>
                 </div>

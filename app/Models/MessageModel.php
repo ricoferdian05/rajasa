@@ -4,29 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class DesignerModel extends Model
+class MessageModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'designer';
+    protected $table            = 'user_messages';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        'id',
-        'email',
-        'password',
-        'nama',
-        'username',
-        'alamat',
-        'no_hp',
-        'user_status',
-        'last_logout',
-        'tipe',
-        'avatar',
-    ];
+    protected $allowedFields    = [];
 
     // Dates
     protected $useTimestamps = false;
@@ -52,14 +40,18 @@ class DesignerModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getIndividual($id)
+    public function getLastMessage($data)
     {
         $db = \Config\Database::connect(); // Connect to the database
+        $session_id = session()->get('id'); // Access session data through the session() helper
 
-        $builder = $db->table('designer'); // Create a query builder for the 'user' table
+        $builder = $db->table('user_messages'); // Create a query builder for the 'user_messages' table
 
         $builder->select('*')
-            ->where('id', $id);
+            ->where("(sender_message_id = '$session_id' AND receiver_message_id = '$data') OR 
+                    (sender_message_id = '$data' AND receiver_message_id = '$session_id')")
+            ->orderBy('time', 'DESC')
+            ->limit(1);
 
         $query = $builder->get(); // Execute the query
         $result = $query->getResultArray(); // Get the result as an array
@@ -67,34 +59,24 @@ class DesignerModel extends Model
         return $result;
     }
 
-    public function update_status($status)
+    public function getmessage($data)
     {
-        $currentSession = session()->get('id'); // Access session data through the session() helper
+        $session_id = session()->get('id'); // Access session data through the session() helper
 
-        if ($currentSession) {
-            $data = [
-                'user_status' => $status,
-            ];
+        $builder = $this->db->table('user_messages'); // Create a query builder for the 'user_messages' table
 
-            $this->db->table('designer')
-                ->where('id', $currentSession)
-                ->update($data);
-        }
+        $builder->select('*')
+            ->where("(sender_message_id = '$session_id' AND receiver_message_id = '$data') OR 
+                    (sender_message_id = '$data' AND receiver_message_id = '$session_id')");
+
+        $query = $builder->get(); // Execute the query
+        $result = $query->getResultArray(); // Get the result as an array
+
+        return $result;
     }
 
-    public function logoutUser($status, $date)
+    public function sentMessage($data)
     {
-        $currentSession = session()->get('id'); // Access session data through the session() helper
-
-        if ($currentSession) {
-            $data = [
-                'user_status' => $status,
-                'last_logout' => $date
-            ];
-
-            $this->db->table('designer')
-                ->where('id', $currentSession)
-                ->update($data);
-        }
+        $this->db->table('user_messages')->insert($data);
     }
 }

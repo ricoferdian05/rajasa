@@ -20,11 +20,16 @@
     <!-- ANCHOR GOOGLE FONT -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
+
+
+
     <!-- ANCHOR CHART JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- ANCHOR SWEETALERT -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
 
     <!-- ANCHOR TINY MCE -->
     <script src="https://cdn.tiny.cloud/1/pke2gj61lhwk9889p5d4bw8h80ypjbe4qz93fi1ru0rzbdml/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -39,7 +44,8 @@
 <body>
     <?= $this->renderSection('content'); ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
     <script>
         if (<?= json_encode(session()->getFlashdata('delete_success')) ?>) {
             Swal.fire({

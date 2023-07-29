@@ -14,7 +14,7 @@ $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
-$routes->set404Override();
+// $routes->set404Override();
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
@@ -35,6 +35,15 @@ $routes->group('customer', ['filter' => 'auth'], function ($routes) {
     $routes->get('akun', 'Customer::akun');
     $routes->post('akun/save', 'Customer::saveAkun');
 });
+
+
+// Designer
+$routes->group('designer', ['filter' => 'auth'], function ($routes) {
+    $routes->get('', 'Designer::index');
+    // $routes->get('akun', 'Customer::akun');
+    // $routes->post('akun/save', 'Customer::saveAkun');
+});
+
 
 $routes->get('/', 'Customer::index');
 $routes->get('/produk/(:any)/(:any)', 'Customer::produk/$1/$2');
@@ -103,6 +112,37 @@ $routes->group('designer', ['filter' => 'auth'], function ($routes) {
     $routes->get('dashboard', 'Designer::index');
     $routes->get('chat', 'Designer::chat');
 });
+
+
+// Chat
+$routes->group('chat', ['filter' => 'auth'], function ($routes) {
+    $routes->get('', 'Chat::index');
+    $routes->get('allUser', 'Chat::allUser');
+    $routes->get('getIndividual/(:any)', 'Chat::getIndividual/$1');
+    $routes->post('setNoMessage', 'Chat::setNoMessage');
+    $routes->post('getMessage', 'Chat::getMessage');
+    $routes->post('sent', 'Chat::sendMessage');
+
+    // $routes->get('dashboard/(:any)/(:any)', 'Admin::index/$1/$2');
+    // $routes->get('dashboard/(:any)/(:any)/(:any)', 'Admin::index/$1/$2/$3');
+
+    // $routes->get('transaksi/details/(:any)', 'Admin::details/$1');
+    // $routes->post('transaksi/details/(:any)', 'Admin::details/$1');
+
+    // $routes->get('transaksi/(:any)', 'Admin::transaksi/$1');
+    // $routes->get('transaksi/(:any)/(:any)', 'Admin::transaksi/$1/$2');
+
+
+    // $routes->post('data-produk/details/(:any)', 'Admin::produkDetails/$1');
+    // $routes->get('data-produk/tambah', 'Admin::tambahProduk');
+    // $routes->post('data-produk/tambah', 'Admin::tambahProduk');
+
+    // $routes->get('data-produk/(:any)', 'Admin::produk/$1');
+
+    // $routes->get('akun', 'Customer::akun');
+    // $routes->post('akun/save', 'Customer::saveAkun');
+});
+
 
 
 /*
