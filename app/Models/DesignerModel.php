@@ -22,7 +22,10 @@ class DesignerModel extends Model
         'username',
         'alamat',
         'no_hp',
+        'user_status',
+        'last_logout',
         'tipe',
+        'avatar',
     ];
 
     // Dates
@@ -62,5 +65,36 @@ class DesignerModel extends Model
         $result = $query->getResultArray(); // Get the result as an array
 
         return $result;
+    }
+
+    public function update_status($status)
+    {
+        $currentSession = session()->get('id'); // Access session data through the session() helper
+
+        if ($currentSession) {
+            $data = [
+                'user_status' => $status,
+            ];
+
+            $this->db->table('designer')
+                ->where('id', $currentSession)
+                ->update($data);
+        }
+    }
+
+    public function logoutUser($status, $date)
+    {
+        $currentSession = session()->get('id'); // Access session data through the session() helper
+
+        if ($currentSession) {
+            $data = [
+                'user_status' => $status,
+                'last_logout' => $date
+            ];
+
+            $this->db->table('designer')
+                ->where('id', $currentSession)
+                ->update($data);
+        }
     }
 }

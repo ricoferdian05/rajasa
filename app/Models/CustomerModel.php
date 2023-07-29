@@ -81,4 +81,20 @@ class CustomerModel extends Model
                 ->update($data);
         }
     }
+
+
+    public function getIndividual($id)
+    {
+        $db = \Config\Database::connect(); // Connect to the database
+
+        $builder = $db->table('customer'); // Create a query builder for the 'user' table
+
+        $builder->select('*')
+            ->where('id', $id);
+
+        $query = $builder->get(); // Execute the query
+        $result = $query->getResultArray(); // Get the result as an array
+
+        return $result;
+    }
 }

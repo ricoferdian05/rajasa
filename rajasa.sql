@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 29, 2023 at 09:30 AM
+-- Generation Time: Jul 29, 2023 at 10:40 AM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -62,17 +62,20 @@ CREATE TABLE `customer` (
   `kode_pos` varchar(255) NOT NULL,
   `no_hp` varchar(255) NOT NULL,
   `avatar` varchar(255) NOT NULL,
-  `tipe` int(11) NOT NULL
+  `tipe` int(11) NOT NULL,
+  `user_status` varchar(250) DEFAULT NULL,
+  `last_logout` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id`, `email`, `password`, `nama`, `username`, `alamat`, `kode_pos`, `no_hp`, `avatar`, `tipe`) VALUES
-('cust-Customer-6445bb69477750.70474596', 'customer@gmail.com', '$2y$10$.weayeL0lLO8kaOApTdRWOKAaGwuZxCoHrY9gwVsm/8gPhFt.oWIu', 'Customer', 'customer', 'Customer Address', '12345', '081234567890', 'asset/customer/akun/1688339934_9ab35981ab0351946494.png', 3),
-('cust-Rico-6445ccc362a659.86780964', 'ferdian@gmail.com', '$2y$10$TnrCeSGi62QdEKwbW3Ubyubw.9.KtQvZyVKfcIOzJiwCeU563GSp2', 'Rico Ferdian Maulana', 'ferdian', '', '', '', 'asset/customer/akun/avatar-customer.png', 3),
-('cust-Toko-6445e38e1d3d84.38256766', 'tokoberkah@gmail.com', '$2y$10$aXsUv0BLuw5YZy1L27Nmdeu0glsnaJBCXNomt93V3qAMFGJUIAy0S', 'Toko Berkah', 'tokoberkah', '', '', '', 'asset/customer/akun/avatar-customer.png', 3);
+INSERT INTO `customer` (`id`, `email`, `password`, `nama`, `username`, `alamat`, `kode_pos`, `no_hp`, `avatar`, `tipe`, `user_status`, `last_logout`) VALUES
+('cust-abi-64bfa7a73089f8.49507005', 'm.abizard1123@gmail.com', '$2y$10$7p/ZV5Jd0pN91jRNyZfnEOCJSrOkMHuWLiyG7c9XhpVQKQxoA201C', 'Muhammad Abizard', 'abi', 'Taman Sari Persada, Cluster Lotus B4/12A', '16166', '081386397855', 'asset/customer/akun/1690619185_8f88901fe0cb3a9176a8.jpg', 3, 'active', '7/29/2023, 2:44:43 PM'),
+('cust-Customer-6445bb69477750.70474596', 'customer@gmail.com', '$2y$10$DSVhBRR/uijvt.eshHFxUud0EnsWFm2yuLGhYSaV4.VnAZ9pmKq3O', 'Customer', 'customer', 'Customer Address', '12345', '081234567890', 'asset/customer/akun/1690282256_87c741263cfb0cecd994.png', 3, 'deactive', ''),
+('cust-Rico-6445ccc362a659.86780964', 'ferdian@gmail.com', '$2y$10$TnrCeSGi62QdEKwbW3Ubyubw.9.KtQvZyVKfcIOzJiwCeU563GSp2', 'Rico Ferdian Maulana', 'ferdian', '', '', '', 'asset/customer/akun/avatar-customer.png', 3, 'deactive', ''),
+('cust-Toko-6445e38e1d3d84.38256766', 'tokoberkah@gmail.com', '$2y$10$aXsUv0BLuw5YZy1L27Nmdeu0glsnaJBCXNomt93V3qAMFGJUIAy0S', 'Toko Berkah', 'tokoberkah', '', '', '', 'asset/customer/akun/avatar-customer.png', 3, 'deactive', '');
 
 -- --------------------------------------------------------
 
@@ -88,17 +91,19 @@ CREATE TABLE `designer` (
   `username` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `no_hp` varchar(255) NOT NULL,
-  `avatar` varchar(255) NOT NULL,
-  `tipe` int(11) NOT NULL
+  `avatar` varchar(250) DEFAULT NULL,
+  `tipe` int(11) NOT NULL,
+  `user_status` varchar(250) DEFAULT NULL,
+  `last_logout` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `designer`
 --
 
-INSERT INTO `designer` (`id`, `email`, `password`, `nama`, `username`, `alamat`, `no_hp`, `avatar`, `tipe`) VALUES
-('dsg-Designer-6445bc9c696ed4.41377364', 'designer@gmail.com', '$2y$10$95Olme0Y/DfHSIgrpKGMF.lzg4XcudWFwUNpPUbbzwVgYt5G0SQaW', 'Designer', 'designer', 'Designer Address', '081234567890', 'asset/designer/akun/avatar-designer.png', 2),
-('dsg-Designer2-64ab6aa0010b85.62524177', 'designer2@gmail.com', '$2y$10$PikLHZv.1VXVs71UPKQLTOuLABgYc/x6E.eMcJQYDgzpESizbqhxW', 'Designer2', 'designer2', 'Designer 2 Address', '081234567890', '', 2);
+INSERT INTO `designer` (`id`, `email`, `password`, `nama`, `username`, `alamat`, `no_hp`, `avatar`, `tipe`, `user_status`, `last_logout`) VALUES
+('dsg-Designer-6445bc9c696ed4.41377364', 'designer@gmail.com', '$2y$10$7p/ZV5Jd0pN91jRNyZfnEOCJSrOkMHuWLiyG7c9XhpVQKQxoA201C', 'Muhammad Joko', 'designer', 'Designer Address', '081234567890', 'asset/customer/akun/1688339934_9ab35981ab0351946494.png', 2, 'active', '7/29/2023, 3:34:29 PM'),
+('dsg-Designer2-64ab6aa0010b85.62524177', 'designer2@gmail.com', '$2y$10$PikLHZv.1VXVs71UPKQLTOuLABgYc/x6E.eMcJQYDgzpESizbqhxW', 'Ahmad Brazi', 'designer2', 'Designer 2 Address', '081234567890', 'asset/customer/akun/1688339934_9ab35981ab0351946494.png', 2, 'deactive', '6/20/2021, 10:53:44 PM');
 
 -- --------------------------------------------------------
 
@@ -121,7 +126,6 @@ INSERT INTO `kategori` (`id`, `kategori`) VALUES
 ('kat-Buku-64908df7ead8d9.94071979', 'Buku'),
 ('kat-Kalender-64908dd5d877b8.48393563', 'Kalender'),
 ('kat-Kaos-64908e92092b32.23026208', 'Kaos'),
-('kat-Lainnya-64c3aa1aa7eb00.63936259', 'Lainnya'),
 ('kat-Pouchbag-64908ea34f21b9.88730624', 'Pouchbag'),
 ('kat-Totebag-64908e98d5dee2.83869174', 'Totebag'),
 ('kat-Undangan-64908e74618fc5.80039426', 'Undangan');
@@ -153,10 +157,9 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id`, `judul`, `harga`, `deskripsi`, `gambar1`, `gambar2`, `gambar3`, `status`, `rating`, `terjual`, `created`, `idKategori`, `idDesigner`) VALUES
-('prod-Apron-64999eae251fc5.13765249', 'Apron Dapur', 120000.00, '<p>Apron Dapur</p>\r\n<p>2023</p>', 'asset/produk/apron/prod-Apron-64999eae251fc5.13765249-1.png', 'asset/produk/Apron/1690300268_d2e2f4e5f1d50864ded1.jpeg', 'asset/produk/Apron/1690308498_5e8edeef5038fa5f0ad6.jpeg', 'Ready Stock', 3.8, 15, '2023-07-25 15:49:10', 'kat-Apron-64908e8a213b54.28616235', 'dsg-Designer-6445bc9c696ed4.41377364'),
+('prod-Apron-64999eae251fc5.13765249', 'Apron Dapur', 120000.00, 'Apron Dapur', 'asset/produk/apron/prod-Apron-64999eae251fc5.13765249-1.png', '', '', 'Ready Stock', 3.8, 15, '2023-06-23 00:00:00', 'kat-Apron-64908e8a213b54.28616235', 'dsg-Designer-6445bc9c696ed4.41377364'),
 ('prod-Buku-649984547eb7a9.91873158', 'Buku Learn & Play', 80000.00, 'Buku Learn & Play', 'asset/produk/buku/prod-Buku-649984547eb7a9.91873158-1.png', '', '', 'Ready Stock', 4.0, 20, '2023-06-21 00:00:00', 'kat-Buku-64908df7ead8d9.94071979', 'dsg-Designer-6445bc9c696ed4.41377364'),
-('prod-Kalender-64908ea34f20f5.08789580', 'Kalender 2023', 75000.00, 'Dicetak di Kertas Art Carton 210 Gram<br>\r\nUkuran 15 x 21cm<br>\r\nPilih Isi Halaman<br>\r\nFinishing Spiral Kawat Putih<br>\r\nHardcover Hitam<br>\r\nCetak Mesin Laser Dua Sisi', 'asset/produk/Kalender/prod-Kalender-64908ea34f20f5.08789580-1.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-2.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-3.png', 'Ready Stock', 4.2, 100, '2023-06-26 00:00:00', 'kat-Kalender-64908dd5d877b8.48393563', 'dsg-Designer-6445bc9c696ed4.41377364'),
-('prod-xxx-64908ea34f20f5.08789580', 'Kalender 2023', 75000.00, 'Dicetak di Kertas Art Carton 210 Gram<br>\r\nUkuran 15 x 21cm<br>\r\nPilih Isi Halaman<br>\r\nFinishing Spiral Kawat Putih<br>\r\nHardcover Hitam<br>\r\nCetak Mesin Laser Dua Sisi', 'asset/produk/Kalender/prod-Kalender-64908ea34f20f5.08789580-1.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-2.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-3.png', 'Ready Stock', 4.2, 100, '2023-06-26 00:00:00', 'kat-Lainnya-64c3aa1aa7eb00.63936259', 'dsg-Designer-6445bc9c696ed4.41377364');
+('prod-Kalender-64908ea34f20f5.08789580', 'Kalender 2023', 75000.00, 'Dicetak di Kertas Art Carton 210 Gram<br>\r\nUkuran 15 x 21cm<br>\r\nPilih Isi Halaman<br>\r\nFinishing Spiral Kawat Putih<br>\r\nHardcover Hitam<br>\r\nCetak Mesin Laser Dua Sisi', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-1.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-2.png', 'asset/produk/kalender/prod-Kalender-64908ea34f20f5.08789580-3.png', 'Ready Stock', 4.2, 100, '2023-06-26 00:00:00', 'kat-Kalender-64908dd5d877b8.48393563', 'dsg-Designer-6445bc9c696ed4.41377364');
 
 -- --------------------------------------------------------
 
@@ -211,6 +214,31 @@ INSERT INTO `transaksi` (`id`, `tanggal_transaksi`, `tanggal_pengiriman`, `total
 ('transaksi-64ab95d22f2242.78352978', '2022-03-07', '2022-03-08', 360000.00, 4, 'Selesai', 'Selesai', 'prod-Buku-649984547eb7a9.91873158', 'kat-Buku-64908df7ead8d9.94071979', 'cust-Customer-6445bb69477750.70474596', 'dsg-Designer2-64ab6aa0010b85.62524177'),
 ('transaksi-64acd4844923d9.08558357', '2023-07-11', '0000-00-00', 750000.00, 10, 'On Going', 'Selesai', 'prod-Kalender-64908ea34f20f5.08789580', 'kat-Kalender-64908dd5d877b8.48393563', 'cust-Customer-6445bb69477750.70474596', 'dsg-Designer-6445bc9c696ed4.41377364');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_messages`
+--
+
+CREATE TABLE `user_messages` (
+  `id` int(11) NOT NULL,
+  `time` datetime(6) NOT NULL,
+  `sender_message_id` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `receiver_message_id` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `message` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Dumping data for table `user_messages`
+--
+
+INSERT INTO `user_messages` (`id`, `time`, `sender_message_id`, `receiver_message_id`, `message`) VALUES
+(1, '2023-07-29 15:39:27.000000', 'dsg-Designer-6445bc9c696ed4.41377364', 'cust-abi-64bfa7a73089f8.49507005', 'halo kak'),
+(2, '2023-07-29 15:39:40.000000', 'dsg-Designer-6445bc9c696ed4.41377364', 'cust-abi-64bfa7a73089f8.49507005', 'mau order desain ya?'),
+(3, '2023-07-29 15:39:46.000000', 'cust-abi-64bfa7a73089f8.49507005', 'dsg-Designer-6445bc9c696ed4.41377364', 'iya kak mau order desain nih'),
+(4, '2023-07-29 15:39:57.000000', 'dsg-Designer-6445bc9c696ed4.41377364', 'cust-abi-64bfa7a73089f8.49507005', 'kamu mau desain seperti apa?'),
+(5, '2023-07-29 15:40:03.000000', 'cust-abi-64bfa7a73089f8.49507005', 'dsg-Designer-6445bc9c696ed4.41377364', 'yang bagus aja kak');
+
 --
 -- Indexes for dumped tables
 --
@@ -219,15 +247,13 @@ INSERT INTO `transaksi` (`id`, `tanggal_transaksi`, `tanggal_pengiriman`, `total
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `admin_ibfk_1` (`tipe`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tipe` (`tipe`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `designer`
@@ -247,8 +273,8 @@ ALTER TABLE `kategori`
 --
 ALTER TABLE `produk`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `produk_ibfk_2` (`idDesigner`),
-  ADD KEY `produk_ibfk_1` (`idKategori`);
+  ADD KEY `fkDesigner` (`idDesigner`),
+  ADD KEY `fkKategori` (`idKategori`);
 
 --
 -- Indexes for table `tipe_akun`
@@ -267,6 +293,12 @@ ALTER TABLE `transaksi`
   ADD KEY `idProduk` (`idProduk`);
 
 --
+-- Indexes for table `user_messages`
+--
+ALTER TABLE `user_messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -277,20 +309,14 @@ ALTER TABLE `tipe_akun`
   MODIFY `id_tipe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `user_messages`
+--
+ALTER TABLE `user_messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `admin`
---
-ALTER TABLE `admin`
-  ADD CONSTRAINT `admin_ibfk_1` FOREIGN KEY (`tipe`) REFERENCES `tipe_akun` (`id_tipe`) ON DELETE NO ACTION;
-
---
--- Constraints for table `customer`
---
-ALTER TABLE `customer`
-  ADD CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`tipe`) REFERENCES `tipe_akun` (`id_tipe`);
 
 --
 -- Constraints for table `designer`
@@ -302,8 +328,8 @@ ALTER TABLE `designer`
 -- Constraints for table `produk`
 --
 ALTER TABLE `produk`
-  ADD CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`idKategori`) REFERENCES `kategori` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `produk_ibfk_2` FOREIGN KEY (`idDesigner`) REFERENCES `designer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fkDesigner` FOREIGN KEY (`idDesigner`) REFERENCES `designer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fkKategori` FOREIGN KEY (`idKategori`) REFERENCES `kategori` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `transaksi`

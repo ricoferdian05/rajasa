@@ -11,6 +11,7 @@ class Chat extends BaseController
     private $builderDesainer;
     private $uri;
     private $builderAkun;
+    private $tipe_login;
 
     public function __construct()
     {
@@ -20,6 +21,8 @@ class Chat extends BaseController
         $this->builderKategori = new \App\Models\KategoriModel();
         $this->uri = service('uri');
         $this->builderAkun = new \App\Models\CustomerModel();
+
+        $this->tipe_login =  session()->get('tipe');
     }
 
     public function index()
@@ -28,7 +31,24 @@ class Chat extends BaseController
         $queryKategori = $this->builderKategori;
         $kategori = $queryKategori->get()->getResult();
 
-        $akun = $this->builderAkun->find(session()->get('id'));
+
+        // $tipe_login = session()->get('tipe');
+
+        // Print or process the session data as needed
+        // print_r($sessionData);
+
+        if ($this->tipe_login === '2') {
+            $akun = $this->builderDesainer->find(session()->get('id'));
+        } else {
+            $akun = $this->builderAkun->find(session()->get('id'));
+        }
+
+        // var_dump($akun);
+        // die();
+
+
+
+
         $data = [
             'title' => 'Rajasa Finishing',
             'keyword'  => null,
@@ -36,22 +56,29 @@ class Chat extends BaseController
             'kategori' => $kategori,
         ];
 
-
-
         return view('customer/message', $data);
     }
 
     public function allUser()
     {
 
-        // DESAINER
+
         $queryDesainer = $this->builderDesainer;
-        $all_designer = $queryDesainer->get()->getResultArray();
+        $queryCustomer = $this->builderAkun;
+
+
+        if ($this->tipe_login === '2') {
+            // All Designer because login as designer
+            $all_user = $queryCustomer->get()->getResultArray();
+        } else {
+            // All Designer because login as customer
+            $all_user = $queryDesainer->get()->getResultArray();
+        }
 
         // Chat
         $queryChat = $this->builderMessage;
 
-        $data['data'] = $all_designer;
+        $data['data'] = $all_user;
 
         $data['last_msg'] = array();
         helper('url');
@@ -110,11 +137,22 @@ class Chat extends BaseController
     public function getIndividual($id)
     {
         // $request = \Config\Services::request();
-        // DESAINER
-        $queryDesainer = $this->builderDesainer;
-        // $all_designer = $queryDesainer->get()->getResultArray();
 
-        $returnVal = $queryDesainer->getIndividual($id);
+        $queryDesainer = $this->builderDesainer;
+        $queryCustomer = $this->builderAkun;
+
+
+        if ($this->tipe_login === '2') {
+            // Find Designer because login as designer
+            $returnVal = $queryCustomer->getIndividual($id);
+        } else {
+            // Find Designer because login as customer
+            $returnVal = $queryDesainer->getIndividual($id);
+        }
+
+
+
+        // $returnVal = $queryDesainer->getIndividual($id);
         // print_r(json_encode($returnVal, true));
 
         return $this->response->setJSON($returnVal);

@@ -8,12 +8,14 @@ class Login extends BaseController
 
     private $uri;
     private $builderAkun;
+    private $builderDesigner;
 
     public function __construct()
     {
 
         $this->uri = service('uri');
         $this->builderAkun = new \App\Models\CustomerModel();
+        $this->builderDesigner = new \App\Models\DesignerModel();
     }
 
     public function index()
@@ -77,6 +79,10 @@ class Login extends BaseController
                     'isLogin'   => true,
                 ];
                 $session->set($ses_data);
+
+                $queryAkun = $this->builderDesigner;
+                $queryAkun->update_status('active');
+
                 return redirect()->to(base_url('designer/dashboard'));
             } else {
                 $session->setFlashdata('error', 'Email dan Password Salah!');
@@ -116,11 +122,16 @@ class Login extends BaseController
         // var_dump($formattedDate);
         // die();
 
+
+
         if (session()->get('tipe') == 3) {
 
             $queryAkun = $this->builderAkun;
-            $queryAkun->logoutUser('deactive', $formattedDate);
+        } else if (session()->get('tipe') == 2) {
+            $queryAkun = $this->builderDesigner;
         }
+
+        $queryAkun->logoutUser('deactive', $formattedDate);
 
 
         $session = session();

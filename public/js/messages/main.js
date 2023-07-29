@@ -124,7 +124,7 @@ $(document).ready(function () {
     var user_name = `${data[0]["nama"]} (${data[0]["username"]})`;
     var name = `${data[0]["nama"]}`;
     var status = data[0]["user_status"];
-    var avtar = `../asset/designer/avatar/default-designer.png`;
+    var avtar = `${data[0]["avatar"]}`;
     var last_seen = data[0]["last_logout"];
     offlineOnlineIndicator(status, last_seen);
     $("#name_last_seen h6").html(user_name);

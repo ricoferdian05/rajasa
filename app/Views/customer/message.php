@@ -1,5 +1,9 @@
 <?php
 
+$cari_saha = session()->get('tipe') === '3' ? 'Designer' : 'Customer';
+
+
+
 // if (isset($_SESSION)) {
 //     $image = $_SESSION['image'];
 //     $name = $data[0]['user_fname'] . " " . $data[0]['user_lname'];
@@ -12,10 +16,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <link rel="stylesheet" type="text/css" href="<?= base_url('css/messages/messagestyle.css') ?>">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
@@ -47,8 +52,7 @@
                 </div>
             </div> -->
             <div id="search_box_container" class="py-3">
-                <input type="text" name="txt_search" class="form-control" autocomplete="off" placeholder="Cari Desainer"
-                    id="search">
+                <input type="text" name="txt_search" class="form-control" autocomplete="off" placeholder="Cari <?= $cari_saha ?>" id="search">
             </div>
             <hr />
             <div id="user_list" class="py-3">
@@ -88,8 +92,7 @@
                 <div id="messageBar" class="py-4 px-4">
                     <div id="textBox_attachment_emoji_container">
                         <div id="text_box_message">
-                            <input type="text" maxlength="200" name="txt_message" id="messageText" class="form-control"
-                                placeholder="Type your message">
+                            <input type="text" maxlength="200" name="txt_message" id="messageText" class="form-control" placeholder="Type your message">
                         </div>
                         <div id="text_counter">
                             <p id="count_text" class="m-0 p-0"></p>
