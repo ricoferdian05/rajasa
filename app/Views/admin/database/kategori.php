@@ -3,7 +3,7 @@
     <div class="col content ms-2 mt-3 ps-3 pt-3 pb-3 rounded-3 shadow">
         <div class="row mb-3">
             <div class="col">
-                <button class="btn-tambah shadow rounded-2" onclick="tambah('<?= base_url('admin/database/kategori/tambah') ?>')">Tambah Kategori</button>
+                <button id="btn-tambah" class="btn-tambah shadow rounded-2">Tambah Kategori</button>
             </div>
         </div>
         <div class="row mt-3">
@@ -18,6 +18,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                         <?php
                         if (count($kategori) > 0) {
                             $nomor = 0;
@@ -27,7 +28,6 @@
                                     <td><?= $kategori[$i]['id'] ?></td>
                                     <td><?= $kategori[$i]['kategori'] ?></td>
                                     <td>
-
                                         <button class="btn-hapus" onclick="hapus('<?= base_url('admin/database/kategori/hapus/' . $kategori[$i]['id']); ?>')">Hapus</button>
                                     </td>
                                 </tr>
@@ -57,6 +57,20 @@
         Swal.fire({
             title: 'Gagal',
             text: <?= json_encode(session()->getFlashdata('delete_error')) ?>,
+            icon: 'error',
+        });
+    }
+
+    if (<?= json_encode(session()->getFlashdata('add_success')) ?>) {
+        Swal.fire({
+            title: 'Sukses',
+            text: <?= json_encode(session()->getFlashdata('add_success')) ?>,
+            icon: 'success',
+        });
+    } else if (<?= json_encode(session()->getFlashdata('add_error')) ?>) {
+        Swal.fire({
+            title: 'Gagal',
+            text: <?= json_encode(session()->getFlashdata('add_error')) ?>,
             icon: 'error',
         });
     }
@@ -94,23 +108,23 @@
     //     });
     // }
 
-    async function tambah(link) {
-        Swal.fire({
-            title: 'Tambah Kategori',
-            input: 'text',
-            inputLabel: 'Masukkan Nama Kategori',
-            inputPlaceholder: 'Masukkan Nama Kategori',
-            showCancelButton: true,
-            confirmButtonText: 'Tambah',
-        }).then(function(result) {
-            $.ajax({
-                type: 'POST',
-                url: '<?= base_url('admin/database/kategori/tambah') ?>',
-                data: {
-                    'kategori': result.value
-                },
-            });
-            console.log(result.value);
-        });
-    }
+    // async function tambah(link) {
+    //     Swal.fire({
+    //         title: 'Tambah Kategori',
+    //         input: 'text',
+    //         inputLabel: 'Masukkan Nama Kategori',
+    //         inputPlaceholder: 'Masukkan Nama Kategori',
+    //         showCancelButton: true,
+    //         confirmButtonText: 'Tambah',
+    //     }).then(function(result) {
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: '<?= base_url('admin/database/kategori/tambah') ?>',
+    //             data: {
+    //                 'kategori': result.value
+    //             },
+    //         });
+    //         console.log(result.value);
+    //     });
+    // }
 </script>

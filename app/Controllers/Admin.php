@@ -687,6 +687,52 @@ class Admin extends BaseController
             session()->setFlashdata('delete_error', 'Kategori Gagal Dihapus!!!');
         }
         return redirect()->back();
+    }
+
+    public function tambahKategori()
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        $kategoriBaru = $this->request->getVar('kategori');
+
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->findAll();
+
+        // CARI KATEGORI
+        $cekKategori = true;
+        foreach ($kategori as $kategori) {
+            if (strcasecmp($kategoriBaru, $kategori['kategori']) === 0) {
+                $cekKategori = false;
+                session()->setFlashdata('add_error', 'Kategori Sudah Ada!!!');
+            }
+        }
+
+        if ($cekKategori) {
+            $kategoriBaruLower = strtolower($kategoriBaru);
+            $kategoriBaru = ucfirst($kategoriBaruLower);
+
+            // BUAT FOLDER PRODUK BARU
+            if (!is_dir('asset/produk/' . $kategoriBaruLower)) {
+                mkdir('asset/produk/' . $kategoriBaruLower, 0777, true);
+            }
+
+            // UNIQID KATEGORI BARU
+            $idKategoriBaru = uniqid('kat-' . $kategoriBaru . '-', true);
+
+            $dataBaru = [
+                'id' => $idKategoriBaru,
+                'kategori' => $kategoriBaru
+            ];
+
+            if ($queryKategori->insert($dataBaru) === 0) {
+                session()->setFlashdata('add_success', 'Kategori Berhasil Ditambahkan!!!');
+            } else {
+                session()->setFlashdata('add_error', 'Kategori Gagal Ditambahkan!!!');
+            }
+        }
 
         // if (!is_dir('anjing')) {
         //     mkdir('anjing', 0777, true);
@@ -694,9 +740,7 @@ class Admin extends BaseController
         //     $html = file_get_contents($url);
         //     file_put_contents('anjing/home.html', $html);
         // }
-    }
 
-    public function tambahKategori()
-    {
+        return redirect()->back();
     }
 }

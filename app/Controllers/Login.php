@@ -4,15 +4,12 @@ namespace App\Controllers;
 
 class Login extends BaseController
 {
-
-
     private $uri;
     private $builderAkun;
     private $builderDesigner;
 
     public function __construct()
     {
-
         $this->uri = service('uri');
         $this->builderAkun = new \App\Models\CustomerModel();
         $this->builderDesigner = new \App\Models\DesignerModel();
@@ -29,30 +26,17 @@ class Login extends BaseController
 
     public function auth()
     {
-
-
         $admin      = new \App\Models\AdminModel();
         $designer   = new \App\Models\DesignerModel();
         $customer   = new \App\Models\CustomerModel();
-
-
 
         $session = session();
         $email      = $this->request->getVar('email');
         $password   = $this->request->getVar('password');
 
-        // var_dump($admin->where('email', $email)->first());
-        // die();
-
-
         $dataAdmin      = $admin->where('email', $email)->first();
         $dataDesigner   = $designer->where('email', $email)->first();
         $dataCustomer   = $customer->where('email', $email)->first();
-
-
-
-
-
 
         if ($dataAdmin) {
             $pass = $dataAdmin['password'];
@@ -115,24 +99,17 @@ class Login extends BaseController
 
     public function logout()
     {
-
         date_default_timezone_set('Asia/Jakarta');
         $currentTimestamp = time(); // Get the current timestamp
         $formattedDate = date('n/j/Y, g:i:s A', $currentTimestamp);
-        // var_dump($formattedDate);
-        // die();
-
-
 
         if (session()->get('tipe') == 3) {
-
             $queryAkun = $this->builderAkun;
+            $queryAkun->logoutUser('deactive', $formattedDate);
         } else if (session()->get('tipe') == 2) {
             $queryAkun = $this->builderDesigner;
+            $queryAkun->logoutUser('deactive', $formattedDate);
         }
-
-        $queryAkun->logoutUser('deactive', $formattedDate);
-
 
         $session = session();
         $session->destroy();

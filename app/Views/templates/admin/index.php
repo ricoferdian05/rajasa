@@ -41,6 +41,29 @@
 
 <body>
 
+    <!-- Modal -->
+    <div id="form-tambah-kategori" class="modal-custom position-relative">
+        <div class="position-absolute top-0 start-50 translate-middle">
+            <div class="row modal-content rounded-3 shadow mb-3">
+                <div class="col">
+                    <form action="<?= base_url('admin/database/kategori/tambah') ?>" method="post">
+                        <div id="btn-close-modal" class="btn-close rounded-3 me-3 mt-3"></div>
+                        <h3 class="text-center mt-3">Tambah Kategori</h3>
+                        <hr>
+                        <div class="row mb-3">
+                            <label for="inputKategori" class="col-sm-4 col-form-label required">Nama Kategori</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="kategori" id="inputKategori" required placeholder="Masukkan Nama Kategori">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-submit rounded-2 shadow">Tambah</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <?= $this->renderSection('content'); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
@@ -58,6 +81,18 @@
                 icon: 'error',
             });
         }
+
+        $('#btn-tambah').click(function() {
+            $('#form-tambah-kategori').fadeIn();
+            $('.container').addClass('blur');
+        });
+
+        $('#btn-close-modal').click(function() {
+            $('#form-tambah-kategori').fadeOut();
+            setTimeout(function() {
+                $('.container').removeClass('blur')
+            }, 300);
+        });
     </script>
 </body>
 

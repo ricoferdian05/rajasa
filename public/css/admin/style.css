@@ -6,6 +6,36 @@ body {
     background-color: #fff;
 }
 
+.blur {
+    transition: all .3s;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    z-index: -1;
+}
+
+.modal-custom {
+    z-index: 9999;
+    display: none;
+}
+
+.modal-content {
+    background-color: #fff;
+    width: 40em;
+    margin-top: 40em;
+    padding: 3em;
+}
+
+.btn-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all .3s;
+}
+
+.btn-close:hover {
+    cursor: pointer;
+}
+
 /* ANCHOR ADMIN */
 .search-default:hover {
     border: #73a9ad solid 1px;
@@ -302,6 +332,10 @@ input[type]:focus {
     border: #73a9ad solid 1px;
 }
 
+input[type]::placeholder {
+    color: #bfbfbf;
+}
+
 .select-transaksi {
     color: #707070;
     font-weight: bolder;
@@ -421,7 +455,7 @@ label.required::after {
     background-color: #73a9ad;
     color: #fff;
     padding: 7px 10px;
-
+    border: none;
     transition: all .3s;
 }
 

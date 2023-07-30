@@ -168,7 +168,10 @@ class Customer extends BaseController
 
             // DELETE FILE LAMA
             $oldAvatar = $akun['avatar'];
-            if ($oldAvatar !== 'avatar-customer.png') {
+            if (
+                $oldAvatar !== 'asset/customer/akun/avatar-customer.png' &&
+                file_exists($oldAvatar)
+            ) {
                 unlink($oldAvatar);
             }
         }
