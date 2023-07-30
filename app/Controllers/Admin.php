@@ -654,15 +654,21 @@ class Admin extends BaseController
         // MENGUBAH CHILD KATEGORI KE KATEGORI LAINNYA
         // PRODUK
         $queryProduk = $this->builderProduk;
-        $queryProduk->set('idKategori', $kategoriLainnya['id']);
-        $queryProduk->where('idKategori', $id);
-        $queryProduk->update();
+        $produk = $queryProduk->where('idKategori', $id)->findAll();
+        if (count($produk) !== 0) {
+            $queryProduk->set('idKategori', $kategoriLainnya['id']);
+            $queryProduk->where('idKategori', $id);
+            $queryProduk->update();
+        }
 
         // TRANSAKSI
         $queryTransaksi = $this->builderTransaksi;
-        $queryTransaksi->set('idKategori', $kategoriLainnya['id']);
-        $queryTransaksi->where('idKategori', $id);
-        $queryTransaksi->update();
+        $transaksi = $queryTransaksi->where('idKategori', $id)->findAll();
+        if (count($transaksi) !== 0) {
+            $queryTransaksi->set('idKategori', $kategoriLainnya['id']);
+            $queryTransaksi->where('idKategori', $id);
+            $queryTransaksi->update();
+        }
 
         // MENGHAPUS SEMUA DATA KATEGORI
         $queryKategori = $this->builderKategori;

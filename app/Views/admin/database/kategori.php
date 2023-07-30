@@ -88,43 +88,4 @@
             }
         })
     }
-
-    // async function tambah(link) {
-    //     Swal.fire({
-    //         title: 'Tambah Kategori',
-    //         input: 'text',
-    //         inputLabel: 'Masukkan Nama Kategori',
-    //         inputPlaceholder: 'Masukkan Nama Kategori',
-    //         showCancelButton: true,
-    //         confirmButtonText: 'Tambah',
-    //     }).then((result) => {
-    //         if (result.isConfirmed) {
-    //             Swal.fire({
-    //                 title: 'Kategori Baru',
-    //                 text: result.value,
-    //             });
-    //             // console.log(typeof result.value);
-    //         }
-    //     });
-    // }
-
-    // async function tambah(link) {
-    //     Swal.fire({
-    //         title: 'Tambah Kategori',
-    //         input: 'text',
-    //         inputLabel: 'Masukkan Nama Kategori',
-    //         inputPlaceholder: 'Masukkan Nama Kategori',
-    //         showCancelButton: true,
-    //         confirmButtonText: 'Tambah',
-    //     }).then(function(result) {
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: '<?= base_url('admin/database/kategori/tambah') ?>',
-    //             data: {
-    //                 'kategori': result.value
-    //             },
-    //         });
-    //         console.log(result.value);
-    //     });
-    // }
 </script>

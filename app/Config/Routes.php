@@ -100,8 +100,8 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->post('database/kategori/tambah', 'Admin::tambahKategori');
 
     $routes->get('database/(:any)', 'Admin::database/$1');
-    $routes->get('database/(:any)/(:any)', 'Admin::database/$1/$2');
-    $routes->get('database/(:any)/(:any)/(:any)', 'Admin::database/$1/$2/$3');
+    // $routes->get('database/(:any)/(:any)', 'Admin::database/$1/$2');
+    // $routes->get('database/(:any)/(:any)/(:any)', 'Admin::database/$1/$2/$3');
 
     // $routes->get('akun', 'Customer::akun');
     // $routes->post('akun/save', 'Customer::saveAkun');
