@@ -21,7 +21,7 @@ body {
 .modal-content {
     background-color: #fff;
     width: 40em;
-    margin-top: 40em;
+    margin-top: 70em;
     padding: 3em;
 }
 
@@ -467,4 +467,44 @@ label.required::after {
 .btn-tambah:active {
     background-color: #4b7d81;
     border: none;
+}
+
+/* ANCHOR DATABASE ADMIN */
+.table-avatar {
+    width: 2.5em;
+}
+
+.btn-detail {
+    text-decoration: none;
+    color: #73a9ad;
+    font-size: 8px;
+    font-weight: bold;
+    border: #73a9ad solid 1px;
+    background-color: #fff;
+    padding: 5.5px 10px;
+    transition: all .3s;
+    border-radius: 4px;
+}
+
+.btn-detail:hover {
+    color: #fff;
+    border: transparent solid 1px;
+    background-color: #73a9ad;
+    box-shadow: 0px 2px 2px 0px #4D4D4D;
+}
+
+.btn-detail:active {
+    box-shadow: none;
+}
+
+.btn-hapus:disabled {
+    opacity: .5;
+}
+
+.avatar-form {
+    width: 7em;
+}
+
+.input-avatar {
+    width: 20em;
 }

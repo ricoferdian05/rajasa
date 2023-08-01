@@ -61,7 +61,7 @@
                         <div class="row text-center mt-2 mb-3 ms-3 me-3">
                             <ul class="list-group list-group-horizontal">
                                 <div class="col">
-                                    <a href="">
+                                    <a href="<?= base_url('admin/database/kategori') ?>">
                                         <li class="list-group-item navbar-transaksi
                                     <?php if ($segment3 === 'kategori') {
                                         echo 'navbar-transaksi-active';
@@ -71,7 +71,7 @@
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a href="">
+                                    <a href="<?= base_url('admin/database/admin') ?>">
                                         <li class="list-group-item navbar-transaksi
                                     <?php if ($segment3 === 'admin') {
                                         echo 'navbar-transaksi-active';
@@ -81,7 +81,7 @@
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a href="">
+                                    <a href="<?= base_url('admin/database/designer') ?>">
                                         <li class="list-group-item navbar-transaksi
                                     <?php if ($segment3 === 'designer') {
                                         echo 'navbar-transaksi-active';
@@ -91,7 +91,7 @@
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a href="">
+                                    <a href="<?= base_url('admin/database/customer') ?>">
                                         <li class="list-group-item navbar-transaksi
                                     <?php if ($segment3 === 'customer') {
                                         echo 'navbar-transaksi-active';
@@ -101,7 +101,7 @@
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a href="">
+                                    <a href="<?= base_url('admin/database/tipe') ?>">
                                         <li class="list-group-item navbar-transaksi
                                     <?php if ($segment3 === 'tipe') {
                                         echo 'navbar-transaksi-active';
@@ -117,6 +117,18 @@
             <?php
                 if ($segment3 === 'kategori') {
                     echo $this->include('admin/database/kategori');
+                } else if ($segment3 === 'admin') {
+                    if ($segment4 === 'detail') {
+                        echo $this->include('admin/database/admin/detail');
+                    } else {
+                        echo $this->include('admin/database/admin');
+                    }
+                } else if ($segment3 === 'designer') {
+                    echo $this->include('admin/database/designer');
+                } else if ($segment3 === 'customer') {
+                    echo $this->include('admin/database/customer');
+                } else if ($segment3 === 'tipe') {
+                    echo $this->include('admin/database/tipe');
                 }
             } ?>
         </div>

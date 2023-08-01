@@ -99,6 +99,11 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('database/kategori/hapus/(:any)', 'Admin::deleteKategori/$1');
     $routes->post('database/kategori/tambah', 'Admin::tambahKategori');
 
+    $routes->get('database/admin/hapus/(:any)', 'Admin::hapusAdmin/$1');
+    $routes->post('database/admin/tambah', 'Admin::tambahAdmin');
+    $routes->get('database/admin/detail/(:any)', 'Admin::database/$1');
+    $routes->post('database/admin/detail/(:any)', 'Admin::detailAdmin/$1');
+
     $routes->get('database/(:any)', 'Admin::database/$1');
     // $routes->get('database/(:any)/(:any)', 'Admin::database/$1/$2');
     // $routes->get('database/(:any)/(:any)/(:any)', 'Admin::database/$1/$2/$3');

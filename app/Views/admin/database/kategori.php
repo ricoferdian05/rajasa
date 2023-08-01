@@ -18,7 +18,6 @@
                         </tr>
                     </thead>
                     <tbody>
-
                         <?php
                         if (count($kategori) > 0) {
                             $nomor = 0;

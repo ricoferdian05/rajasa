@@ -10,6 +10,7 @@ class Admin extends BaseController
     private $builderTransaksi;
     private $builderDesigner;
     private $builderProduk;
+    private $builderCustomer;
 
     public function __construct()
     {
@@ -19,6 +20,7 @@ class Admin extends BaseController
         $this->builderTransaksi = new \App\Models\TransaksiModel();
         $this->builderDesigner = new \App\Models\DesignerModel();
         $this->builderProduk = new \App\Models\ProdukModel();
+        $this->builderCustomer = new \App\Models\CustomerModel();
     }
 
     public function index($tahunKategori = 'all', $tahunProfit = 'all', $tahunPerformansi = null)
@@ -616,7 +618,7 @@ class Admin extends BaseController
         return redirect()->back();
     }
 
-    public function database()
+    public function database($id = null)
     {
         // CHECK TIPE AKUN
         if (session()->get('tipe') !== '1') {
@@ -627,14 +629,37 @@ class Admin extends BaseController
         $queryKategori = $this->builderKategori;
         $kategori = $queryKategori->findAll();
 
+        // ADMIN
+        $queryAdmin = $this->builderAkun;
+        $admin = $queryAdmin->findAll();
+
+        $segment2 = $this->uri->getSegment(2);
+        $segment3 = $this->uri->getSegment(3);
+
+        // DETAIL DATABASE
+        $detailAdmin = null;
+        if ($segment3 === 'admin') {
+            $queryDetailAdmin = $this->builderAkun;
+            $detailAdmin = $queryDetailAdmin->find($id);
+        }
+
+        // CEK SEGMENT 4
+        if ($segment3 === '') {
+            $segment4 = '';
+        } else {
+            $segment4 = $this->uri->getSegment(4);
+        }
 
         $akun = $this->builderAkun->find(session()->get('id'));
         $data = [
             'title' => 'Detail Produk | Rajasa Finising',
             'akun' => $akun,
-            'segment2' => $this->uri->getSegment(2),
-            'segment3' => $this->uri->getSegment(3),
+            'segment2' => $segment2,
+            'segment3' => $segment3,
+            'segment4' => $segment4,
             'kategori' => $kategori,
+            'admin' => $admin,
+            'detailAdmin' => $detailAdmin,
         ];
 
         return view('admin/database', $data);
@@ -739,14 +764,199 @@ class Admin extends BaseController
                 session()->setFlashdata('add_error', 'Kategori Gagal Ditambahkan!!!');
             }
         }
-
-        // if (!is_dir('anjing')) {
-        //     mkdir('anjing', 0777, true);
-        //     $url = 'https://www.php.net';
-        //     $html = file_get_contents($url);
-        //     file_put_contents('anjing/home.html', $html);
-        // }
-
         return redirect()->back();
+    }
+
+    public function hapusAdmin($id)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // HAPUS ADMIN
+
+        // HAPUS FILE AVATAR
+        $queryAdmin = $this->builderAkun;
+        $admin = $queryAdmin->find($id);
+
+        unlink($admin['avatar']);
+
+        $queryHapusAdmin = $this->builderAkun;
+        if ($queryHapusAdmin->delete(['id' => $id])) {
+            session()->setFlashdata('delete_success', 'Akun Admin Berhasil Dihapus!!!');
+        } else {
+            session()->setFlashdata('delete_error', 'Akun Admin Gagal Dihapus!!!');
+        }
+        return redirect()->back();
+    }
+
+    public function tambahAdmin()
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        $avatar = $this->request->getFile('avatar');
+        $nama = $this->request->getVar('nama');
+        $username = $this->request->getVar('username');
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $alamat = $this->request->getVar('alamat');
+        $noHp = $this->request->getVar('noHp');
+
+        // CEK AKUN
+        $queryAkun = $this->builderAkun;
+        $akun = $queryAkun->findAll();
+        foreach ($akun as $akun) {
+            if ($akun['email'] === $email) {
+                session()->setFlashdata('add_error', 'Email Sudah Terdaftar!!!');
+                return redirect()->back();
+            }
+        }
+
+        // AVATAR
+        $pathAvatar = 'asset/admin/akun/';
+
+        // GAMBAR 1
+        if ($avatar->getError() == 4) {
+            $avatarName = "asset/admin/akun/avatar-admin.png";
+        } else {
+            // RENAME FILE
+            $avatarName = $avatar->getRandomName();
+            // MOVE FILE
+            $avatar->move($pathAvatar, $avatarName);
+            $avatarName = $pathAvatar . $avatarName;
+        }
+
+        // Check space
+        $arrPassword = explode(' ', $password);
+        $arrUsername = explode(' ', $username);
+        $arrName     = explode(' ', $nama);
+
+        if ($arrPassword[0] === '' || $arrUsername[0] === '' || $arrName[0] === '') {
+            session()->setFlashdata('add_error', 'Isi data dengan benar!');
+            return redirect()->back();
+        } else {
+            // Generate Id
+            $typeAccount = 'adm';
+            $arrayName = explode(' ', $nama);
+            $firstName = $arrayName[0];
+            $id = uniqid($typeAccount . '-' . $firstName . '-', true);
+
+            // Generate Password
+            $generatePassword = password_hash($password, PASSWORD_DEFAULT);
+
+            $akun = $this->builderAkun;
+            $data = [
+                'id' => $id,
+                'email' => $email,
+                'password' => $generatePassword,
+                'username' => $username,
+                'nama' => $nama,
+                'alamat' => $alamat,
+                'no_hp' => $noHp,
+                'avatar' => $avatarName,
+                'tipe' => 1,
+            ];
+            if ($akun->insert($data) === 0) {
+                session()->setFlashdata('add_success', 'Akun Berhasil Ditambahkan!!!');
+            } else {
+                session()->setFlashdata('add_error', 'Akun Gagal Ditambahkan!!!');
+            }
+            return redirect()->back();
+        }
+    }
+
+    public function detailAdmin($id)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        $queryAkun = $this->builderAkun;
+        $akunLama = $queryAkun->find($id);
+
+        $avatar = $this->request->getFile('avatar');
+        $nama = $this->request->getVar('nama');
+        $username = $this->request->getVar('username');
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $alamat = $this->request->getVar('alamat');
+        $noHp = $this->request->getVar('noHp');
+
+        // CEK EMAIL
+        $queryAkun = $this->builderAkun;
+        $akun = $queryAkun->findAll();
+        foreach ($akun as $akun) {
+            if ($akun['email'] === $email && $akunLama['email'] !== $email) {
+                session()->setFlashdata('update_error', 'Email Sudah Terdaftar!!!');
+                return redirect()->back();
+            }
+        }
+
+        // AVATAR
+        $pathAvatar = 'asset/admin/akun/';
+
+        if ($avatar->getError() == 4) {
+            $avatarName = $akunLama['avatar'];
+        } else {
+            // RENAME FILE
+            $avatarName = $avatar->getRandomName();
+            // MOVE FILE
+            $avatar->move($pathAvatar, $avatarName);
+            $avatarName = $pathAvatar . $avatarName;
+
+            // DELETE FILE LAMA
+            unlink($akunLama['avatar']);
+        }
+
+        // Check space
+        $arrPassword = explode(' ', $password);
+        $arrUsername = explode(' ', $username);
+        $arrName     = explode(' ', $nama);
+
+        if ($arrPassword[0] === '' || $arrUsername[0] === '' || $arrName[0] === '') {
+            session()->setFlashdata('update_error', 'Isi data dengan benar!');
+            return redirect()->back();
+        } else {
+            // Cek Password
+            if ($akunLama['password'] === $password) {
+                $generatePassword = $akunLama['password'];
+            } else {
+                // Generate Password
+                $generatePassword = password_hash($password, PASSWORD_DEFAULT);
+            }
+
+            $dataUpdate = [
+                'id' => $id,
+                'email' => $email,
+                'password' => $generatePassword,
+                'username' => $username,
+                'nama' => $nama,
+                'alamat' => $alamat,
+                'no_hp' => $noHp,
+                'avatar' => $avatarName,
+                'tipe' => 1
+            ];
+
+            $akunUpdate = $this->builderAkun;
+            if ($akunUpdate->save($dataUpdate)) {
+                session()->setFlashdata('update_success', 'Akun Berhasil Diperbarui!!!');
+            } else {
+                session()->setFlashdata('update_error', 'Akun Gagal Diperbarui!!!');
+            }
+
+            // CEK EMAIL DIUBAH
+            if ($akunLama['email'] !== $email) {
+                $session = session();
+                $session->destroy();
+                return redirect()->to(base_url('login'));
+            }
+
+            return redirect()->back();
+        }
     }
 }
