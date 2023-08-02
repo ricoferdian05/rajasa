@@ -79,6 +79,9 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('transaksi/details/(:any)', 'Admin::details/$1');
     $routes->post('transaksi/details/(:any)', 'Admin::details/$1');
 
+    $routes->get('transaksi/cetak/(:any)', 'Admin::cetak/$1');
+    $routes->get('transaksi/cetak/(:any)/(:any)', 'Admin::cetak/$1/$2');
+
     $routes->get('transaksi/(:any)', 'Admin::transaksi/$1');
     $routes->get('transaksi/(:any)/(:any)', 'Admin::transaksi/$1/$2');
 

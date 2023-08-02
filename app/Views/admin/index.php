@@ -10,7 +10,7 @@
         </div>
         <div class="col-10">
             <div class="row">
-                <div class="col navbar ms-2 ps-3 pt-3 pb-3 rounded-3 shadow">
+                <div class="col navbar ms-2 ps-3 pt-3 pb-3 pe-3 rounded-3 shadow">
                     <!-- ANCHOR NAVBAR -->
                     <?= $this->include('templates/admin/navbar'); ?>
                 </div>

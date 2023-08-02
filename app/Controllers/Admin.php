@@ -225,13 +225,13 @@ class Admin extends BaseController
 
         $urutan = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') : 1;
 
-
         $akun = $this->builderAkun->find(session()->get('id'));
         $data = [
             'title' => 'Transaksi | Rajasa Finishing',
             'akun' => $akun,
             'segment2' => $this->uri->getSegment(2),
             'segment3' => $this->uri->getSegment(3),
+            'segment4' => $this->uri->getSegment(4),
             'tahunTransaksi' => $tahunTransaksi,
             'pilihanTahun' => $pilihanTahun,
             'kategori' => $kategori,
@@ -242,6 +242,62 @@ class Admin extends BaseController
         ];
 
         return view('admin/transaksi', $data);
+    }
+
+    public function cetak($status, $tahun = null)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // TRANSAKSI
+        $queryTransaksi = $this->builderTransaksi;
+        $queryTransaksi->select('
+            transaksi.id AS id,
+            transaksi.tanggal_transaksi AS tanggal_transaksi,
+            transaksi.tanggal_pengiriman AS tanggal_pengiriman,
+            customer.nama AS nama_customer,
+            produk.judul AS produk,
+            kategori.kategori AS kategori,
+            transaksi.jumlah AS jumlah,
+            transaksi.total_harga AS total,
+            transaksi.status AS status,
+            transaksi.status_transfer AS status_transfer,
+            designer.nama AS nama_designer
+        ');
+        $queryTransaksi->join('customer', 'customer.id = transaksi.idCustomer');
+        $queryTransaksi->join('produk', 'produk.id = transaksi.idProduk');
+        $queryTransaksi->join('kategori', 'kategori.id = transaksi.idKategori');
+        $queryTransaksi->join('designer', 'designer.id = transaksi.idDesigner');
+        if ($status === 'selesai') {
+            $queryTransaksi->where('transaksi.status', 'Selesai');
+        } else if ($status === 'sedang-dikerjakan') {
+            $queryTransaksi->where('transaksi.status', 'On Going');
+            $queryTransaksi->where('transaksi.status_transfer', 'Selesai');
+        } else if ($status === 'belum-dibayar') {
+            $queryTransaksi->where('transaksi.status_transfer', 'Belum');
+        }
+        if ($tahun !== null) {
+            $queryTransaksi->where('EXTRACT(year FROM transaksi.tanggal_pengiriman)', $tahun);
+        }
+        $queryTransaksi->orderBy('transaksi.tanggal_pengiriman', 'DESC');
+        $transaksi = $queryTransaksi->findAll();
+
+        if ($status === 'all') {
+            $status = 'Semua Transaksi';
+        }
+        if ($tahun === null) {
+            $tahun = 'Semua Tahun';
+        }
+
+        $data = [
+            'transaksi' => $transaksi,
+            'status' => $status,
+            'tahun' => $tahun,
+        ];
+
+        return view('admin/transaksi/cetak', $data);
     }
 
     public function details($id)
