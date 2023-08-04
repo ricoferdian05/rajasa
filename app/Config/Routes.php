@@ -39,7 +39,11 @@ $routes->group('customer', ['filter' => 'auth'], function ($routes) {
 
 // Designer
 $routes->group('designer', ['filter' => 'auth'], function ($routes) {
-    $routes->get('', 'Designer::index');
+    $routes->get('dashboard', 'Designer::index');
+
+    $routes->get('chat', 'Designer::chat');
+
+    $routes->get('data-produk/(:any)', 'Designer::produk/$1');
     // $routes->get('akun', 'Customer::akun');
     // $routes->post('akun/save', 'Customer::saveAkun');
 });
@@ -119,13 +123,6 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     // $routes->get('akun', 'Customer::akun');
     // $routes->post('akun/save', 'Customer::saveAkun');
 });
-
-// Designer
-$routes->group('designer', ['filter' => 'auth'], function ($routes) {
-    $routes->get('dashboard', 'Designer::index');
-    $routes->get('chat', 'Designer::chat');
-});
-
 
 // Chat
 $routes->group('chat', ['filter' => 'auth'], function ($routes) {

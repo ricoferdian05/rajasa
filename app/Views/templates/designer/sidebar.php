@@ -16,6 +16,24 @@
                     Dashboard
                 </li>
             </a>
+            <a href="<?= base_url('designer/data-produk/all') ?>">
+                <li class="list-sidebar-menu 
+                <?php if ($segment2 === 'data-produk') {
+                    echo 'list-sidebar-menu-active';
+                } ?> p-2 mb-2 rounded-5">
+                    <i class="bi bi-bag pe-2"></i>
+                    Data Produk
+                </li>
+            </a>
+            <a href="<?= base_url('designer/akun') ?>">
+                <li class="list-sidebar-menu
+                <?php if ($segment2 === 'akun') {
+                    echo 'list-sidebar-menu-active';
+                } ?> p-2 mb-2 rounded-5">
+                    <i class="bi bi-gear pe-2"></i>
+                    Pengaturan Akun
+                </li>
+            </a>
             <hr class="text-white">
             <a href="<?= base_url('logout') ?>">
                 <li class="list-sidebar-menu-logout p-2 rounded-5">

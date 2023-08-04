@@ -168,6 +168,11 @@ class Designer extends BaseController
 
     public function chat()
     {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '2') {
+            return redirect()->to(base_url('/logout'));
+        }
+
         $akun = $this->builderAkun->find(session()->get('id'));
         $data = [
             'title' => 'Chat | Rajasa Finishing',
@@ -176,5 +181,65 @@ class Designer extends BaseController
         ];
 
         return view('designer/chat', $data);
+    }
+
+    public function produk($jenisKategori)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '2') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // KATEGORI
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->findAll();
+
+        // SEARCH
+        $keyword = $this->request->getVar('keyword');
+
+        $queryProduk = $this->builderProduk;
+        $queryProduk->select('
+        produk.id AS id,
+        produk.judul AS judul,
+        produk.harga AS harga,
+        produk.gambar1 AS gambar1,
+        produk.status AS status,
+        produk.rating AS rating,
+        produk.terjual AS terjual,
+        produk.created AS created,
+        kategori.kategori AS kategori,
+        designer.nama AS designer,
+        ');
+        $queryProduk->join('kategori', 'kategori.id = produk.idKategori');
+        $queryProduk->join('designer', 'designer.id = produk.idDesigner');
+        $queryProduk->where('produk.idDesigner', session()->get('id'));
+        if ($jenisKategori !== 'all') {
+            $queryProduk->where('kategori.kategori', $jenisKategori);
+        }
+        if ($keyword !== null) {
+            $queryProduk->like('produk.judul', $keyword);
+        }
+
+        // PAGINATION
+        $produk = $queryProduk->paginate(10, 'produkDesigner');
+        $pager = $queryProduk->pager;
+
+
+        $urutan = $this->request->getVar('page_produkDesigner') ? $this->request->getVar('page_produkDesigner') : 1;
+
+        $akun = $this->builderAkun->find(session()->get('id'));
+        $data = [
+            'title' => 'Data Produk | Rajasa Finishing',
+            'akun' => $akun,
+            'segment2' => $this->uri->getSegment(2),
+            'segment3' => $this->uri->getSegment(3),
+            'kategori' => $kategori,
+            'produk' => $produk,
+            'pager' => $pager,
+            'urutan' => $urutan,
+            'keyword' => $keyword,
+        ];
+
+        return view('designer/data-produk', $data);
     }
 }
