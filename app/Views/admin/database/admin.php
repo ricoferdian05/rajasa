@@ -9,6 +9,7 @@
         <div class="row mt-3">
             <div class="col">
                 <table class="table table-transaksi caption-top">
+                    <caption>Total data : <?= count($admin) ?></caption>
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -48,6 +49,11 @@
                         ?>
                     </tbody>
                 </table>
+                <?php
+                if (count($admin) === 0) {
+                    echo "<div class='alert alert-danger alert-data-kosong text-center' role='alert'>Data Tidak Ditemukan !!!</div>";
+                }
+                ?>
             </div>
         </div>
     </div>

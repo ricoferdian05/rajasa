@@ -41,7 +41,7 @@
 
 <body>
 
-    <!-- Modal Kategori -->
+    <!-- Modal -->
     <?php
     if ($segment2 === 'database') {
         if ($segment3 === 'kategori') {
@@ -49,6 +49,10 @@
         } else if ($segment3 === 'admin') {
             if ($segment4 === '') {
                 echo $this->include('admin/database/admin/tambah');
+            }
+        } else if ($segment3 === 'designer') {
+            if ($segment4 === '') {
+                echo $this->include('admin/database/designer/tambah');
             }
         }
     }

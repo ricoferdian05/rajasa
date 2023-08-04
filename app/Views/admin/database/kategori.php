@@ -9,6 +9,7 @@
         <div class="row mt-3">
             <div class="col">
                 <table class="table table-transaksi caption-top">
+                    <caption>Total data : <?= count($kategori) ?></caption>
                     <thead>
                         <tr>
                             <th scope="col">No</th>

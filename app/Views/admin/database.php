@@ -124,7 +124,11 @@
                         echo $this->include('admin/database/admin');
                     }
                 } else if ($segment3 === 'designer') {
-                    echo $this->include('admin/database/designer');
+                    if ($segment4 === 'detail') {
+                        echo $this->include('admin/database/designer/detail');
+                    } else {
+                        echo $this->include('admin/database/designer');
+                    }
                 } else if ($segment3 === 'customer') {
                     echo $this->include('admin/database/customer');
                 } else if ($segment3 === 'tipe') {

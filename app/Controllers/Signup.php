@@ -16,6 +16,8 @@ class Signup extends BaseController
     public function auth()
     {
         $customer   = new \App\Models\CustomerModel();
+        $admin = new \App\Models\AdminModel();
+        $designer = new \App\Models\DesignerModel();
 
         $session = session();
 
@@ -31,7 +33,10 @@ class Signup extends BaseController
 
         // Check email
         $dataCustomer   = $customer->where('email', $email)->first();
-        if ($dataCustomer) {
+        $dataAdmin = $admin->where('email', $email)->first();
+        $dataDesigner = $designer->where('email', $email)->first();
+
+        if ($dataCustomer || $dataAdmin || $dataDesigner) {
             $session->setFlashdata('error', 'Email sudah digunakan!');
             return redirect()->to(base_url('signup'));
         } else {

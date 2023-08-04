@@ -107,6 +107,11 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('database/admin/detail/(:any)', 'Admin::database/$1');
     $routes->post('database/admin/detail/(:any)', 'Admin::detailAdmin/$1');
 
+    $routes->get('database/designer/hapus/(:any)', 'Admin::hapusDesigner/$1');
+    $routes->post('database/designer/tambah', 'Admin::tambahDesigner');
+    $routes->get('database/designer/detail/(:any)', 'Admin::database/$1');
+    $routes->post('database/designer/detail/(:any)', 'Admin::detailDesigner/$1');
+
     $routes->get('database/(:any)', 'Admin::database/$1');
     // $routes->get('database/(:any)/(:any)', 'Admin::database/$1/$2');
     // $routes->get('database/(:any)/(:any)/(:any)', 'Admin::database/$1/$2/$3');
