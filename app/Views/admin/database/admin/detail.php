@@ -56,33 +56,34 @@
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        function previewFile(input) {
-            var file = $("#avatar").get(0).files[0];
+<script>
+    function previewFile(input) {
+        var file = $("#avatar").get(0).files[0];
 
-            if (file) {
-                var reader = new FileReader();
+        if (file) {
+            var reader = new FileReader();
 
-                reader.onload = function() {
-                    $("#previewAvatar").attr("src", reader.result);
-                }
-                reader.readAsDataURL(file);
+            reader.onload = function() {
+                $("#previewAvatar").attr("src", reader.result);
             }
-
+            reader.readAsDataURL(file);
         }
 
-        if (<?= json_encode(session()->getFlashdata('update_success')) ?>) {
-            Swal.fire({
-                title: 'Sukses',
-                text: <?= json_encode(session()->getFlashdata('update_success')) ?>,
-                icon: 'success',
-            });
-        } else if (<?= json_encode(session()->getFlashdata('update_error')) ?>) {
-            Swal.fire({
-                title: 'Gagal',
-                text: <?= json_encode(session()->getFlashdata('update_error')) ?>,
-                icon: 'error',
-            });
-        }
-    </script>
+    }
+
+    if (<?= json_encode(session()->getFlashdata('update_success')) ?>) {
+        Swal.fire({
+            title: 'Sukses',
+            text: <?= json_encode(session()->getFlashdata('update_success')) ?>,
+            icon: 'success',
+        });
+    } else if (<?= json_encode(session()->getFlashdata('update_error')) ?>) {
+        Swal.fire({
+            title: 'Gagal',
+            text: <?= json_encode(session()->getFlashdata('update_error')) ?>,
+            icon: 'error',
+        });
+    }
+</script>

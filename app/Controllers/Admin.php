@@ -704,6 +704,12 @@ class Admin extends BaseController
             $detailAdmin = $queryDetailAdmin->find($id);
         }
 
+        $detailDesigner = null;
+        if ($segment3 === 'designer') {
+            $queryDetailDesigner = $this->builderDesigner;
+            $detailDesigner = $queryDetailDesigner->find($id);
+        }
+
         // CEK SEGMENT 4
         if ($segment3 === '') {
             $segment4 = '';
@@ -722,6 +728,7 @@ class Admin extends BaseController
             'admin' => $admin,
             'detailAdmin' => $detailAdmin,
             'designer' => $designer,
+            'detailDesigner' => $detailDesigner,
         ];
 
         return view('admin/database', $data);
@@ -1141,5 +1148,90 @@ class Admin extends BaseController
             session()->setFlashdata('delete_error', 'Akun Designer Gagal Dihapus!!!');
         }
         return redirect()->back();
+    }
+
+    public function detailDesigner($id)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        $queryDesigner = $this->builderDesigner;
+        $akunLama = $queryDesigner->find($id);
+
+        $avatar = $this->request->getFile('avatar');
+        $nama = $this->request->getVar('nama');
+        $username = $this->request->getVar('username');
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $alamat = $this->request->getVar('alamat');
+        $noHp = $this->request->getVar('noHp');
+
+        // CEK EMAIL
+        $akun = $queryDesigner->findAll();
+        foreach ($akun as $akun) {
+            if ($akun['email'] === $email && $akunLama['email'] !== $email) {
+                session()->setFlashdata('update_error', 'Email Sudah Terdaftar!!!');
+                return redirect()->back();
+            }
+        }
+
+        // AVATAR
+        $pathAvatar = 'asset/designer/akun/';
+
+        if ($avatar->getError() == 4) {
+            $avatarName = $akunLama['avatar'];
+        } else {
+            // RENAME FILE
+            $avatarName = $avatar->getRandomName();
+            // MOVE FILE
+            $avatar->move($pathAvatar, $avatarName);
+            $avatarName = $pathAvatar . $avatarName;
+
+            // DELETE FILE LAMA
+            if ($akunLama['avatar'] !== 'asset/designer/akun/avatar-designer.png') {
+                unlink($akunLama['avatar']);
+            }
+        }
+
+        // Check space
+        $arrPassword = explode(' ', $password);
+        $arrUsername = explode(' ', $username);
+        $arrName     = explode(' ', $nama);
+
+        if ($arrPassword[0] === '' || $arrUsername[0] === '' || $arrName[0] === '') {
+            session()->setFlashdata('update_error', 'Isi data dengan benar!');
+            return redirect()->back();
+        } else {
+            // Cek Password
+            if ($akunLama['password'] === $password) {
+                $generatePassword = $akunLama['password'];
+            } else {
+                // Generate Password
+                $generatePassword = password_hash($password, PASSWORD_DEFAULT);
+            }
+
+            $dataUpdate = [
+                'id' => $id,
+                'email' => $email,
+                'password' => $generatePassword,
+                'username' => $username,
+                'nama' => $nama,
+                'alamat' => $alamat,
+                'no_hp' => $noHp,
+                'avatar' => $avatarName,
+                'tipe' => 2
+            ];
+
+            $akunUpdate = $this->builderDesigner;
+            if ($akunUpdate->save($dataUpdate)) {
+                session()->setFlashdata('update_success', 'Akun Berhasil Diperbarui!!!');
+            } else {
+                session()->setFlashdata('update_error', 'Akun Gagal Diperbarui!!!');
+            }
+
+            return redirect()->back();
+        }
     }
 }
