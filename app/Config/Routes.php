@@ -75,6 +75,9 @@ $routes->group('designer', ['filter' => 'auth'], function ($routes) {
 
 // Admin
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
+    $routes->get('akun', 'Admin::akun');
+    $routes->post('saveAkun/(:any)', 'Admin::saveAkun/$1');
+
     // Dashboard
     $routes->get('dashboard', 'Admin::index');
     $routes->get('dashboard/(:any)', 'Admin::index/$1');
@@ -123,9 +126,6 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('database/(:any)', 'Admin::database/$1');
     // $routes->get('database/(:any)/(:any)', 'Admin::database/$1/$2');
     // $routes->get('database/(:any)/(:any)/(:any)', 'Admin::database/$1/$2/$3');
-
-    // $routes->get('akun', 'Customer::akun');
-    // $routes->post('akun/save', 'Customer::saveAkun');
 });
 
 // Chat

@@ -65,6 +65,7 @@
                     <div class="row mt-3">
                         <div class="col">
                             <table class="table table-transaksi caption-top">
+                                <caption>Total data: <?= $jumlahProduk; ?></caption>
                                 <thead class="border-bottom">
                                     <tr>
                                         <th scope="col">No</th>

@@ -6,10 +6,16 @@
                 <button id="btn-tambah" class="btn-tambah shadow rounded-2">Tambah Admin</button>
             </div>
         </div>
+        <form class="" role="search" action="" method="get">
+            <div class="input-group shadow-sm rounded-2">
+                <input type="text" name="keywordAdmin" class="form-control search-default" placeholder="Cari Nama Admin" value="<?= $keywordAdmin; ?>" style="font-size: 10px;">
+                <button type="submit" class="input-group-text logo-search" id="basic-addon2"><i class="bi bi-search" style="font-size: 10px;"></i></button>
+            </div>
+        </form>
         <div class="row mt-3">
             <div class="col">
                 <table class="table table-transaksi caption-top">
-                    <caption>Total data : <?= count($admin) ?></caption>
+                    <caption>Total data: <?= $jumlahAdmin; ?></caption>
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -54,6 +60,12 @@
                     echo "<div class='alert alert-danger alert-data-kosong text-center' role='alert'>Data Tidak Ditemukan !!!</div>";
                 }
                 ?>
+                <!-- ANCHOR PAGINATION -->
+                <div class="row">
+                    <div class="col mt-2">
+                        <?= $pagerAdmin->links('akunAdmin', 'custom_pagination'); ?>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
