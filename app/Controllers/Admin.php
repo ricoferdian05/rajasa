@@ -355,7 +355,8 @@ class Admin extends BaseController
             'akun' => $akun,
             'transaksi' => $transaksi,
             'segment2' => $this->uri->getSegment(2),
-
+            'segment3' => $this->uri->getSegment(3),
+            'segment4' => $this->uri->getSegment(4),
         ];
 
         return view('admin/detail-transaksi', $data);
