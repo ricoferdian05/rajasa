@@ -37,18 +37,6 @@ $routes->group('customer', ['filter' => 'auth'], function ($routes) {
     $routes->post('akun/save', 'Customer::saveAkun');
 });
 
-// Designer
-$routes->group('designer', ['filter' => 'auth'], function ($routes) {
-    $routes->get('dashboard', 'Designer::index');
-
-    $routes->get('chat', 'Designer::chat');
-
-    $routes->get('data-produk/(:any)', 'Designer::produk/$1');
-    // $routes->get('akun', 'Customer::akun');
-    // $routes->post('akun/save', 'Customer::saveAkun');
-});
-
-
 $routes->get('/', 'Customer::index');
 $routes->get('/produk/(:any)/(:any)', 'Customer::produk/$1/$2');
 $routes->get('/detail/(:any)', 'Customer::detailProduk/$1');
@@ -70,6 +58,20 @@ $routes->get('/logout', 'Login::logout');
 
 // About Us
 $routes->get('/tentang', 'Tentang::index');
+
+// Designer
+$routes->group('designer', ['filter' => 'auth'], function ($routes) {
+    $routes->get('dashboard', 'Designer::index');
+
+    $routes->get('chat', 'Designer::chat');
+
+    $routes->get('data-produk/tambah', 'Designer::tambahProduk');
+    $routes->post('data-produk/tambah', 'Designer::tambahProduk');
+
+    $routes->get('data-produk/(:any)', 'Designer::produk/$1');
+    // $routes->get('akun', 'Customer::akun');
+    // $routes->post('akun/save', 'Customer::saveAkun');
+});
 
 // Admin
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {

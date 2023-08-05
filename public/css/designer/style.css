@@ -6,6 +6,56 @@ body {
     background-color: #fff;
 }
 
+/* INPUT TYPE */
+input[type] {
+    font-size: 12px;
+}
+
+input[type]:focus {
+    box-shadow: none;
+    font-size: 12px;
+    border: #9ea1d4 solid 1px;
+}
+
+input[type]::placeholder {
+    color: #bfbfbf;
+}
+
+.select-transaksi {
+    color: #707070;
+    font-weight: bolder;
+    font-size: 12px;
+    transition: all .3s;
+}
+
+.select-transaksi:hover {
+    cursor: pointer;
+    border: #9ea1d4 solid 1px;
+}
+
+.select-transaksi:focus {
+    box-shadow: none;
+    border: #9ea1d4 solid 1px;
+}
+
+.btn-submit {
+    border: #9ea1d4 solid 1px;
+    background-color: #9ea1d4;
+    color: #fff;
+    font-weight: bolder;
+    width: 100%;
+    padding: 5px;
+    transition: all .3s;
+}
+
+.btn-submit:hover {
+    background-color: #7175c1;
+}
+
+.btn-submit:active {
+    transform: scale(.98);
+}
+
 /* ANCHOR DATA PRODUK */
 .navbar-transaksi {
     border: transparent;

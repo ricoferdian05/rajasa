@@ -242,4 +242,35 @@ class Designer extends BaseController
 
         return view('designer/data-produk', $data);
     }
+
+    public function tambahProduk()
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '2') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        if ($this->request->getVar('tambah')) {
+            # code...
+        }
+
+        // KATEGORI
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->findAll();
+
+        // DESIGNER
+        $queryDesigner = $this->builderDesigner;
+        $designer = $queryDesigner->findAll();
+
+        $akun = $this->builderAkun->find(session()->get('id'));
+        $data = [
+            'title' => 'Tambah Produk | Rajasa Finishing',
+            'akun' => $akun,
+            'segment2' => $this->uri->getSegment(2),
+            'kategori' => $kategori,
+            'designer' => $designer,
+        ];
+
+        return view('designer/data-produk/tambah', $data);
+    }
 }
