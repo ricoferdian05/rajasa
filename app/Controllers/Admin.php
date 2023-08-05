@@ -694,6 +694,10 @@ class Admin extends BaseController
         $queryDesigner = $this->builderDesigner;
         $designer = $queryDesigner->findAll();
 
+        // CUSTOMER
+        $queryCustomer = $this->builderCustomer;
+        $customer = $queryCustomer->findAll();
+
         $segment2 = $this->uri->getSegment(2);
         $segment3 = $this->uri->getSegment(3);
 
@@ -729,6 +733,7 @@ class Admin extends BaseController
             'detailAdmin' => $detailAdmin,
             'designer' => $designer,
             'detailDesigner' => $detailDesigner,
+            'customer' => $customer,
         ];
 
         return view('admin/database', $data);
@@ -1117,7 +1122,7 @@ class Admin extends BaseController
             return redirect()->to(base_url('/logout'));
         }
 
-        // HAPUS ADMIN
+        // HAPUS DESIGNER
 
         // HAPUS FILE AVATAR
         $queryDesigner = $this->builderDesigner;
@@ -1233,5 +1238,37 @@ class Admin extends BaseController
 
             return redirect()->back();
         }
+    }
+
+    public function hapusCustomer($id)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '1') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // HAPUS CUSTOMER
+
+        // HAPUS FILE AVATAR
+        $queryCustomer = $this->builderCustomer;
+        $customer = $queryCustomer->find($id);
+
+        if ($customer['avatar'] !== 'asset/customer/akun/avatar-customer.png') {
+            unlink($customer['avatar']);
+        }
+
+        // UBAH CHILD TRANSAKSI MENJADI KOSONG
+        $queryTransaksi = $this->builderTransaksi;
+        $queryTransaksi->set('idCustomer', '');
+        $queryTransaksi->where('idCustomer', $id);
+        $queryTransaksi->update();
+
+        $queryHapusCustomer = $this->builderCustomer;
+        if ($queryHapusCustomer->delete(['id' => $id])) {
+            session()->setFlashdata('delete_success', 'Akun Customer Berhasil Dihapus!!!');
+        } else {
+            session()->setFlashdata('delete_error', 'Akun Customer Gagal Dihapus!!!');
+        }
+        return redirect()->back();
     }
 }

@@ -58,7 +58,6 @@
 
 <script>
     function hapus(link) {
-        console.log(link);
         Swal.fire({
             title: 'Hapus',
             text: 'Ingin menghapus akun Designer ini? \n Semua data yang berhubungan dengan akun ini akan terhapus',
