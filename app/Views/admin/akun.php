@@ -26,7 +26,7 @@
                     <hr>
                     <div class="row">
                         <div class="col">
-                            <form action="<?= base_url('admin/saveAkun/' . $akun['id']) ?>" method="post" enctype="multipart/form-data" id="myForm">
+                            <form action="<?= base_url('admin/akun/save/' . $akun['id']) ?>" method="post" enctype="multipart/form-data" id="myForm">
                                 <center class="mb-3">
                                     <img class="avatar-form mb-2 rounded-circle" src="<?= base_url($akun['avatar']) ?>" alt="" id="previewAvatar">
                                     <input class="form-control input-avatar" type="file" name="avatar" id="avatar" onchange="previewFile(this)" accept="image/*">

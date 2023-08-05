@@ -69,14 +69,15 @@ $routes->group('designer', ['filter' => 'auth'], function ($routes) {
     $routes->post('data-produk/tambah', 'Designer::tambahProduk');
 
     $routes->get('data-produk/(:any)', 'Designer::produk/$1');
-    // $routes->get('akun', 'Customer::akun');
-    // $routes->post('akun/save', 'Customer::saveAkun');
+
+    $routes->get('akun', 'Customer::akun');
+    $routes->post('akun/save', 'Customer::saveAkun');
 });
 
 // Admin
 $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('akun', 'Admin::akun');
-    $routes->post('saveAkun/(:any)', 'Admin::saveAkun/$1');
+    $routes->post('akun/save/(:any)', 'Admin::saveAkun/$1');
 
     // Dashboard
     $routes->get('dashboard', 'Admin::index');
