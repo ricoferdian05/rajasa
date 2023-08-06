@@ -1113,7 +1113,7 @@ class Admin extends BaseController
         }
 
         // AVATAR
-        $pathAvatar = 'asset/desigenr/akun/';
+        $pathAvatar = 'asset/designer/akun/';
 
         // GAMBAR 1
         if ($avatar->getError() == 4) {

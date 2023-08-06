@@ -70,8 +70,8 @@ $routes->group('designer', ['filter' => 'auth'], function ($routes) {
 
     $routes->get('data-produk/(:any)', 'Designer::produk/$1');
 
-    $routes->get('akun', 'Customer::akun');
-    $routes->post('akun/save', 'Customer::saveAkun');
+    $routes->get('akun', 'Designer::akun');
+    $routes->post('akun/save/(:any)', 'Designer::saveAkun/$1');
 });
 
 // Admin

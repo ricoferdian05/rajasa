@@ -210,3 +210,17 @@ input[type]::placeholder {
     color: #ffffff;
     background-color: #9ea1d4;
 }
+
+/* ANCHOR PENGATURAN AKUN */
+.avatar-form {
+    width: 7em;
+}
+
+.input-avatar {
+    width: 20em;
+}
+
+label.required::after {
+    content: '*';
+    color: red;
+}
