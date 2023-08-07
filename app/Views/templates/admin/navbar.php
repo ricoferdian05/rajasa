@@ -1,5 +1,10 @@
     <div class="col">
-        <span class="tanggal p-2 rounded-5"><?= date("d-m-Y") ?></span>
+        <span class="tanggal p-2 rounded-5">
+            <?php
+            date_default_timezone_set('Asia/Jakarta');
+            echo date("d-m-Y")
+            ?>
+        </span>
     </div>
     <?php if ($segment2 === 'transaksi' && $segment3 !== 'details') { ?>
         <div class="col d-flex justify-content-end">

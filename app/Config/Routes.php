@@ -68,6 +68,9 @@ $routes->group('designer', ['filter' => 'auth'], function ($routes) {
     $routes->get('data-produk/tambah', 'Designer::tambahProduk');
     $routes->post('data-produk/tambah', 'Designer::tambahProduk');
 
+    $routes->get('data-produk/details/(:any)', 'Designer::detailsProduk/$1');
+    $routes->post('data-produk/details/(:any)', 'Designer::detailsProduk/$1');
+
     $routes->get('data-produk/(:any)', 'Designer::produk/$1');
 
     $routes->get('akun', 'Designer::akun');

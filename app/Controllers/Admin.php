@@ -434,7 +434,6 @@ class Admin extends BaseController
         }
 
         if ($this->request->getVar('tambah')) {
-
             $judul = $this->request->getVar('judul');
             $kategori = $this->request->getVar('kategori');
             $harga = $this->request->getVar('harga');
@@ -485,6 +484,8 @@ class Admin extends BaseController
                 $gambar3->move($pathUpload, $gambar3Name);
                 $gambar3Name = $pathUpload . '/' . $gambar3Name;
             }
+
+            date_default_timezone_set('Asia/Jakarta');
 
             $dataProduk = [
                 'id' => $id,
@@ -572,7 +573,10 @@ class Admin extends BaseController
                 $gambar1Name = $pathUpload . '/' . $gambar1Name;
 
                 // DELETE FILE LAMA
-                if ($produk['gambar1'] !== 'asset/website/image-default.png') {
+                if (
+                    $produk['gambar1'] !== 'asset/website/image-default.png'
+                    && file_exists($produk['gambar1'])
+                ) {
                     unlink($produk['gambar1']);
                 }
             }
@@ -587,7 +591,12 @@ class Admin extends BaseController
                 $gambar2Name = $pathUpload . '/' . $gambar2Name;
 
                 // DELETE FILE LAMA
-                unlink($produk['gambar2']);
+                if (
+                    $produk['gambar2'] !== 'asset/website/image-default.png'
+                    && file_exists($produk['gambar2'])
+                ) {
+                    unlink($produk['gambar2']);
+                }
             }
             // GAMBAR 3
             if ($gambar3->getError() == 4) {
@@ -600,7 +609,12 @@ class Admin extends BaseController
                 $gambar3Name = $pathUpload . '/' . $gambar3Name;
 
                 // DELETE FILE LAMA
-                unlink($produk['gambar3']);
+                if (
+                    $produk['gambar3'] !== 'asset/website/image-default.png'
+                    && file_exists($produk['gambar3'])
+                ) {
+                    unlink($produk['gambar3']);
+                }
             }
 
             $queryUpdateProduk = $this->builderProduk;
@@ -664,11 +678,11 @@ class Admin extends BaseController
         $produk = $queryProduk->find($id);
 
         // MENGHAPUS GAMBAR
-        if ($produk['gambar1'] !== null && $produk['gambar1'] !== 'asset/website/image-default.png') {
+        if ($produk['gambar1'] !== null && $produk['gambar1'] !== 'asset/website/image-default.png' && file_exists($produk['gambar1'])) {
             unlink($produk['gambar1']);
-        } else if ($produk['gambar2'] !== null) {
+        } else if ($produk['gambar2'] !== null && file_exists($produk['gambar2'])) {
             unlink($produk['gambar2']);
-        } else if ($produk['gambar3'] !== null) {
+        } else if ($produk['gambar3'] !== null && file_exists($produk['gambar3'])) {
             unlink($produk['gambar3']);
         }
 
@@ -903,7 +917,10 @@ class Admin extends BaseController
         $queryAdmin = $this->builderAkun;
         $admin = $queryAdmin->find($id);
 
-        if ($admin['avatar'] !== 'asset/admin/akun/avatar-admin.png') {
+        if (
+            $admin['avatar'] !== 'asset/admin/akun/avatar-admin.png'
+            && file_exists($admin['avatar'])
+        ) {
             unlink($admin['avatar']);
         }
 
@@ -1035,7 +1052,10 @@ class Admin extends BaseController
             $avatarName = $pathAvatar . $avatarName;
 
             // DELETE FILE LAMA
-            if ($akunLama['avatar'] !== 'asset/admin/akun/avatar-admin.png') {
+            if (
+                $akunLama['avatar'] !== 'asset/admin/akun/avatar-admin.png'
+                && file_exists($akunLama['avatar'])
+            ) {
                 unlink($akunLama['avatar']);
             }
         }
@@ -1179,7 +1199,10 @@ class Admin extends BaseController
         $queryDesigner = $this->builderDesigner;
         $designer = $queryDesigner->find($id);
 
-        if ($designer['avatar'] !== 'asset/designer/akun/avatar-designer.png') {
+        if (
+            $designer['avatar'] !== 'asset/designer/akun/avatar-designer.png'
+            && file_exists($designer['avatar'])
+        ) {
             unlink($designer['avatar']);
         }
 
@@ -1246,7 +1269,10 @@ class Admin extends BaseController
             $avatarName = $pathAvatar . $avatarName;
 
             // DELETE FILE LAMA
-            if ($akunLama['avatar'] !== 'asset/designer/akun/avatar-designer.png') {
+            if (
+                $akunLama['avatar'] !== 'asset/designer/akun/avatar-designer.png'
+                && file_exists($akunLama['avatar'])
+            ) {
                 unlink($akunLama['avatar']);
             }
         }
@@ -1304,7 +1330,10 @@ class Admin extends BaseController
         $queryCustomer = $this->builderCustomer;
         $customer = $queryCustomer->find($id);
 
-        if ($customer['avatar'] !== 'asset/customer/akun/avatar-customer.png') {
+        if (
+            $customer['avatar'] !== 'asset/customer/akun/avatar-customer.png'
+            && file_exists($customer['avatar'])
+        ) {
             unlink($customer['avatar']);
         }
 
@@ -1383,7 +1412,10 @@ class Admin extends BaseController
             $avatarName = $pathAvatar . $avatarName;
 
             // DELETE FILE LAMA
-            if ($akunLama['avatar'] !== 'asset/admin/akun/avatar-admin.png') {
+            if (
+                $akunLama['avatar'] !== 'asset/admin/akun/avatar-admin.png'
+                && file_exists($akunLama['avatar'])
+            ) {
                 unlink($akunLama['avatar']);
             }
         }
