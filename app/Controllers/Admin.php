@@ -40,12 +40,6 @@ class Admin extends BaseController
         $queryKategori = $this->builderKategori;
         $kategori = $queryKategori->findAll();
 
-        // LIST TAHUN TRANSAKSI
-        $queryTahunTransaksi = $this->builderTransaksi;
-        $queryTahunTransaksi->select('EXTRACT(year FROM tanggal_pengiriman) AS tahun');
-        $queryTahunTransaksi->groupBy('EXTRACT(year FROM tanggal_pengiriman)');
-        $tahunTransaksi = $queryTahunTransaksi->findAll();
-
         // TRANSAKSI KATEGORI
         $queryTransaksiKategori = $this->builderTransaksi;
         $queryTransaksiKategori->select('*');
@@ -143,7 +137,7 @@ class Admin extends BaseController
         );
         $queryTransaksiTerbaru->orderBy('transaksi.tanggal_transaksi', 'ASC');
 
-        $transaksiTerbaru = $queryKelompokDesigner->findAll();
+        $transaksiTerbaru = $queryTransaksiTerbaru->findAll();
 
         $akun = $this->builderAkun->find(session()->get('id'));
         $data = [

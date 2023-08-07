@@ -99,7 +99,7 @@
                     <h5>Transaksi Terbaru (Belum Selesai)</h5>
                     <form class="d-flex" role="search" action="" method="get">
                         <div class="input-group shadow-sm rounded-2">
-                            <input type="text" name="keywordTransaksiTerbaru" class="form-control search-transaksi-terbaru " placeholder="Cari Nama" value="<?= $keywordTransaksiTerbaru; ?>" style="font-size: 10px;">
+                            <input type="text" name="keywordTransaksiTerbaru" class="form-control search-transaksi-terbaru " placeholder="Cari Nama Pelanggan" value="<?= $keywordTransaksiTerbaru; ?>" style="font-size: 10px;">
                             <button type="submit" class="input-group-text logo-search-transaksi-terbaru" id="basic-addon2"><i class="bi bi-search" style="font-size: 10px;"></i></button>
                         </div>
                     </form>
@@ -243,7 +243,7 @@
                     </table>
                     <?php
                     if (count($performansiDesigner) === 0) {
-                        echo "<div class='alert alert-danger alert-data-kosong text-center' role='alert'>Data Tidak Ditemukan !!!</div>";
+                        echo "<div class='alert alert-danger alert-data-kosong text-center' role='alert'>Tidak Ada Transaksi Terbaru !!!</div>";
                     } ?>
                 </div>
             </div>

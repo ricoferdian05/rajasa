@@ -61,10 +61,16 @@ $routes->get('/tentang', 'Tentang::index');
 
 // Designer
 $routes->group('designer', ['filter' => 'auth'], function ($routes) {
+    // Dashboard
     $routes->get('dashboard', 'Designer::index');
+    $routes->get('dashboard/(:any)', 'Designer::index/$1');
+    $routes->get('dashboard/(:any)/(:any)', 'Designer::index/$1/$2');
+    $routes->get('dashboard/(:any)/(:any)/(:any)', 'Designer::index/$1/$2/$3');
 
+    // Chat
     $routes->get('chat', 'Designer::chat');
 
+    // Data Produk
     $routes->get('data-produk/tambah', 'Designer::tambahProduk');
     $routes->post('data-produk/tambah', 'Designer::tambahProduk');
 
@@ -75,8 +81,19 @@ $routes->group('designer', ['filter' => 'auth'], function ($routes) {
 
     $routes->get('data-produk/(:any)', 'Designer::produk/$1');
 
+    // Pengaturan Akun
     $routes->get('akun', 'Designer::akun');
     $routes->post('akun/save/(:any)', 'Designer::saveAkun/$1');
+
+    // Transaksi
+    $routes->get('transaksi/details/(:any)', 'Designer::details/$1');
+    $routes->post('transaksi/details/(:any)', 'Designer::details/$1');
+
+    $routes->get('transaksi/cetak/(:any)', 'Designer::cetak/$1');
+    $routes->get('transaksi/cetak/(:any)/(:any)', 'Designer::cetak/$1/$2');
+
+    $routes->get('transaksi/(:any)', 'Designer::transaksi/$1');
+    $routes->get('transaksi/(:any)/(:any)', 'Designer::transaksi/$1/$2');
 });
 
 // Admin

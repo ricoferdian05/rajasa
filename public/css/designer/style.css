@@ -6,7 +6,203 @@ body {
     background-color: #fff;
 }
 
-/* INPUT TYPE */
+/* ANCHOR DASHBOARD */
+.dropdown-filter-dashboard {
+    font-family: 'Fira Sans', sans-serif;
+    color: #707070;
+    font-size: 10px;
+    font-weight: bold;
+    transition: .3s all;
+    width: 100%;
+    padding: 3px 10px;
+    border: rgba(112, 112, 112, .3) solid 1px;
+    background-color: #fff;
+}
+
+.dropdown-filter-dashboard:hover {
+    cursor: pointer;
+    box-shadow: #9ea1d4 0px 2px 2px 0px;
+}
+
+.dropdown-filter-dashboard:active {
+    box-shadow: none;
+}
+
+.dropdown-filter-dashboard:focus {
+    border: #9ea1d4 solid 1px;
+}
+
+.dropdown-filter-dashboard-menu {
+    color: #707070;
+    background-color: #fff;
+    transition: all .3s;
+
+}
+
+.dropdown-filter-dashboard-menu-item {
+    transition: all .3s;
+    font-size: 10px;
+}
+
+.dropdown-filter-dashboard-menu-item:hover {
+    cursor: pointer;
+    background-color: #9ea1d4;
+    color: #fff;
+}
+
+.table-transaksi-terbaru {
+    font-size: 10px;
+}
+
+.table-transaksi-terbaru>thead {
+    background-color: #dfe2ec;
+    color: #4D4D4D;
+}
+
+.table-transaksi-terbaru>thead>tr>th:hover {
+    color: #fff;
+    background-color: #7481ad;
+    transition: all .3s;
+}
+
+.table-transaksi-terbaru>tbody>tr {
+    vertical-align: middle;
+    color: #707070;
+    transition: all .3s;
+}
+
+.table-transaksi-terbaru>tbody>tr:hover {
+    background-color: #7481ad;
+    color: #fff;
+}
+
+.search-transaksi-terbaru:hover {
+    border: #7481ad solid 1px;
+}
+
+.search-transaksi-terbaru::placeholder {
+    color: rgba(112, 112, 112, .6);
+}
+
+.search-transaksi-terbaru:focus {
+    box-shadow: none;
+}
+
+.logo-search-transaksi-terbaru {
+    color: #4D4D4D;
+    transition: all .3s;
+}
+
+.logo-search-transaksi-terbaru:hover {
+    background-color: #7481ad;
+    color: #fff;
+    border: #7481ad solid 1px;
+}
+
+.btn-detail-transaksi-terakhir {
+    text-decoration: none;
+    color: #7481ad;
+    font-size: 8px;
+    border: #7481ad solid 1px;
+    background-color: #fff;
+    padding: 5px 10px;
+    transition: all .3s;
+    border-radius: 4px;
+}
+
+/* ANCHOR TRANSAKSI */
+.search-transaksi:hover {
+    border: #9ea1d4 solid 1px;
+}
+
+.search-transaksi::placeholder {
+    color: rgba(112, 112, 112, .6);
+}
+
+.search-transaksi:focus {
+    box-shadow: none;
+}
+
+.table-transaksi {
+    font-size: 10px;
+}
+
+.table-transaksi>thead {
+    background-color: #dcddef;
+    color: #4D4D4D;
+}
+
+.table-transaksi>thead>tr>th:hover {
+    background-color: #9ea1d4;
+    color: #fff;
+    transition: .3s all;
+}
+
+.table-transaksi>tbody>tr {
+    color: #707070;
+    transition: all .3s;
+}
+
+.table-transaksi>tbody>tr:hover {
+    background-color: #9ea1d4;
+    color: #fff;
+}
+
+.btn-detail-transaksi {
+    text-decoration: none;
+    color: #9ea1d4;
+    font-size: 8px;
+    border: #9ea1d4 solid 1px;
+    background-color: #fff;
+    padding: 5px 10px;
+    transition: all .3s;
+    border-radius: 4px;
+}
+
+.btn-detail-transaksi:hover {
+    color: #fff;
+    background-color: #6266b7;
+    border: transparent solid 1px;
+    box-shadow: 0px 2px 2px 0px #4D4D4D;
+}
+
+.btn-detail-transaksi:active {
+    box-shadow: none;
+}
+
+.baris-belum-transfer {
+    background-color: #ffc1c1;
+}
+
+.baris-sedang-dikerjakan {
+    background-color: #dfe2ec;
+}
+
+.pagination-link {
+    font-size: 10px;
+    color: #707070;
+    transition: all .3s;
+}
+
+.pagination-link:hover {
+    border: #9ea1d4 solid 1px;
+    color: #ffffff;
+    background-color: #9ea1d4;
+}
+
+.pagination-link:focus {
+    border: #9ea1d4 solid 1px;
+    box-shadow: none;
+    color: #fff;
+}
+
+.active-page {
+    border: #9ea1d4 solid 1px;
+    color: #ffffff;
+    background-color: #9ea1d4;
+}
+
+/* ANCHOR INPUT TYPE */
 input[type] {
     font-size: 12px;
 }

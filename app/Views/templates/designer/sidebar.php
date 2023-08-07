@@ -16,6 +16,15 @@
                     Dashboard
                 </li>
             </a>
+            <a href="<?= base_url('designer/transaksi/all') ?>">
+                <li class="list-sidebar-menu 
+                <?php if ($segment2 === 'transaksi') {
+                    echo 'list-sidebar-menu-active';
+                } ?> p-2 mb-2 rounded-5">
+                    <i class="bi bi-cart2 pe-2"></i>
+                    Transaksi
+                </li>
+            </a>
             <a href="<?= base_url('designer/data-produk/all') ?>">
                 <li class="list-sidebar-menu 
                 <?php if ($segment2 === 'data-produk') {
