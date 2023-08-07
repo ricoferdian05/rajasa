@@ -128,5 +128,33 @@
         </div>
     </div>
 </div>
+<script>
+    if (<?= json_encode(session()->getFlashdata('delete_success')) ?>) {
+        Swal.fire({
+            title: 'Sukses',
+            text: <?= json_encode(session()->getFlashdata('delete_success')) ?>,
+            icon: 'success',
+        });
+    } else if (<?= json_encode(session()->getFlashdata('delete_error')) ?>) {
+        Swal.fire({
+            title: 'Gagal',
+            text: <?= json_encode(session()->getFlashdata('delete_error')) ?>,
+            icon: 'error',
+        });
+    }
 
+    function hapus(link) {
+        Swal.fire({
+            title: 'Hapus',
+            text: 'Ingin menghapus data ini?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Hapus',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = link;
+            }
+        })
+    }
+</script>
 <?= $this->endSection() ?>

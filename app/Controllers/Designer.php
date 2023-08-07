@@ -595,4 +595,35 @@ class Designer extends BaseController
 
         return view('designer/data-produk/detail', $data);
     }
+
+    public function hapusProduk($id)
+    {
+        // CHECK TIPE AKUN
+        if (session()->get('tipe') !== '2') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // CARI DATA PRODUK
+        $queryProduk = $this->builderProduk;
+        $produk = $queryProduk->find($id);
+
+        // MENGHAPUS GAMBAR
+        if ($produk['gambar1'] !== null && $produk['gambar1'] !== 'asset/website/image-default.png' && file_exists($produk['gambar1'])) {
+            unlink($produk['gambar1']);
+        }
+        if ($produk['gambar2'] !== null && file_exists($produk['gambar2'])) {
+            unlink($produk['gambar2']);
+        }
+        if ($produk['gambar3'] !== null && file_exists($produk['gambar3'])) {
+            unlink($produk['gambar3']);
+        }
+
+        // DELETE DATA PRODUK
+        if ($queryProduk->delete(['id' => $id])) {
+            session()->setFlashdata('delete_success', 'Produk Berhasil Dihapus!!!');
+        } else {
+            session()->setFlashdata('delete_error', 'Produk Gagal Dihapus!!!');
+        }
+        return redirect()->back();
+    }
 }

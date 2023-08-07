@@ -680,9 +680,11 @@ class Admin extends BaseController
         // MENGHAPUS GAMBAR
         if ($produk['gambar1'] !== null && $produk['gambar1'] !== 'asset/website/image-default.png' && file_exists($produk['gambar1'])) {
             unlink($produk['gambar1']);
-        } else if ($produk['gambar2'] !== null && file_exists($produk['gambar2'])) {
+        }
+        if ($produk['gambar2'] !== null && file_exists($produk['gambar2'])) {
             unlink($produk['gambar2']);
-        } else if ($produk['gambar3'] !== null && file_exists($produk['gambar3'])) {
+        }
+        if ($produk['gambar3'] !== null && file_exists($produk['gambar3'])) {
             unlink($produk['gambar3']);
         }
 
