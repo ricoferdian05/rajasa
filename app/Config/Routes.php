@@ -35,6 +35,10 @@ $routes->group('customer', ['filter' => 'auth'], function ($routes) {
     $routes->get('', 'Customer::index');
     $routes->get('akun', 'Customer::akun');
     $routes->post('akun/save', 'Customer::saveAkun');
+
+    $routes->post('pesan/(:any)', 'Customer::pesan/$1');
+
+    $routes->get('pembelian', 'Customer::pembelian');
 });
 
 $routes->get('/', 'Customer::index');

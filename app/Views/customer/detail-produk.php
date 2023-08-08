@@ -56,10 +56,10 @@
                         <!-- ANCHOR CONTENT KANAN -->
                         <div class="row">
                             <div class="col">
-                                <form action="" method="post">
+                                <form action="<?= base_url('customer/pesan/' . $produk['id']) ?>" method="post">
                                     <div class="mb-3">
                                         <label for="exampleInput" class="form-label">Jumlah Produk</label>
-                                        <input name="jumlah" type="number" class="form-control form-control-sm" id="jumlah" onkeypress="cekHarga()" onchange="checkHarga()" value="0">
+                                        <input name="jumlah" type="number" class="form-control form-control-sm" id="jumlah" onkeypress="cekHarga()" onchange="checkHarga()" required>
                                     </div>
                                     <div class="mb-3">
                                         <div class="row">
@@ -85,6 +85,20 @@
 </div>
 
 <script>
+    if (<?= json_encode(session()->getFlashdata('add_success')) ?>) {
+        Swal.fire({
+            title: 'Sukses',
+            text: <?= json_encode(session()->getFlashdata('add_success')) ?>,
+            icon: 'success',
+        });
+    } else if (<?= json_encode(session()->getFlashdata('add_error')) ?>) {
+        Swal.fire({
+            title: 'Gagal',
+            text: <?= json_encode(session()->getFlashdata('add_error')) ?>,
+            icon: 'error',
+        });
+    }
+
     function checkHarga() {
         let total = document.getElementById('total');
         let jumlah = document.getElementById('jumlah');

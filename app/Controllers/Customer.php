@@ -8,6 +8,7 @@ class Customer extends BaseController
     private $builderKategori;
     private $uri;
     private $builderAkun;
+    private $builderTransaksi;
 
     public function __construct()
     {
@@ -15,6 +16,7 @@ class Customer extends BaseController
         $this->builderKategori = new \App\Models\KategoriModel();
         $this->uri = service('uri');
         $this->builderAkun = new \App\Models\CustomerModel();
+        $this->builderTransaksi = new \App\Models\TransaksiModel();
     }
 
     public function index()
@@ -44,7 +46,6 @@ class Customer extends BaseController
 
     public function produk($kat, $filter)
     {
-
         // AKUN
         $akun = $this->builderAkun->find(session()->get('id'));
 
@@ -207,5 +208,108 @@ class Customer extends BaseController
         $queryAkun->save($data);
 
         return redirect()->to(base_url('/customer/akun'));
+    }
+
+    public function pesan($id)
+    {
+        // CHECK AKUN
+        if (session()->get('tipe') !== '3') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        // CARI PRODUK
+        $queryProduk = $this->builderProduk;
+        $produk = $queryProduk->find($id);
+
+        date_default_timezone_set('Asia/Jakarta');
+
+        $idTransaksi = uniqid('transaksi-', true);
+        $tanggalTransaksi = date("Y-m-d H:i:s");
+        $totalHarga = (float)$this->request->getVar('jumlah') * (float)$produk['harga'];
+        $jumlah = (int)$this->request->getVar('jumlah');
+        $status = 'On Going';
+        $statusTransfer = 'Belum';
+        $idProduk = $produk['id'];
+        $idKategori = $produk['idKategori'];
+        $idCustomer = session()->get('id');
+        $idDesigner = $produk['idDesigner'];
+
+        $dataTransaksi = [
+            'id' => $idTransaksi,
+            'tanggal_transaksi' => $tanggalTransaksi,
+            'total_harga' => $totalHarga,
+            'jumlah' => $jumlah,
+            'status' => $status,
+            'status_transfer' => $statusTransfer,
+            'idProduk' => $idProduk,
+            'idKategori' => $idKategori,
+            'idCustomer' => $idCustomer,
+            'idDesigner' => $idDesigner,
+        ];
+
+        $queryTransaksi = $this->builderTransaksi;
+        if ($queryTransaksi->insert($dataTransaksi) === 0) {
+            session()->setFlashdata('add_success', 'Transaksi Berhasil !!!');
+        } else {
+            session()->setFlashdata('add_error', 'Transaksi Gagal !!!');
+        }
+
+        return redirect()->back();
+    }
+
+    public function pembelian()
+    {
+        // CHECK AKUN
+        if (session()->get('tipe') !== '3') {
+            return redirect()->to(base_url('/logout'));
+        }
+
+        $queryTransaksi = $this->builderTransaksi;
+        $queryTransaksi->select('
+        transaksi.id AS id,
+        transaksi.tanggal_transaksi AS tanggal_transaksi,
+        transaksi.tanggal_pengiriman AS tanggal_pengiriman,
+        customer.nama AS nama_customer,
+        produk.judul AS produk,
+        kategori.kategori AS kategori,
+        transaksi.jumlah AS jumlah,
+        transaksi.total_harga AS total,
+        transaksi.status AS status,
+        transaksi.status_transfer AS status_transfer,
+        designer.nama AS nama_designer
+        ');
+        $queryTransaksi->join('customer', 'customer.id = transaksi.idCustomer');
+        $queryTransaksi->join('produk', 'produk.id = transaksi.idProduk');
+        $queryTransaksi->join('kategori', 'kategori.id = transaksi.idKategori');
+        $queryTransaksi->join('designer', 'designer.id = transaksi.idDesigner');
+        $transaksi = $queryTransaksi->where('idCustomer', session()->get('id'));
+        $queryTransaksi->orderBy('transaksi.tanggal_transaksi', 'ASC');
+
+        // PAGINATION
+        $transaksi = $queryTransaksi->paginate(10, 'transaksi');
+        $pager = $queryTransaksi->pager;
+
+        $urutan = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') : 1;
+
+
+        // KATEGORI
+        $queryKategori = $this->builderKategori;
+        $kategori = $queryKategori->get()->getResult();
+
+        // AKUN
+        $queryAkun = $this->builderAkun;
+        $akun = $queryAkun->find(session()->get('id'));
+        $data = [
+            'title' => 'Rajasa Finishing',
+            'keyword'  => null,
+            'segment2' => $this->uri->getSegment(2),
+            'kategori' => $kategori,
+            'akun' => $akun,
+            'transaksi' => $transaksi,
+            'pager' => $pager,
+            'urutan' => $urutan,
+        ];
+
+        return view('customer/pembelian', $data);
     }
 }
