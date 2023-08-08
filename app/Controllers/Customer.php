@@ -283,13 +283,13 @@ class Customer extends BaseController
         $queryTransaksi->join('kategori', 'kategori.id = transaksi.idKategori');
         $queryTransaksi->join('designer', 'designer.id = transaksi.idDesigner');
         $transaksi = $queryTransaksi->where('idCustomer', session()->get('id'));
-        $queryTransaksi->orderBy('transaksi.tanggal_transaksi', 'ASC');
+        $queryTransaksi->orderBy('transaksi.tanggal_transaksi', 'DESC');
 
         // PAGINATION
-        $transaksi = $queryTransaksi->paginate(10, 'transaksi');
+        $transaksi = $queryTransaksi->paginate(10, 'transaksiCustomer');
         $pager = $queryTransaksi->pager;
 
-        $urutan = $this->request->getVar('page_transaksi') ? $this->request->getVar('page_transaksi') : 1;
+        $urutan = $this->request->getVar('page_transaksiCustomer') ? $this->request->getVar('page_transaksiCustomer') : 1;
 
 
         // KATEGORI

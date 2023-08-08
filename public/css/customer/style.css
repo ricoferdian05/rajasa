@@ -78,6 +78,86 @@
     transition: .3s;
 }
 
+/* ANCHOR RIWAYAT PEMBELIAN */
+.table-transaksi {
+    font-size: 10px;
+}
+
+.table-transaksi>thead {
+    background-color: #ffce00;
+    color: #fff;
+}
+
+.table-transaksi>thead>tr>th:hover {
+    background-color: #4c2f00;
+    color: #fff;
+    transition: .3s all;
+}
+
+.table-transaksi>tbody>tr {
+    color: #707070;
+    transition: all .3s;
+}
+
+.table-transaksi>tbody>tr:hover {
+    background-color: #4c2f00;
+    color: #fff;
+}
+
+.btn-detail-transaksi {
+    text-decoration: none;
+    color: #ffce00;
+    font-size: 8px;
+    border: #ffce00 solid 1px;
+    background-color: #fff;
+    padding: 5px 10px;
+    transition: all .3s;
+    border-radius: 4px;
+}
+
+.btn-detail-transaksi:hover {
+    color: #fff;
+    background-color: #ffd633;
+    border: transparent solid 1px;
+    box-shadow: 0px 2px 2px 0px #4D4D4D;
+}
+
+.btn-detail-transaksi:active {
+    box-shadow: none;
+}
+
+.baris-belum-transfer {
+    background-color: #ffc1c1;
+}
+
+.baris-sedang-dikerjakan {
+    background-color: #dfe2ec;
+}
+
+.pagination-link {
+    font-size: 10px;
+    color: #707070;
+    transition: all .3s;
+}
+
+.pagination-link:hover {
+    border: #ffce00 solid 1px;
+    color: #ffffff;
+    background-color: #ffce00;
+}
+
+.pagination-link:focus {
+    border: #ffce00 solid 1px;
+    box-shadow: none;
+    color: #fff;
+}
+
+.active-page {
+    border: #4c2f00 solid 1px;
+    color: #ffffff;
+    background-color: #73a9ad;
+}
+
 /* ANCHOR FOOTER */
 
 .footer {

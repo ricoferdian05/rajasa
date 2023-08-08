@@ -119,7 +119,7 @@
                         <!-- ANCHOR PAGINATION -->
                         <div class="row">
                             <div class="col mt-4">
-                                <?= $pager->links('transaksi', 'custom_pagination'); ?>
+                                <?= $pager->links('transaksiCustomer', 'custom_pagination'); ?>
                             </div>
                         </div>
                     </div>
