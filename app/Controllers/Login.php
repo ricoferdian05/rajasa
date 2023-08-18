@@ -31,15 +31,24 @@ class Login extends BaseController
         $customer   = new \App\Models\CustomerModel();
 
         $session = session();
-        $email      = $this->request->getVar('email');
-        $password   = $this->request->getVar('password');
+        $email_username = $this->request->getVar('email-username');
+        $password = $this->request->getVar('password');
 
-        $dataAdmin      = $admin->where('email', $email)->first();
-        $dataDesigner   = $designer->where('email', $email)->first();
-        $dataCustomer   = $customer->where('email', $email)->first();
+        $dataAdmin      = $admin->where('email', $email_username)->first();
+        $dataDesigner   = $designer->where('email', $email_username)->first();
+        $dataCustomer   = $customer->where('email', $email_username)->first();
 
-        if ($dataAdmin) {
-            $pass = $dataAdmin['password'];
+        $dataAdminUsername = $admin->where('username', $email_username)->first();
+        $dataDesignerUsername = $designer->where('username', $email_username)->first();
+        $dataCustomerUsername = $customer->where('username', $email_username)->first();
+
+        if ($dataAdmin || $dataAdminUsername) {
+            if ($dataAdmin) {
+                $pass = $dataAdmin['password'];
+            } elseif ($dataAdminUsername) {
+                $pass = $dataAdminUsername['password'];
+                $dataAdmin = $dataAdminUsername;
+            }
             if (password_verify($password, $pass)) {
                 $ses_data = [
                     'id'        => $dataAdmin['id'],
@@ -53,8 +62,13 @@ class Login extends BaseController
                 $session->setFlashdata('error', 'Email dan Password Salah!');
                 return redirect()->to(base_url('login'));
             }
-        } elseif ($dataDesigner) {
-            $pass = $dataDesigner['password'];
+        } elseif ($dataDesigner || $dataDesignerUsername) {
+            if ($dataDesigner) {
+                $pass = $dataDesigner['password'];
+            } elseif ($dataDesignerUsername) {
+                $pass = $dataDesignerUsername['password'];
+                $dataDesigner = $dataDesignerUsername;
+            }
             if (password_verify($password, $pass)) {
                 $ses_data = [
                     'id'        => $dataDesigner['id'],
@@ -72,8 +86,13 @@ class Login extends BaseController
                 $session->setFlashdata('error', 'Email dan Password Salah!');
                 return redirect()->to(base_url('login'));
             }
-        } elseif ($dataCustomer) {
-            $pass = $dataCustomer['password'];
+        } elseif ($dataCustomer || $dataCustomerUsername) {
+            if ($dataCustomer) {
+                $pass = $dataCustomer['password'];
+            } elseif ($dataCustomerUsername) {
+                $pass = $dataCustomerUsername['password'];
+                $dataCustomer = $dataCustomerUsername;
+            }
             if (password_verify($password, $pass)) {
                 $ses_data = [
                     'id'        => $dataCustomer['id'],

@@ -36,8 +36,15 @@ class Signup extends BaseController
         $dataAdmin = $admin->where('email', $email)->first();
         $dataDesigner = $designer->where('email', $email)->first();
 
+        $dataCustomerUsername = $customer->where('username', $username)->first();
+        $dataAdminUsername = $admin->where('username', $username)->first();
+        $dataDesignerUsername = $designer->where('username', $username)->first();
+
         if ($dataCustomer || $dataAdmin || $dataDesigner) {
             $session->setFlashdata('error', 'Email sudah digunakan!');
+            return redirect()->to(base_url('signup'));
+        } elseif ($dataCustomerUsername || $dataAdminUsername || $dataDesignerUsername) {
+            $session->setFlashdata('error', 'Username sudah digunakan!');
             return redirect()->to(base_url('signup'));
         } else {
             if ($arrPassword[0] === '' || $arrUsername[0] === '' || $arrName[0] === '') {

@@ -30,8 +30,8 @@
         <div class="col">
           <form action="<?= base_url('login/auth') ?>" method="post" enctype="">
             <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control shadow-sm" id="email" name="email" required>
+              <label for="email-username" class="form-label">Email / Username</label>
+              <input type="text" class="form-control shadow-sm" id="email-username" name="email-username" required>
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Password</label>

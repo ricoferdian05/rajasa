@@ -40,7 +40,7 @@
             </div>
             <div class="mb-3">
               <label for="username" class="form-label">Username</label>
-              <input type="username" class="form-control shadow-sm" id="username" name="username" required>
+              <input type="text" class="form-control shadow-sm" id="username" name="username" required>
             </div>
             <div class="mb-3">
               <label for="name" class="form-label">Nama Lengkap</label>
