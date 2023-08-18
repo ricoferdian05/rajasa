@@ -30,8 +30,8 @@
                                     Akun
                                 </li>
                             </a>
-                            <a href="<?= base_url('customer/pembelian') ?>">
-                                <li class="list-akun rounded-1 <?= ($segment2 == 'pembelian') ? 'selected-pengaturan-akun' : ''; ?>">
+                            <a href="<?= base_url('customer/transaksi/all') ?>">
+                                <li class="list-akun rounded-1 <?= ($segment2 == 'transaksi') ? 'selected-pengaturan-akun' : ''; ?>">
                                     Riwayat Pembelian
                                 </li>
                             </a>

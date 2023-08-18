@@ -446,3 +446,57 @@
 .btn-save-akun:hover {
     background-color: #598285;
 }
+
+/* ANCHOR TRANSAKSI */
+.navbar-transaksi {
+    border: transparent;
+    transition: all .3s;
+    color: #707070;
+}
+
+.navbar-transaksi:hover {
+    color: #ffd633;
+    border-bottom: #ffd633 solid 1px;
+}
+
+.navbar-transaksi-active {
+    color: #ffd633;
+    border-bottom: #ffd633 solid 1px;
+}
+
+.badge-selesai {
+    background-color: #73a9ad;
+}
+
+.badge-belum {
+    background-color: #e97777;
+}
+
+.badge-proses {
+    background-color: #7d7c83;
+}
+
+.gambar-transaksi {
+    width: 10em;
+}
+
+.btn-transaksi {
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #FFCE00;
+    transition: all 0.3s;
+    border: none;
+    padding: 7px;
+}
+
+.btn-transaksi:hover {
+    background-color: #4c2f00;
+    color: #fff;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.btn-transaksi:active {
+    transform: scale(.95);
+}

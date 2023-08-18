@@ -38,7 +38,7 @@ $routes->group('customer', ['filter' => 'auth'], function ($routes) {
 
     $routes->post('pesan/(:any)', 'Customer::pesan/$1');
 
-    $routes->get('pembelian', 'Customer::pembelian');
+    $routes->get('transaksi/(:any)', 'Customer::transaksi/$1');
 });
 
 $routes->get('/', 'Customer::index');

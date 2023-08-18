@@ -257,7 +257,7 @@ class Customer extends BaseController
         return redirect()->back();
     }
 
-    public function pembelian()
+    public function transaksi($kat = null)
     {
         // CHECK AKUN
         if (session()->get('tipe') !== '3') {
@@ -276,13 +276,25 @@ class Customer extends BaseController
         transaksi.total_harga AS total,
         transaksi.status AS status,
         transaksi.status_transfer AS status_transfer,
-        designer.nama AS nama_designer
+        designer.nama AS nama_designer,
+        produk.gambar1 AS gambar1,
+        produk.judul AS judul,
         ');
         $queryTransaksi->join('customer', 'customer.id = transaksi.idCustomer');
         $queryTransaksi->join('produk', 'produk.id = transaksi.idProduk');
         $queryTransaksi->join('kategori', 'kategori.id = transaksi.idKategori');
         $queryTransaksi->join('designer', 'designer.id = transaksi.idDesigner');
         $transaksi = $queryTransaksi->where('idCustomer', session()->get('id'));
+        if ($kat === 'belum-dibayar') {
+            $queryTransaksi->where('transaksi.status_transfer', 'belum');
+        }
+        if ($kat === 'sedang-dikerjakan') {
+            $queryTransaksi->where('transaksi.status', 'on going');
+            $queryTransaksi->where('transaksi.status_transfer', 'selesai');
+        }
+        if ($kat === 'selesai') {
+            $queryTransaksi->where('transaksi.status', 'selesai');
+        }
         $queryTransaksi->orderBy('transaksi.tanggal_transaksi', 'DESC');
 
         // PAGINATION
@@ -303,6 +315,7 @@ class Customer extends BaseController
             'title' => 'Rajasa Finishing',
             'keyword'  => null,
             'segment2' => $this->uri->getSegment(2),
+            'segment3' => $this->uri->getSegment(3),
             'kategori' => $kategori,
             'akun' => $akun,
             'transaksi' => $transaksi,
@@ -310,6 +323,6 @@ class Customer extends BaseController
             'urutan' => $urutan,
         ];
 
-        return view('customer/pembelian', $data);
+        return view('customer/transaksi', $data);
     }
 }
