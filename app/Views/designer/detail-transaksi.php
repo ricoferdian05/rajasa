@@ -10,7 +10,7 @@
         </div>
         <div class="col-10 mb-3">
             <div class="row">
-                <div class="col navbar ms-2 ps-3 pt-3 pb-3 rounded-3 shadow-sm">
+                <div class="col navbar ms-2 ps-3 pt-3 pb-3 pe-3 rounded-3 shadow-sm">
                     <!-- ANCHOR NAVBAR -->
                     <?= $this->include('templates/designer/navbar') ?>
                 </div>
@@ -133,6 +133,21 @@
 </div>
 
 <script>
+    $(function() {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+        $('#inputTanggalPengiriman').attr('min', maxDate);
+    });
+
     if (<?= json_encode(session()->getFlashdata('update_success')) ?>) {
         Swal.fire({
             title: 'Sukses',
