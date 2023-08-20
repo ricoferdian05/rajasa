@@ -133,6 +133,21 @@
 </div>
 
 <script>
+    $(function() {
+        var dtToday = new Date();
+
+        var month = dtToday.getMonth() + 1;
+        var day = dtToday.getDate();
+        var year = dtToday.getFullYear();
+        if (month < 10)
+            month = '0' + month.toString();
+        if (day < 10)
+            day = '0' + day.toString();
+
+        var maxDate = year + '-' + month + '-' + day;
+        $('#inputTanggalPengiriman').attr('min', maxDate);
+    });
+
     if (<?= json_encode(session()->getFlashdata('update_success')) ?>) {
         Swal.fire({
             title: 'Sukses',
