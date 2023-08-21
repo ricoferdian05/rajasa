@@ -133,24 +133,24 @@ $routes->group('admin', ['filter' => 'auth'], function ($routes) {
     $routes->get('data-produk/(:any)', 'Admin::produk/$1');
 
     // Database
-    $routes->get('database', 'Admin::database');
+    $routes->get('data-master', 'Admin::database');
 
-    $routes->get('database/kategori/hapus/(:any)', 'Admin::deleteKategori/$1');
-    $routes->post('database/kategori/tambah', 'Admin::tambahKategori');
+    $routes->get('data-master/kategori/hapus/(:any)', 'Admin::deleteKategori/$1');
+    $routes->post('data-master/kategori/tambah', 'Admin::tambahKategori');
 
-    $routes->get('database/admin/hapus/(:any)', 'Admin::hapusAdmin/$1');
-    $routes->post('database/admin/tambah', 'Admin::tambahAdmin');
-    $routes->get('database/admin/detail/(:any)', 'Admin::database/$1');
-    $routes->post('database/admin/detail/(:any)', 'Admin::detailAdmin/$1');
+    $routes->get('data-master/admin/hapus/(:any)', 'Admin::hapusAdmin/$1');
+    $routes->post('data-master/admin/tambah', 'Admin::tambahAdmin');
+    $routes->get('data-master/admin/detail/(:any)', 'Admin::database/$1');
+    $routes->post('data-master/admin/detail/(:any)', 'Admin::detailAdmin/$1');
 
-    $routes->get('database/designer/hapus/(:any)', 'Admin::hapusDesigner/$1');
-    $routes->post('database/designer/tambah', 'Admin::tambahDesigner');
-    $routes->get('database/designer/detail/(:any)', 'Admin::database/$1');
-    $routes->post('database/designer/detail/(:any)', 'Admin::detailDesigner/$1');
+    $routes->get('data-master/designer/hapus/(:any)', 'Admin::hapusDesigner/$1');
+    $routes->post('data-master/designer/tambah', 'Admin::tambahDesigner');
+    $routes->get('data-master/designer/detail/(:any)', 'Admin::database/$1');
+    $routes->post('data-master/designer/detail/(:any)', 'Admin::detailDesigner/$1');
 
-    $routes->get('database/customer/hapus/(:any)', 'Admin::hapusCustomer/$1');
+    $routes->get('data-master/customer/hapus/(:any)', 'Admin::hapusCustomer/$1');
 
-    $routes->get('database/(:any)', 'Admin::database/$1');
+    $routes->get('data-master/(:any)', 'Admin::database/$1');
     // $routes->get('database/(:any)/(:any)', 'Admin::database/$1/$2');
     // $routes->get('database/(:any)/(:any)/(:any)', 'Admin::database/$1/$2/$3');
 });

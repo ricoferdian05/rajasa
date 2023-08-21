@@ -769,7 +769,7 @@ class Admin extends BaseController
 
         $akun = $this->builderAkun->find(session()->get('id'));
         $data = [
-            'title' => 'Database | Rajasa Finising',
+            'title' => 'Data Master | Rajasa Finising',
             'akun' => $akun,
             'segment2' => $segment2,
             'segment3' => $segment3,

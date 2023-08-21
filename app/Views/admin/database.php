@@ -20,31 +20,31 @@
                     <!-- ANCHOR CONTENT -->
                     <div class="col ms-2 ps-3 pe-3 pt-2 pb-2 rounded-3">
                         <div class="row mt-3">
-                            <a href="<?= base_url('admin/database/kategori') ?>" class="col-5 text-center shadow rounded-3 p-3 menu-database mx-auto mb-3">
+                            <a href="<?= base_url('admin/data-master/kategori') ?>" class="col-5 text-center shadow rounded-3 p-3 menu-database mx-auto mb-3">
                                 <span class="material-symbols-rounded" id="icon-database">
                                     category
                                 </span>
                                 <p class="h4 mt-2 judul-database"><b>Kategori Produk</b></p>
                             </a>
-                            <a href="<?= base_url('admin/database/admin') ?>" class="col-5 text-center shadow rounded-3 p-3 menu-database mx-auto mb-3">
+                            <a href="<?= base_url('admin/data-master/admin') ?>" class="col-5 text-center shadow rounded-3 p-3 menu-database mx-auto mb-3">
                                 <span class="material-symbols-rounded" id="icon-database">
                                     admin_panel_settings
                                 </span>
                                 <p class="h4 mt-2 judul-database"><b>Akun Admin</b></p>
                             </a>
-                            <a href="<?= base_url('admin/database/designer') ?>" class="col-5 text-center shadow rounded-3 p-3 menu-database mx-auto mb-3">
+                            <a href="<?= base_url('admin/data-master/designer') ?>" class="col-5 text-center shadow rounded-3 p-3 menu-database mx-auto mb-3">
                                 <span class="material-symbols-rounded" id="icon-database">
                                     draw
                                 </span>
                                 <p class="h4 mt-2 judul-database"><b>Akun Designer</b></p>
                             </a>
-                            <a href="<?= base_url('admin/database/customer') ?>" class="col-5 text-center shadow rounded-3 p-3 menu-database mx-auto mb-3">
+                            <a href="<?= base_url('admin/data-master/customer') ?>" class="col-5 text-center shadow rounded-3 p-3 menu-database mx-auto mb-3">
                                 <span class="material-symbols-rounded" id="icon-database">
                                     groups
                                 </span>
                                 <p class="h4 mt-2 judul-database"><b>Akun Customer</b></p>
                             </a>
-                            <a href="<?= base_url('admin/database/tipe') ?>" class="col-5 text-center shadow rounded-3 p-3 menu-database mx-auto mb-3">
+                            <a href="<?= base_url('admin/data-master/tipe') ?>" class="col-5 text-center shadow rounded-3 p-3 menu-database mx-auto mb-3">
                                 <span class="material-symbols-rounded" id="icon-database">
                                     folder_shared
                                 </span>
@@ -61,7 +61,7 @@
                         <div class="row text-center mt-2 mb-3 ms-3 me-3">
                             <ul class="list-group list-group-horizontal">
                                 <div class="col">
-                                    <a href="<?= base_url('admin/database/kategori') ?>">
+                                    <a href="<?= base_url('admin/data-master/kategori') ?>">
                                         <li class="list-group-item navbar-transaksi
                                     <?php if ($segment3 === 'kategori') {
                                         echo 'navbar-transaksi-active';
@@ -71,7 +71,7 @@
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a href="<?= base_url('admin/database/admin') ?>">
+                                    <a href="<?= base_url('admin/data-master/admin') ?>">
                                         <li class="list-group-item navbar-transaksi
                                     <?php if ($segment3 === 'admin') {
                                         echo 'navbar-transaksi-active';
@@ -81,7 +81,7 @@
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a href="<?= base_url('admin/database/designer') ?>">
+                                    <a href="<?= base_url('admin/data-master/designer') ?>">
                                         <li class="list-group-item navbar-transaksi
                                     <?php if ($segment3 === 'designer') {
                                         echo 'navbar-transaksi-active';
@@ -91,7 +91,7 @@
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a href="<?= base_url('admin/database/customer') ?>">
+                                    <a href="<?= base_url('admin/data-master/customer') ?>">
                                         <li class="list-group-item navbar-transaksi
                                     <?php if ($segment3 === 'customer') {
                                         echo 'navbar-transaksi-active';
@@ -101,7 +101,7 @@
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a href="<?= base_url('admin/database/tipe') ?>">
+                                    <a href="<?= base_url('admin/data-master/tipe') ?>">
                                         <li class="list-group-item navbar-transaksi
                                     <?php if ($segment3 === 'tipe') {
                                         echo 'navbar-transaksi-active';
@@ -116,23 +116,23 @@
                 </div>
             <?php
                 if ($segment3 === 'kategori') {
-                    echo $this->include('admin/database/kategori');
+                    echo $this->include('admin/data-master/kategori');
                 } else if ($segment3 === 'admin') {
                     if ($segment4 === 'detail') {
-                        echo $this->include('admin/database/admin/detail');
+                        echo $this->include('admin/data-master/admin/detail');
                     } else {
-                        echo $this->include('admin/database/admin');
+                        echo $this->include('admin/data-master/admin');
                     }
                 } else if ($segment3 === 'designer') {
                     if ($segment4 === 'detail') {
-                        echo $this->include('admin/database/designer/detail');
+                        echo $this->include('admin/data-master/designer/detail');
                     } else {
-                        echo $this->include('admin/database/designer');
+                        echo $this->include('admin/data-master/designer');
                     }
                 } else if ($segment3 === 'customer') {
-                    echo $this->include('admin/database/customer');
+                    echo $this->include('admin/data-master/customer');
                 } else if ($segment3 === 'tipe') {
-                    echo $this->include('admin/database/tipe');
+                    echo $this->include('admin/data-master/tipe');
                 }
             } ?>
         </div>

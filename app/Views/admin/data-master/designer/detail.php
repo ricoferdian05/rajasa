@@ -8,7 +8,7 @@
         </div>
         <hr>
         <div class="row col">
-            <form action="<?= base_url('admin/database/designer/detail/' . $detailDesigner['id']) ?>" method="post" enctype="multipart/form-data" id="myForm">
+            <form action="<?= base_url('admin/data-master/designer/detail/' . $detailDesigner['id']) ?>" method="post" enctype="multipart/form-data" id="myForm">
                 <input type="text" name="update" id="" value="true" hidden>
                 <center class="mb-3">
                     <img class="avatar-form mb-2 rounded-circle" src="<?= base_url($detailDesigner['avatar']) ?>" alt="" id="previewAvatar">

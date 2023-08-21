@@ -2,7 +2,7 @@
     <div class="position-absolute top-0 start-50 translate-middle">
         <div class="row modal-content rounded-3 shadow mb-3">
             <div class="col">
-                <form id="form-tambah-data" action="<?= base_url('admin/database/kategori/tambah') ?>" method="post">
+                <form id="form-tambah-data" action="<?= base_url('admin/data-master/kategori/tambah') ?>" method="post">
                     <div id="btn-close-modal" class="btn-close rounded-3 me-3 mt-3"></div>
                     <h3 class="text-center mt-3">Tambah Kategori</h3>
                     <hr>

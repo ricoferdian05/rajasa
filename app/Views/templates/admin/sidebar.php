@@ -34,13 +34,13 @@
                     Data Produk
                 </li>
             </a>
-            <a href="<?= base_url('admin/database') ?>">
+            <a href="<?= base_url('admin/data-master') ?>">
                 <li class="list-sidebar-menu 
-                <?php if ($segment2 === 'database') {
+                <?php if ($segment2 === 'data-master') {
                     echo 'list-sidebar-menu-active';
                 } ?> p-2 mb-2 rounded-5">
                     <i class="bi bi-database pe-2"></i>
-                    Database
+                    Data Master
                 </li>
             </a>
             <a href="<?= base_url('admin/akun') ?>">

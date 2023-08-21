@@ -28,7 +28,7 @@
                                     <td><?= $kategori[$i]['id'] ?></td>
                                     <td><?= $kategori[$i]['kategori'] ?></td>
                                     <td>
-                                        <button class="btn-hapus" onclick="hapus('<?= base_url('admin/database/kategori/hapus/' . $kategori[$i]['id']); ?>')">Hapus</button>
+                                        <button class="btn-hapus" onclick="hapus('<?= base_url('admin/data-master/kategori/hapus/' . $kategori[$i]['id']); ?>')">Hapus</button>
                                     </td>
                                 </tr>
                         <?php

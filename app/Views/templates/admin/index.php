@@ -43,16 +43,16 @@
 
     <!-- Modal -->
     <?php
-    if ($segment2 === 'database') {
+    if ($segment2 === 'data-master') {
         if ($segment3 === 'kategori') {
-            echo $this->include('admin/database/kategori/tambah');
+            echo $this->include('admin/data-master/kategori/tambah');
         } else if ($segment3 === 'admin') {
             if ($segment4 === '') {
-                echo $this->include('admin/database/admin/tambah');
+                echo $this->include('admin/data-master/admin/tambah');
             }
         } else if ($segment3 === 'designer') {
             if ($segment4 === '') {
-                echo $this->include('admin/database/designer/tambah');
+                echo $this->include('admin/data-master/designer/tambah');
             }
         }
     }

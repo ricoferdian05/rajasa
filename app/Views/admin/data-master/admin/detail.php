@@ -9,7 +9,7 @@
         <hr>
         <div class="row">
             <div class="col">
-                <form action="<?= base_url('admin/database/admin/detail/' . $detailAdmin['id']) ?>" method="post" enctype="multipart/form-data" id="myForm">
+                <form action="<?= base_url('admin/data-master/admin/detail/' . $detailAdmin['id']) ?>" method="post" enctype="multipart/form-data" id="myForm">
                     <input type="text" name="update" id="" value="true" hidden>
                     <center class="mb-3">
                         <img class="avatar-form mb-2 rounded-circle" src="<?= base_url($detailAdmin['avatar']) ?>" alt="" id="previewAvatar">

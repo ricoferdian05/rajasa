@@ -38,7 +38,7 @@
                                     <td><?= $customer[$i]['alamat'] ?></td>
                                     <td><?= $customer[$i]['no_hp'] ?></td>
                                     <td>
-                                        <button class="btn-hapus" onclick="hapus('<?= base_url('admin/database/customer/hapus/' . $customer[$i]['id']); ?>')">Hapus</button>
+                                        <button class="btn-hapus" onclick="hapus('<?= base_url('admin/data-master/customer/hapus/' . $customer[$i]['id']); ?>')">Hapus</button>
                                     </td>
                                 </tr>
                         <?php }

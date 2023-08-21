@@ -2,12 +2,12 @@
     <div class="position-absolute top-0 start-50 translate-middle">
         <div class="row modal-content rounded-3 shadow mb-3">
             <div class="col">
-                <form id="form-tambah-data" action="<?= base_url('admin/database/admin/tambah') ?>" method="post" enctype="multipart/form-data">
+                <form id="form-tambah-data" action="<?= base_url('admin/data-master/designer/tambah') ?>" method="post" enctype="multipart/form-data">
                     <div id="btn-close-modal" class="btn-close rounded-3 me-3 mt-3"></div>
-                    <h3 class="text-center mt-3">Tambah Akun Admin</h3>
+                    <h3 class="text-center mt-3">Tambah Akun Designer</h3>
                     <hr>
                     <center class="mb-3">
-                        <img class="avatar-form mb-2 rounded-circle" src="<?= base_url('asset/admin/akun/avatar-admin.png') ?>" alt="" id="previewAvatar">
+                        <img class="avatar-form mb-2 rounded-circle" src="<?= base_url('asset/designer/akun/avatar-designer.png') ?>" alt="" id="previewAvatar">
                         <input class="form-control input-avatar" type="file" name="avatar" id="avatar" onchange="previewFile(this)" accept="image/*">
                     </center>
                     <div class="row mb-3">
