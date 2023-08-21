@@ -59,7 +59,7 @@
                                 <form action="<?= base_url('customer/pesan/' . $produk['id']) ?>" method="post">
                                     <div class="mb-3">
                                         <label for="exampleInput" class="form-label">Jumlah Produk</label>
-                                        <input name="jumlah" type="number" class="form-control form-control-sm" id="jumlah" onkeypress="cekHarga()" onchange="checkHarga()" required>
+                                        <input name="jumlah" type="number" class="form-control form-control-sm" id="jumlah" onkeypress="cekHarga()" onchange="checkHarga()" required min="1">
                                     </div>
                                     <div class="mb-3">
                                         <div class="row">
